@@ -1,0 +1,262 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.kategori {
+    padding-top: 30px;
+
+}
+
+.subkategori {
+    position: relative;
+    width: 1288px;
+    height: 600px;
+    left: 100px;
+    padding-top: 30px;
+    margin-top: 65px;
+    background: #F7F8FA;
+
+}
+
+.jumbotron {
+    background-image: url(/images/jumbotron.png);
+    background-size: cover;
+    height: 760px;
+    width: 100%;
+}
+
+.jumbotron .display-4 {
+    margin-top: 220px;
+    font-size: 64px;
+    font-family: "Gilroy";
+}
+
+.jumbotron p {
+    font-size: 20px;
+}
+
+.jumbotron hr {
+    border-color: white;
+    width: 800px;
+    border-width: 1px;
+}
+
+.slider {
+    background: #EAEBEF;
+    height: 774;
+    width: 1440;
+}
+
+.branding .title {
+    color: #002678;
+    padding-right: 60px;
+}
+
+
+/* Product */
+.product-center {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 7rem 3rem;
+}
+
+.product {
+    background-color: #fff;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    transition: all 300ms ease-in-out;
+}
+
+.product-header {
+    position: relative;
+    background-color: #f6f2f1;
+    transition: all 300ms ease-in-out;
+    z-index: 0;
+}
+
+.card-body .price {
+    color: #1ACBAA;
+    font-size: 18px;
+}
+
+.card-body .tipe {
+    color: #898989;
+    font-size: 16px;
+}
+
+.product:hover .product-header::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 500ms ease-in-out;
+    z-index: 1;
+}
+
+.product-header .icons {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translate(0, -50%) scale(0);
+    z-index: 2;
+    opacity: 0;
+    transition: all 500ms ease-in-out;
+}
+
+.product-header .icons span {
+    background-color: #fff;
+    font-size: 1.3rem;
+    display: block;
+    border-radius: 50%;
+    padding: 1.5rem 1.6rem;
+    line-height: 1rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+.product-header .icons span i {
+    transition: all 500ms ease-in-out;
+}
+
+.product-header .icons span:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.product-header .icons span:hover {
+    background-color: #1ACBAA;
+    color: #fff;
+}
+
+.product:hover .icons {
+    opacity: 1;
+    transform: translate(0, -50%) scale(1);
+}
+
+.product-header .icons a {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "montserrat", sans-serif;
+}
+
+.testimonials {
+    padding: 40px 0;
+    background: #f1f1f1;
+    color: #434343;
+    text-align: center;
+}
+
+.inner {
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.col {
+    flex: 33.33%;
+    max-width: 33.33%;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+.testimonial {
+    background: #fff;
+    padding: 30px;
+}
+
+.testimonial img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.name {
+    font-size: 18px;
+    color: #7C8087;
+    text-transform: uppercase;
+    margin: 20px 0;
+}
+
+.stars {
+    color: #6ab04c;
+    margin-bottom: 20px;
+}
+
+
+@media screen and (max-width:960px) {
+    .col {
+        flex: 100%;
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .col {
+        flex: 100%;
+        max-width: 100%;
+    }
+}
+
+#Checkout {
+    background-color: rgba(26, 203, 170, 1);
+    color: white;
+}
+
+/*footer*/
+.searchform input {
+    border: 1px solid #DDDDDD;
+    color: #CCCCC6;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    margin-top: 0;
+    outline: medium none;
+    padding: 7px;
+    width: 212px;
+}
+
+
+.searchform button {
+    background: #1ACBAA;
+    border: medium none;
+    border-radius: 0;
+    margin-left: -5px;
+    margin-top: -3px;
+    padding: 7px 17px;
+}
+
+.searchform button i {
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.searchform button:hover,
+.searchform button:focus {
+    background-color: #1ACBAA;
+}
+
+.searchform p {
+    color: #8C8C88;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 25px;
+}
