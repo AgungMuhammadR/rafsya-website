@@ -20,6 +20,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 
     <title>RAFSYA</title>
+
+    @if (Request::is('faq'))
+        <style>
+            body {
+                background-image: url('../images/main_bg.png');
+                background-size: cover;
+            }
+
+        </style>
+    @endif
 </head>
 
 <body>
@@ -29,7 +39,9 @@
         @yield('container')
     </div>
 
-    @include('layout.footer')
+    @if (!Request::is('faq'))
+        @include('layout.footer')
+    @endif
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

@@ -5,8 +5,6 @@ html {
 body {
     font-family: sans-serif;
     font-size: 16px;
-    background-image: url('../images/main_bg.png');
-    background-size: cover;
 }
 
 .kategori {
@@ -266,4 +264,4 @@ body {
 .col-md-6:hover {
     border-radius: 12px;
     background-color: #f7f7f7;
-  }
+}
