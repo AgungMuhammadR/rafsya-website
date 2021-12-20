@@ -31,3 +31,7 @@ Route::group(['prefix' => 'category'], function () {
         return view('page.category.modern');
     });
 });
+
+Route::get('faq', function() {
+    return view('page.faq');
+});

@@ -260,3 +260,8 @@ body {
     font-weight: 300;
     margin-top: 25px;
 }
+
+.col-md-6:hover {
+    border-radius: 12px;
+    background-color: #f7f7f7;
+}
