@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,16 +19,19 @@ Route::get('/', function () {
     return view('page.home');
 });
 
-Route::get('login', function () {
-    return view('page.login');
-});
+Route::get('login', [LoginController::class, 'index']);
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout']);
 
-Route::get('register', function () {
-    return view('page.register');
-});
+Route::get('register', [RegisterController::class, 'index']);
+Route::post('register', [RegisterController::class, 'register']);
 
 Route::group(['prefix' => 'category'], function () {
     Route::get('modern', function () {
         return view('page.category.modern');
     });
+});
+
+Route::get('faq', function() {
+    return view('page.faq');
 });

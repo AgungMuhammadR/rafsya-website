@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 
-    <title>Login/Register</title>
+    <title>{{ $title }}</title>
 </head>
 
 <body>
