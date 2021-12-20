@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('page.home');
 });
+
+Route::get('login', function () {
+    return view('page.login');
+});
+
+Route::get('register', function () {
+    return view('page.register');
+});
+
+Route::group(['prefix' => 'category'], function () {
+    Route::get('modern', function () {
+        return view('page.category.modern');
+    });
+});

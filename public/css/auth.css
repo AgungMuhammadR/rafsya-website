@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap');
+
+body {
+    font-family: 'Manrope', sans-serif;
+    font-style: medium;
+    background-color: #42A7C3;
+    background-image: url('../images/bground.jpg');
+    background-size: cover;
+}
+
+.card-body>img {
+    width: 103px;
+    height: 24px;
+    left: 48px;
+    top: 48px;
+}
+
+.test>img {
+    height: 100%;
+    width: 100%;
+    background-size: auto;
+}
+
+/* p {
+    color: #b3b3b3;
+    font-weight: 300; } */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: Gilroy;
+    font-style: normal;
+}
+
+.card-body {
+    margin: 120px;
+    position: center;
+    width: 1015px;
+    height: 100%;
+    padding: 28px;
+    background-size: auto;
+    /* left: 50%;
+    top: 50%;
+    margin-left: -25%;
+    margin-top: -25%; */
+
+    background: #FFFFFF;
+    border-radius: 12px;
+    align-content: center;
+}
+
+
+/* a {
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease; }
+    a:hover {
+      text-decoration: none !important; } */
+
+/* .content {
+    padding: 7rem 0; } */
+
+/* h2 {
+    font-size: 12px; } */
+
+.half,
+.half .container>.row {
+    height: 80vh;
+}
+
+/* @media (max-width: 991.98px) {
+    .half .bg {
+      height: 100px; } } */
+
+/* .card-body {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 1.25rem; } */
+
+.half .contents,
+.half .bg {
+    width: 50%;
+}
+
+@media (max-width: 1199.98px) {
+
+    .half .contents,
+    .half .bg {
+        width: 100%;
+    }
+}
+
+.half .contents .form-group,
+.half .bg .form-group {
+    overflow: hidden;
+    margin-bottom: 0;
+    border: 1px solid #efefef;
+    padding: 15px 15px;
+    border-bottom: none;
+    position: relative;
+}
+
+.half .contents .form-group label,
+.half .bg .form-group label {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+}
+
+.half .contents .form-group input:focus+label,
+.half .bg .form-group input:focus+label {
+    margin-top: -20px;
+}
+
+.half .contents .form-group.first,
+.half .bg .form-group.first {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.half .contents .form-group.last,
+.half .bg .form-group.last {
+    border-bottom: 1px solid #efefef;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.half .contents .form-group label,
+.half .bg .form-group label {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 0;
+    color: #b3b3b3;
+}
+
+.half .contents .form-group.field--not-empty label,
+.half .bg .form-group.field--not-empty label {
+    margin-top: -20px;
+}
+
+.half .contents .form-control,
+.half .bg .form-control {
+    border: none;
+    padding: 0;
+    font-size: 20px;
+    border-radius: 0;
+}
+
+.half .contents .form-control:active,
+.half .contents .form-control:focus,
+.half .bg .form-control:active,
+.half .bg .form-control:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.half .bg {
+    background-size: initial;
+    background-position: center;
+}
+
+/* .half a {
+    color: #888;
+    text-decoration: underline; } */
+
+.half .btn {
+    height: 54px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.btn {
+    background-color: #1ACBAA;
+    stroke: #03B896;
+    border: none;
+}
+
+.half .forgot-pass {
+    position: relative;
+    top: 2px;
+    font-size: 14px;
+}
+
+.social-login a {
+    display: block;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.social-login a:hover {
+    color: #fff;
+}
+
+.social-login a.facebook {
+    background: #3b5998;
+}
+
+.social-login a.facebook:hover {
+    background: #344e86;
+}
+
+.social-login a.google {
+    background: #ea4335;
+}
+
+.social-login a.google:hover {
+    background: #e82e1e;
+}

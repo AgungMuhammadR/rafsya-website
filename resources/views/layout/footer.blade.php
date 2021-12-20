@@ -6,7 +6,8 @@
 
         <div class="row text-center text-md-left">
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                <div class="text-uppercase mb-4 font-weight-bold text-black"><img width="100 " src="images/logo.png">
+                <div class="text-uppercase mb-4 font-weight-bold text-black"><img width="100 "
+                        src="{{ asset('images/logo.png') }}">
                 </div>
                 <p>Temukan rumah impian Anda <br> bersama kami</p> <br>
                 <p>+628129533291 <br> www.rumahmu.com</p>

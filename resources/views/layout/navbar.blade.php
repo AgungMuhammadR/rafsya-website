@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
     <div class="container">
 
-        <a class="navbar-brand" href="#"></a> <img width="100 " src="images/logo.png" alt="#" /></a>
+        <a class="navbar-brand" href="#"></a> <img width="100 " src="{{ asset('images/logo.png') }}" alt="#" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -39,18 +39,25 @@
                 </li>
             </ul>
 
-            <form class="form-inline my-4 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Temukan rumah impian Anda"
-                    aria-label="Search" style=" width: 376px;">
-                <button class="btn btn-outline-white my-2 my-sm-0" type="submit">
-                    <img src="" class="icon-cart" alt="">
-                </button>
-            </form>
+            <div class="col-sm-6">
+                <form action="#" class="search">
+                    <div class="input-group w-100">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-append">
+                            <button class="btn" type="submit" style="background-color: #1ACBAA;">
+                                <i class="fa fa-search" style="color: #fff;"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
             <div class="icon mt-2">
                 <h5>
-                    <a href="cart.html"><img src="images/cart.png" class="icon-cart ml-3 mr-3" alt=""></a>
-                    <a href="profil.html"><img src="images/profil.png" class="icon-profil mr-3" alt=""></a>
+                    <a href="cart.html"><img src="{{ asset('images/cart.png') }}" class="icon-cart ml-3 mr-3"
+                            alt=""></a>
+                    <a href="profil.html"><img src="{{ asset('images/profil.png') }}" class="icon-profil mr-3"
+                            alt=""></a>
                 </h5>
             </div>
 
