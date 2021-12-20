@@ -11,42 +11,25 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
+    public function index()
+    {
+        return view('page.register', [
+            'title' => 'Register'
+        ]);
+    }
+
     public function register(Request $request)
     {
-        // $validate = $request->validate([
-        //     'username' => 'required|max:255',
-        //     'email' => 'required|email:dns|unique:users',
-        //     'password' => 'required|min:5|max:255',
-        //     'phone_number' => 'required|numeric'
-        // ]);
-
-        $validate = Validator::make($request->all(), [
+        $validate = $request->validate([
             'username' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:5|max:255',
-            'phone_number' => 'required|numeric',
-            'address' => 'required',
-            'location_id' => 'required'
+            'password' => 'required|min:5|max:255'
         ]);
 
-        if ($validate->fails()) {
-            return response()->json([
-                'status' => 'failed',
-                'message' => 'Create user failed',
-                'error' => $validate->errors()
-            ], 401);
-        }
+        $validate['password'] = Hash::make($validate['password']);
 
-        $input = $request->all();
+        User::create($validate);
 
-        $input['password'] = Hash::make($input['password']);
-
-        $user = User::create($input);
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Create user successfully',
-            'data' => $user
-        ], 200);
+        return redirect('/login')->with('success', 'Registration successful! Please login');
     }
 }
