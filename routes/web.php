@@ -18,4 +18,16 @@ Route::get('/', function () {
     return view('page.home');
 });
 
-Route::post('register', [RegisterController::class, 'register']);
+Route::get('login', function () {
+    return view('page.login');
+});
+
+Route::get('register', function () {
+    return view('page.register');
+});
+
+Route::group(['prefix' => 'category'], function () {
+    Route::get('modern', function () {
+        return view('page.category.modern');
+    });
+});

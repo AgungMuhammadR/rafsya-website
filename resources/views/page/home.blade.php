@@ -232,8 +232,8 @@
                             <a href="category/modern" class="nav-link">
                                 <h3>Modern</h3>
                             </a>
-                            <a href="category/komtemporer" class="nav-link">
-                                <h3>Komtemporer</h3>
+                            <a href="category/kontemporer" class="nav-link">
+                                <h3>Kontemporer</h3>
                             </a>
                             <a href="category/coastal_style" class="nav-link">
                                 <h3>Coastal</h3>
@@ -247,7 +247,7 @@
                             <a href="category/rustic" class="nav-link">
                                 <h3>Rustic</h3>
                             </a>
-                            <a href="category/kandinavian" class="nav-link">
+                            <a href="category/skandinavian" class="nav-link">
                                 <h3>Skandinavian</h3>
                             </a>
                         </div>
