@@ -24,7 +24,9 @@ class RegisterController extends Controller
             'username' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:5|max:255',
-            'phone_number' => 'required|numeric'
+            'phone_number' => 'required|numeric',
+            'address' => 'required',
+            'location_id' => 'required'
         ]);
 
         if ($validate->fails()) {
