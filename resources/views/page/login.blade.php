@@ -41,22 +41,12 @@
                                     <label for="username">Username atau Email</label>
                                     <input type="text" name="username"
                                         class="form-control @error('username') is-invalid @enderror" id="username">
-                                    @error('username')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
                                 </div>
 
                                 <div class="form-group last mb-3">
                                     <label for="password">Kata Sandi</label>
                                     <input type="password" name="password"
                                         class="form-control @error('password') is-invalid @enderror" id="password">
-                                    @error('password')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
                                 </div>
 
                                 <button type="submit" class="btn btn-block btn-primary">Login</button>

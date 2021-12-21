@@ -17,12 +17,15 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+        $input = $request->all();
+        $this->validate($request, [
             'username' => 'required',
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        if (Auth::attempt([$fieldType => $input['username'], 'password' => $input['password']])) {
             $request->session()->regenerate();
             return redirect()->intended('/');
         }
