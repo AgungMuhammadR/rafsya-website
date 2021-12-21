@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,15 +20,22 @@ Route::get('/', function () {
     return view('page.home');
 });
 
-Route::get('profile', function () {
-    return view('page.profile');
+Route::group(['prefix' => 'profile'], function () {
+    Route::get('', [ProfileController::class, 'index']);
+    Route::put('update', [ProfileController::class, 'update']);
+    Route::get('cities/{parent_id}', [ProfileController::class, 'cities']);
 });
-Route::get('login', [LoginController::class, 'index']);
-Route::post('login', [LoginController::class, 'login']);
+
+Route::group(['prefix' => 'login'], function () {
+    Route::get('', [LoginController::class, 'index']);
+    Route::post('', [LoginController::class, 'login']);
+});
 Route::post('logout', [LoginController::class, 'logout']);
 
-Route::get('register', [RegisterController::class, 'index']);
-Route::post('register', [RegisterController::class, 'register']);
+Route::group(['prefix' => 'register'], function () {
+    Route::get('', [RegisterController::class, 'index']);
+    Route::post('', [RegisterController::class, 'register']);
+});
 
 Route::group(['prefix' => 'category'], function () {
     Route::get('modern', function () {
