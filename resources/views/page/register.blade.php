@@ -21,21 +21,40 @@
                                 <span class="ml-auto"><a href="/login" class="login">Masuk</a></span>
                             </div>
 
-                            <form action="#" method="post">
+                            <form action="register" method="POST">
+                                @csrf
                                 <div class="form-group first">
                                     <label for="username">Username Anda</label>
-                                    <input type="text" class="form-control" id="username">
+                                    <input type="text" name="username"
+                                        class="form-control @error('username') is-invalid @enderror" id="username">
+                                    @error('username')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group second">
                                     <label for="email">Email Anda</label>
-                                    <input type="text" class="form-control" id="email">
+                                    <input type="text" name="email"
+                                        class="form-control @error('email') is-invalid @enderror" id="email">
+                                    @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group last mb-3">
                                     <label for="password">Kata Sandi</label>
-                                    <input type="password" class="form-control" id="password">
+                                    <input type="password" name="password"
+                                        class="form-control @error('password') is-invalid @enderror" id="password">
+                                    @error('password')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
-                                <input type="submit" value="Daftar" class="btn btn-block btn-primary">
 
+                                <button type="submit" class="btn btn-block btn-primary">Daftar</button>
 
                                 <span class="d-block text-center my-4 text-muted">&mdash; Atau daftar dengan
                                     &mdash;</span>

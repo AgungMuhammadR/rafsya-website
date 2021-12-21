@@ -54,10 +54,8 @@
 
             <div class="icon mt-2">
                 <h5>
-                    <a href="cart.html"><img src="{{ asset('images/cart.png') }}" class="icon-cart ml-3 mr-3"
-                            alt=""></a>
-                    <a href="profil.html"><img src="{{ asset('images/profil.png') }}" class="icon-profil mr-3"
-                            alt=""></a>
+                    <a href="cart"><img src="{{ asset('images/cart.png') }}" class="icon-cart ml-3 mr-3" alt=""></a>
+                    <a href="profile"><img src="{{ asset('images/profil.png') }}" class="icon-profil mr-3" alt=""></a>
                 </h5>
             </div>
 

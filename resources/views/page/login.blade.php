@@ -2,6 +2,20 @@
 
 @section('container')
     <div class="card-body">
+        @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+        @if (session()->has('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         <img src="{{ asset('/images/logo.png') }}" alt="">
 
         <div class="d-lg-flex half">
@@ -21,19 +35,31 @@
                                 <span class="ml-auto"><a href="/register" class="login">Daftar</a></span>
                             </div>
 
-                            <form action="#" method="post">
+                            <form action="/login" method="POST">
+                                @csrf
                                 <div class="form-group first">
-                                    <label for="username">Nomor Ponsel atau Email</label>
-                                    <input type="text" class="form-control" id="username">
-
+                                    <label for="username">Username atau Email</label>
+                                    <input type="text" name="username"
+                                        class="form-control @error('username') is-invalid @enderror" id="username">
+                                    @error('username')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group last mb-3">
                                     <label for="password">Kata Sandi</label>
-                                    <input type="password" class="form-control" id="password">
+                                    <input type="password" name="password"
+                                        class="form-control @error('password') is-invalid @enderror" id="password">
+                                    @error('password')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
 
-                                <input type="submit" value="Log In" class="btn btn-block btn-primary">
+                                <button type="submit" class="btn btn-block btn-primary">Login</button>
 
                                 <div class="d-flex mb-5 align-items-center">
                                     <span class="caption">Lupa kata sandi?</span>
