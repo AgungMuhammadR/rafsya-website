@@ -19,6 +19,9 @@ Route::get('/', function () {
     return view('page.home');
 });
 
+Route::get('profile', function () {
+    return view('page.profile');
+});
 Route::get('login', [LoginController::class, 'index']);
 Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout']);
@@ -32,6 +35,6 @@ Route::group(['prefix' => 'category'], function () {
     });
 });
 
-Route::get('faq', function() {
+Route::get('faq', function () {
     return view('page.faq');
 });
