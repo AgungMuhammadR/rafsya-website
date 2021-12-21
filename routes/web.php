@@ -38,3 +38,7 @@ Route::group(['prefix' => 'category'], function () {
 Route::get('faq', function () {
     return view('page.faq');
 });
+
+Route::get('cart', function () {
+    return view('page.cart');
+});
