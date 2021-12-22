@@ -64,6 +64,7 @@
                                     <div class="col-6 mt-4">
                                         <label for="city" class="form-label font-weight-bold">City</label>
                                         <select name="city" class="form-control" id="city" onchange="idcity(this.value)">
+                                            <option id="select-city" value="" selected>Select City</option>
                                         </select>
                                     </div>
                                     <div class="col-6 mt-4">
