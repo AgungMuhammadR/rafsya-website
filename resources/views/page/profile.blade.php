@@ -26,7 +26,7 @@
                         <div class="row mt-12" style="width: 68rem;">
                             <div class="col-sm-12">
                                 <h1>Id : {{ auth()->user()->id }}</h1>
-
+                                <img src="images/Breadcrumb.png" alt="">
                                 @if (session()->has('success'))
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         {{ session('success') }}

@@ -1,6 +1,7 @@
 @extends('layout.auth_main')
 
 @section('container')
+    <div class="container">
     <div class="card-body">
         <img src="{{ asset('/images/logo.png') }}" alt="">
 
@@ -17,31 +18,31 @@
                         <div class="col-md-10">
 
                             <div class="d-flex mb-5 align-items-center">
-                                <h4>Daftar</h4>
+                                <h5 class="font-weight-bold text-muted">Daftar</h5>
                                 <span class="ml-auto"><a href="/login" class="login">Masuk</a></span>
                             </div>
 
                             <form action="register" method="POST">
                                 @csrf
                                 <div class="form-group first">
-                                    <label for="username">Username Anda</label>
                                     <input type="text" name="username"
-                                        class="form-control @error('username') is-invalid @enderror" id="username">
+                                        class="form-control @error('username') is-invalid @enderror" id="username"
+                                        placeholder="Username Anda" style="font-size: 12px">
                                 </div>
                                 <div class="form-group second">
-                                    <label for="email">Email Anda</label>
                                     <input type="text" name="email"
-                                        class="form-control @error('email') is-invalid @enderror" id="email">
+                                        class="form-control @error('email') is-invalid @enderror" id="email"
+                                        placeholder="Email Anda" style="font-size: 12px">
                                 </div>
                                 <div class="form-group last mb-3">
-                                    <label for="password">Kata Sandi</label>
                                     <input type="password" name="password"
-                                        class="form-control @error('password') is-invalid @enderror" id="password">
+                                        class="form-control @error('password') is-invalid @enderror" id="password"
+                                        placeholder="Kata Sandi" style="font-size: 12px">
                                 </div>
 
                                 <button type="submit" class="btn btn-block btn-primary">Daftar</button>
 
-                                <span class="d-block text-center my-4 text-muted">&mdash; Atau daftar dengan
+                                <span class="d-block text-center my-4 text-muted" style="font-size: 14px">&mdash; Atau daftar dengan
                                     &mdash;</span>
 
                                 <div class="social-login">
@@ -61,4 +62,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
