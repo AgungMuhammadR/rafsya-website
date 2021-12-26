@@ -58,3 +58,7 @@ Route::get('payment_method', function () {
 Route::get('payment_detail', function () {
     return view('page.payment.payment_detail');
 });
+
+Route::get('payment_confirmed', function () {
+    return view('page.payment.payment_confirmed');
+});
