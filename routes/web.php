@@ -54,3 +54,7 @@ Route::get('cart', function () {
 Route::get('payment_method', function () {
     return view('page.payment.payment_method');
 });
+
+Route::get('payment_detail', function () {
+    return view('page.payment.payment_detail');
+});
