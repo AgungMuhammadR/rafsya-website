@@ -25,7 +25,7 @@
                 </span>
                 <div class="card" style="height: 300px; border: none;">
                     <div class="accordion" id="accordionExample">
-                        <img class="container" src="images/payment.png" alt="">
+                        <img class="container" src="images/payment.gif" alt="">
                         <h2 class="text-center">Payment Confirmed</h2>
                         <p class="text-center" style="color: #1ACBAA;">ORDER #2039</p>
                     </div>

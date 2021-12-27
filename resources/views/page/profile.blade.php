@@ -1,32 +1,47 @@
 @extends('layout.main')
 
 @section('container')
-    <div class="category">
-        <div class="container">
+<div class="content mt-5" style="padding-left: 65px;">
+    <div class="profile">
             <div class="row">
                 <div class="col-md-2 bg-transparent">
                     <div class="card-body">
-                        <a href="modern.html" class="nav-link">
-                            <h4 class="modern" style="color: #1ACBAA;">Profil</h4>
+                        <a href="#" class="nav-link">
+                            <h4 class="profile" style="color: #1ACBAA;">Profil</h4>
                         </a>
-                        <a href="komtemporer.html" class="nav-link">
-                            <h4 class="komtemporer" style="color: #828599;">Product</h4>
+                        <a href="" class="nav-link">
+                            <h4 class="produk" style="color: #828599;">Product</h4>
                         </a>
-                        <a href="coastal_style.html" class="nav-link">
-                            <h4 class="coastal_style" style="color: #828599;">Chat</h4>
+                        <a href="" class="nav-link">
+                            <h4 class="chat" style="color: #828599;">Chat</h4>
                         </a>
-                        <a href="eklektik.html" class="nav-link">
-                            <h4 class="eklektik" style="color: #828599;">Pesanan</h4>
+                        <a href="" class="nav-link">
+                            <h4 class="pesanan" style="color: #828599;">Pesanan</h4>
                         </a>
                     </div>
                 </div>
 
                 <div class="col-md-10">
                     <div class="kategori">
-                        <div class="row mt-12" style="width: 68rem;">
+                        <div class="row mt-12" style="width: 70rem;">
                             <div class="col-sm-12">
-                                <h1>Id : {{ auth()->user()->id }}</h1>
                                 <img src="images/Breadcrumb.png" alt="">
+                                    <div class="rectangle">
+                                        <img src="images/Rectangle 41.png" alt="">
+                                    </div>
+                                    <div class="col-lg-10 profile-panel">
+                                        <div class="col-lg">
+                                            <img src="images/profileImage.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg icon-manage">
+                                        <img src="images/profileIcon.png" alt="">
+                                    </div>
+                                    <div class="profile-info">
+                                        <h5 class="font-weight-bold">Angela Trinata</h5>
+                                        <p style="color: #718096; font-size: 14px;">angela@example.com</p>
+                                    </div>
+                                {{-- <h1>Id : {{ auth()->user()->id }}</h1> --}}
                                 @if (session()->has('success'))
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         {{ session('success') }}
