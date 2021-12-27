@@ -30,25 +30,25 @@
             <div class="row">
                 <div class="col-md-2 bg-transparent">
                     <div class="card-body">
-                        <a href="category/modern" class="nav-link">
+                        <a href="modern" class="nav-link">
                             <h4 class="modern" style="color: #1ACBAA;">Modern</h4>
                         </a>
-                        <a href="category/kontemporer" class="nav-link">
+                        <a href="kontemporer" class="nav-link">
                             <h4 class="komtemporer" style="color: #828599;">Kontemporer</h4>
                         </a>
-                        <a href="category/coastal_style" class="nav-link">
+                        <a href="coastal_style" class="nav-link">
                             <h4 class="coastal_style" style="color: #828599;">Coastal</h4>
                         </a>
-                        <a href="category/eklektik" class="nav-link">
+                        <a href="eklektik" class="nav-link">
                             <h4 class="eklektik" style="color: #828599;">Eklektik</h4>
                         </a>
-                        <a href="category/maroko" class="nav-link">
+                        <a href="maroko" class="nav-link">
                             <h4 class="maroko" style="color: #828599;">Maroko</h4>
                         </a>
-                        <a href="category/rustic" class="nav-link">
+                        <a href="rustic" class="nav-link">
                             <h4 class="rustic" style="color: #828599;">Rustic</h4>
                         </a>
-                        <a href="category/skandinavian" class="nav-link">
+                        <a href="skandinavian" class="nav-link">
                             <h4 class="skandinavia" style="color: #828599;">Skandinavian</h4>
                         </a>
                     </div>
