@@ -1,6 +1,7 @@
 @extends('layout.auth_main')
 
 @section('container')
+    <div class="container">
     <div class="card-body">
         @if (session()->has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -30,34 +31,34 @@
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-10">
 
-                            <div class="d-flex mb-5 align-items-center">
-                                <h3>Masuk</h3>
+                            <div class="d-flex mb-5 align-items-center mt-4">
+                                <h5 class="font-weight-bold text-muted">Masuk</h5>
                                 <span class="ml-auto"><a href="/register" class="login">Daftar</a></span>
                             </div>
 
                             <form action="/login" method="POST">
                                 @csrf
                                 <div class="form-group first">
-                                    <label for="username">Username atau Email</label>
                                     <input type="text" name="username"
-                                        class="form-control @error('username') is-invalid @enderror" id="username">
+                                        class="form-control @error('username') is-invalid @enderror" id="username"
+                                        placeholder="Username atau Email" style="font-size: 12px">
                                 </div>
 
                                 <div class="form-group last mb-3">
-                                    <label for="password">Kata Sandi</label>
                                     <input type="password" name="password"
-                                        class="form-control @error('password') is-invalid @enderror" id="password">
+                                        class="form-control @error('password') is-invalid @enderror" id="password"
+                                        placeholder="Kata Sandi" style="font-size: 12px">
                                 </div>
 
                                 <button type="submit" class="btn btn-block btn-primary">Login</button>
 
-                                <div class="d-flex mb-5 align-items-center">
-                                    <span class="caption">Lupa kata sandi?</span>
+                                <div class="d-flex mb-5 align-items-center mt-4">
+                                    <span class="caption text-muted" style="font-size: 15px">Lupa kata sandi?</span>
                                     <span class="ml-auto"><a href="#" class="forgot-pass">Klik
                                             Disini</a></span>
                                 </div>
 
-                                <span class="d-block text-center my-4 text-muted">&mdash; Atau masuk dengan
+                                <span class="d-block text-center my-4 text-muted" style="font-size: 14px">&mdash; Atau masuk dengan
                                     &mdash;</span>
 
                                 <div class="social-login">
@@ -77,4 +78,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

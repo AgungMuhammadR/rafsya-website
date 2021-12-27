@@ -50,3 +50,15 @@ Route::get('faq', function () {
 Route::get('cart', function () {
     return view('page.cart');
 });
+
+Route::get('payment_method', function () {
+    return view('page.payment.payment_method');
+});
+
+Route::get('payment_detail', function () {
+    return view('page.payment.payment_detail');
+});
+
+Route::get('payment_confirmed', function () {
+    return view('page.payment.payment_confirmed');
+});

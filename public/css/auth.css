@@ -226,3 +226,6 @@ h6,
 .social-login a.google:hover {
     background: #e82e1e;
 }
+.form-group.first{
+    margin-top: -30px;
+}

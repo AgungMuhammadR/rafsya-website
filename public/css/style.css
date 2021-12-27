@@ -265,3 +265,20 @@ body {
     border-radius: 12px;
     background-color: #f7f7f7;
 }
+
+ /* Profile style */
+ .rectangle {
+	margin-top: -50px;
+	padding-left: 10px;
+}
+.profile-panel {
+	margin-top: -110px;
+}
+.icon-manage {
+	margin-top: -20px;
+	padding-left: 75px;
+}
+.profile-info {
+	margin-top: -75px;
+	padding-left: 120px;
+}
