@@ -23,13 +23,13 @@ use App\Http\Controllers\Transaksi;
 
 Route::get('/', [Dashboard::class, 'home']);
 Route::get('faq', [Dashboard::class, 'faq']);
-Route::get('product', [Dashboard::class, 'product']);
 Route::get('consultation', [Dashboard::class, 'consultation']);
 
 Route::group(['prefix' => 'profile'], function () {
     Route::get('', [ProfileController::class, 'index']);
     Route::put('update', [ProfileController::class, 'update']);
     Route::get('cities/{parent_id}', [ProfileController::class, 'cities']);
+    Route::get('product', [ProfileController::class, 'product']);
 });
 
 Route::group(['prefix' => 'login'], function () {

@@ -46,4 +46,9 @@ class ProfileController extends Controller
 
         return $cities;
     }
+
+    public function product () {
+
+        return view('page.product');
+    }
 }

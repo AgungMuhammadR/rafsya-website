@@ -6,14 +6,11 @@
             <div class="row">
                 <div class="col-md-2 bg-transparent">
                     <div class="card-body">
-                        <a href="#" class="nav-link">
+                        <a href="{{ url ('profile') }}" class="nav-link">
                             <h4 class="profile" style="color: #1ACBAA;">Profil</h4>
                         </a>
-                        <a href="" class="nav-link">
+                        <a href="{{ url ('profile/product') }}" class="nav-link">
                             <h4 class="produk" style="color: #828599;">Product</h4>
-                        </a>
-                        <a href="" class="nav-link">
-                            <h4 class="chat" style="color: #828599;">Chat</h4>
                         </a>
                         <a href="" class="nav-link">
                             <h4 class="pesanan" style="color: #828599;">Pesanan</h4>
