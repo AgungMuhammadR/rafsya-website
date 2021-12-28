@@ -13,7 +13,6 @@ class ProfileController extends Controller
     public function index()
     {
         $provinces = Location::where('parent_id', 0)->get();
-        // $cities = Location::where('parent_id', $id)->get();
 
         return view('page.profile', [
             'provinces' => $provinces

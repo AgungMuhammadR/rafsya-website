@@ -1,13 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
     <div class="container">
 
-        <a class="navbar-brand" href="#"></a> <img width="100 " src="{{ asset('images/logo.png') }}" alt="#" /></a>
+        <a class="navbar-brand" href="/">
+            <img width="100 " src="{{ asset('images/logo.png') }}" alt="#" />
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse my-n2" id="navbarSupportedContent">
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
@@ -54,8 +56,40 @@
 
             <div class="icon mt-2">
                 <h5>
-                    <a href="cart"><img src="{{ asset('images/cart.png') }}" class="icon-cart ml-3 mr-3" alt=""></a>
-                    <a href="profile"><img src="{{ asset('images/profil.png') }}" class="icon-profil mr-3" alt=""></a>
+                    <a href="cart"><img src="{{ asset('images/cart.png') }}" class="icon-cart mx-3" alt=""></a>
+
+                    @auth
+                        <div class="d-inline-block">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="{{ asset('images/profil.png') }}" width="40" height="40"
+                                            class="icon-profil">
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="profile">Profile</a>
+
+                                        <form action="/logout" method="POST">
+                                            @csrf
+                                            <button type="submit" class="dropdown-item">Logout</button>
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    @else
+                        <div class="d-inline-block">
+                            <ul class="navbar-nav">
+                                <a class="nav-link" href="login">
+                                    <img src="{{ asset('images/guarantee.png') }}" width="40" height="40"
+                                        class="icon-profil">
+                                </a>
+                            </ul>
+                        </div>
+                    @endauth
+
+                    {{-- <a href="profile"><img src="{{ asset('images/profil.png') }}" class="icon-profil mr-3" alt=""></a> --}}
                 </h5>
             </div>
 

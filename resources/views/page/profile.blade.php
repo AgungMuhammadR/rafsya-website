@@ -1,8 +1,8 @@
 @extends('layout.main')
 
 @section('container')
-<div class="content mt-5" style="padding-left: 65px;">
-    <div class="profile">
+    <div class="content mt-5" style="padding-left: 65px;">
+        <div class="profile">
             <div class="row">
                 <div class="col-md-2 bg-transparent">
                     <div class="card-body">
@@ -26,21 +26,21 @@
                         <div class="row mt-12" style="width: 70rem;">
                             <div class="col-sm-12">
                                 <img src="images/Breadcrumb.png" alt="">
-                                    <div class="rectangle">
-                                        <img src="images/Rectangle 41.png" alt="">
+                                <div class="rectangle">
+                                    <img src="images/Rectangle 41.png" alt="">
+                                </div>
+                                <div class="col-lg-10 profile-panel">
+                                    <div class="col-lg">
+                                        <img src="images/profileImage.png" alt="">
                                     </div>
-                                    <div class="col-lg-10 profile-panel">
-                                        <div class="col-lg">
-                                            <img src="images/profileImage.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg icon-manage">
-                                        <img src="images/profileIcon.png" alt="">
-                                    </div>
-                                    <div class="profile-info">
-                                        <h5 class="font-weight-bold">Angela Trinata</h5>
-                                        <p style="color: #718096; font-size: 14px;">angela@example.com</p>
-                                    </div>
+                                </div>
+                                <div class="col-lg icon-manage">
+                                    <img src="images/profileIcon.png" alt="">
+                                </div>
+                                <div class="profile-info">
+                                    <h5 class="font-weight-bold">{{ auth()->user()->username }}</h5>
+                                    <p style="color: #718096; font-size: 14px;">{{ auth()->user()->email }}</p>
+                                </div>
                                 {{-- <h1>Id : {{ auth()->user()->id }}</h1> --}}
                                 @if (session()->has('success'))
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -58,7 +58,7 @@
                                         <label for="username" class="form-label font-weight-bold">Username</label>
                                         <input type="text" name="username"
                                             class="form-control @error('username') is-invalid @enderror" id="username"
-                                            placeholder="agungmr07">
+                                            value="{{ old('username', auth()->user()->username) }}">
                                     </div>
                                     <div class="col-6 mt-4">
                                         <label for="province" class="form-label font-weight-bold">Province</label>
@@ -74,29 +74,31 @@
                                         <label for="email" class="form-label font-weight-bold">Email</label>
                                         <input type="email" name="email"
                                             class="form-control @error('email') is-invalid @enderror" id="email"
-                                            placeholder="agungambisbanget@gmail.com">
+                                            value="{{ old('email', auth()->user()->email) }}">
                                     </div>
                                     <div class="col-6 mt-4">
                                         <label for="city" class="form-label font-weight-bold">City</label>
                                         <select name="city" class="form-control" id="city" onchange="idcity(this.value)">
+                                            <option id="select-city" value="" selected>Select City</option>
                                         </select>
                                     </div>
                                     <div class="col-6 mt-4">
                                         <label for="phone_number" class="form-label font-weight-bold">Contact Number</label>
                                         <input type="text" name="phone_number"
                                             class="form-control @error('phone_number') is-invalid @enderror"
-                                            id="phone_number" placeholder="0842-1746-1143">
+                                            id="phone_number"
+                                            value="{{ old('phone_number', auth()->user()->phone_number) }}">
                                     </div>
                                     <div class="col-6 mt-4">
                                         <label for="password" class="form-label font-weight-bold">Password</label>
                                         <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                            name="password" id="inputPassword" placeholder="">
+                                            name="password" id="inputPassword">
                                     </div>
                                     <div class="col-md-12 mt-4">
                                         <label for="address" class="form-label font-weight-bold">Address</label>
                                         <input type="text" name="address"
                                             class="form-control @error('address') is-invalid @enderror" id="inputAdddress"
-                                            placeholder="Jl. Kemang Utara C No 42">
+                                            value="{{ old('address', auth()->user()->address) }}">
                                     </div>
                                     <div class="col-12 mt-4 mb-5 text-md-right">
                                         <button type="submit" class="btn btn-primary">Save</button>
