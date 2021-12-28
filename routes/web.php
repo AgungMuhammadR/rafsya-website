@@ -3,7 +3,11 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Page\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Kategori;
+use App\Http\Controllers\Transaksi;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +20,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('page.home');
-});
+Route::get('/', [Dashboard::class, 'home']);
+Route::get('faq', [Dashboard::class, 'faq']);
+Route::get('product', [Dashboard::class, 'product']);
+Route::get('consultation', [Dashboard::class, 'consultation']);
 
 Route::group(['prefix' => 'profile'], function () {
     Route::get('', [ProfileController::class, 'index']);
@@ -38,35 +43,12 @@ Route::group(['prefix' => 'register'], function () {
 });
 
 Route::group(['prefix' => 'category'], function () {
-    Route::get('modern', function () {
-        return view('page.category.modern');
-    });
+    Route::get('modern', [Kategori::class, 'modern']);
 });
 
-Route::get('faq', function () {
-    return view('page.faq');
-});
+Route::get('cart', [Transaksi::class, 'cart']);
+Route::get('payment_method', [Transaksi::class, 'payment_method']);
+Route::get('payment_detail', [Transaksi::class, 'payment_detail']);
+Route::get('payment_confirmed', [Transaksi::class, 'payment_confirmed']);
 
-Route::get('cart', function () {
-    return view('page.cart');
-});
-
-Route::get('payment_method', function () {
-    return view('page.payment.payment_method');
-});
-
-Route::get('payment_detail', function () {
-    return view('page.payment.payment_detail');
-});
-
-Route::get('payment_confirmed', function () {
-    return view('page.payment.payment_confirmed');
-});
-
-Route::get('product', function () {
-    return view('page.product');
-});
-
-Route::get('consultation', function () {
-    return view('page.consultation');
-});
+Route::post('testing', [ProductController::class, 'data']);
