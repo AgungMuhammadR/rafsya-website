@@ -10,5 +10,6 @@ class Design extends Model
     use HasFactory;
 
     protected $table = 'designs';
+
     protected $guarded = ['id'];
 }

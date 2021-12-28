@@ -7,6 +7,7 @@ use App\Http\Controllers\Page\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Kategori;
+use App\Http\Controllers\Page\OpenStoreController;
 use App\Http\Controllers\Transaksi;
 
 /*
@@ -51,4 +52,5 @@ Route::get('payment_method', [Transaksi::class, 'payment_method']);
 Route::get('payment_detail', [Transaksi::class, 'payment_detail']);
 Route::get('payment_confirmed', [Transaksi::class, 'payment_confirmed']);
 
-Route::post('testing', [ProductController::class, 'data']);
+Route::post('testing1', [ProductController::class, 'insert_product']);
+Route::put('testing2', [OpenStoreController::class, 'open_store']);

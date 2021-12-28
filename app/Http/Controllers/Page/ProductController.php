@@ -9,7 +9,7 @@ use Illuminate\Http\UploadedFile;
 
 class ProductController extends Controller
 {
-    public function data(Request $request)
+    public function insert_product(Request $request)
     {
         $this->validate($request, [
             'image' => 'required',
