@@ -66,3 +66,7 @@ Route::get('payment_confirmed', function () {
 Route::get('product', function () {
     return view('page.product');
 });
+
+Route::get('consultation', function () {
+    return view('page.consultation');
+});
