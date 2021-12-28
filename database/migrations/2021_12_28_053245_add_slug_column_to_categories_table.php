@@ -17,13 +17,6 @@ class AddSlugColumnToCategoriesTable extends Migration
         Schema::table('categories', function (Blueprint $table) {
             $table->string('slug')->nullable();
         });
-
-        $categories = Category::orderBy('id', 'ASC')->get();
-        foreach ($categories as $category) {
-            $category->update([
-                'slug' => strtolower($category->name)
-            ]);
-        }
     }
 
     /**
