@@ -13,8 +13,8 @@
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                        aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-expanded="false">
                         Kategori
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -59,37 +59,37 @@
                     <a href="cart"><img src="{{ asset('images/cart.png') }}" class="icon-cart mx-3" alt=""></a>
 
                     @auth
-                        <div class="d-inline-block">
-                            <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="{{ asset('images/profil.png') }}" width="40" height="40"
-                                            class="icon-profil">
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="profile">Profile</a>
-
-                                        <form action="/logout" method="POST">
-                                            @csrf
-                                            <button type="submit" class="dropdown-item">Logout</button>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    @else
-                        <div class="d-inline-block">
-                            <ul class="navbar-nav">
-                                <a class="nav-link" href="login">
-                                    <img src="{{ asset('images/guarantee.png') }}" width="40" height="40"
+                    <div class="d-inline-block">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="{{ asset('images/profil.png') }}" width="40" height="40"
                                         class="icon-profil">
                                 </a>
-                            </ul>
-                        </div>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="profile">Profile</a>
+
+                                    <form action="/logout" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">Logout</button>
+                                    </form>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    @else
+                    <div class="d-inline-block">
+                        <ul class="navbar-nav">
+                            <a class="nav-link" href="login">
+                                <img src="{{ asset('images/logo_login.png') }}" class="icon-profil">
+                            </a>
+                        </ul>
+                    </div>
                     @endauth
 
-                    {{-- <a href="profile"><img src="{{ asset('images/profil.png') }}" class="icon-profil mr-3" alt=""></a> --}}
+                    {{-- <a href="profile"><img src="{{ asset('images/profil.png') }}" class="icon-profil mr-3"
+                    alt=""></a> --}}
                 </h5>
             </div>
 
