@@ -1,11 +1,10 @@
 <?php
 
-use App\Models\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSlugColumnToCategoriesTable extends Migration
+class DropPortofolioColumnInUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +13,9 @@ class AddSlugColumnToCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->string('slug')->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('portofolio');
+            $table->string('store_name')->nullable();
         });
     }
 
@@ -26,8 +26,9 @@ class AddSlugColumnToCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->dropColumn('slug');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('store_name');
+            $table->string('portofolio')->nullable();
         });
     }
 }

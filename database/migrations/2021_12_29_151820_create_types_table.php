@@ -1,11 +1,10 @@
 <?php
 
-use App\Models\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSlugColumnToCategoriesTable extends Migration
+class CreateTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +13,10 @@ class AddSlugColumnToCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->string('slug')->nullable();
+        Schema::create('types', function (Blueprint $table) {
+            $table->id();
+            $table->string('value');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +27,6 @@ class AddSlugColumnToCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->dropColumn('slug');
-        });
+        Schema::dropIfExists('types');
     }
 }

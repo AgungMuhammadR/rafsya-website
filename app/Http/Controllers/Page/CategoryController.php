@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Kategori extends Controller
+class CategoryController extends Controller
 {
-    public function modern () {
+    public function modern()
+    {
 
         return view('page.category.modern');
     }

@@ -94,7 +94,7 @@
       </div>
           <div class="mb-3 mb-m-1 order-md-1 text-md-right">
               <a href="catalog.html">
-              <a id="Checkout" href="catalog.html" class="btn mb-4 btn-lg pl-5 pr-5">Checkout</a>
+              <a id="Checkout" href="{{ url ('payment_method') }}" class="btn mb-4 btn-lg pl-5 pr-5">Checkout</a>
           </div>
       </div>
   </div>
