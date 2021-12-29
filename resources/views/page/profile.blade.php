@@ -32,14 +32,21 @@
                                 <div class="col-lg-10 profile-panel">
                                     <div class="col-lg">
                                         <img src="images/profileImage.png" alt="">
-                                    </div>
+                                    </div> 
                                 </div>
                                 <div class="col-lg icon-manage">
                                     <img src="images/profileIcon.png" alt="">
                                 </div>
                                 <div class="profile-info">
-                                    <h5 class="font-weight-bold">{{ auth()->user()->username }}</h5>
-                                    <p style="color: #718096; font-size: 14px;">{{ auth()->user()->email }}</p>
+                                    <div class="row">
+                                        <div class="col-lg-10">
+                                            <h5 class="font-weight-bold">{{ auth()->user()->username }}</h5>
+                                            <p style="color: #718096; font-size: 14px;">{{ auth()->user()->email }}</p>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <a class="btn btn-primary" href="{{ ('profile/open-store') }}"> Buka Toko </a>
+                                        </div>
+                                </div>
                                 </div>
                                 {{-- <h1>Id : {{ auth()->user()->id }}</h1> --}}
                                 @if (session()->has('success'))

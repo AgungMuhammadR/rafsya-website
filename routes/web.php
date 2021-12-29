@@ -29,6 +29,8 @@ Route::group(['prefix' => 'profile'], function () {
     Route::get('', [ProfileController::class, 'index']);
     Route::put('update', [ProfileController::class, 'update']);
     Route::get('cities/{parent_id}', [ProfileController::class, 'cities']);
+    Route::get('product', [ProfileController::class, 'product']);
+    Route::get('open-store', [ProfileController::class, 'openStore']);
 });
 
 Route::group(['prefix' => 'login'], function () {
