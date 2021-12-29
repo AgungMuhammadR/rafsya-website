@@ -9,6 +9,15 @@ use Illuminate\Http\UploadedFile;
 
 class OpenStoreController extends Controller
 {
+    public function index()
+    {
+        if (auth()->user()->role_id === 1) {
+            return redirect('profile');
+        }
+
+        return view('page.open_store');
+    }
+
     public function open_store(Request $request)
     {
         $this->validate($request, [
@@ -17,19 +26,17 @@ class OpenStoreController extends Controller
         ]);
 
         if ($request->hasFile('license')) {
-            $license = $request->license->getClientOriginalName();
+            $license = 'license_' . auth()->user()->username . '.' . $request->license->getClientOriginalExtension();
             $this->upload($license, $request->license, 'license');
         }
 
-        User::where('id', 1)->update([
+        User::where('id', auth()->user()->id)->update([
             'license' => $license,
             'store_name' => $request->store_name,
             'role_id' => 1
         ]);
 
-        return response([
-            'status' => 'success'
-        ]);
+        return redirect('/profile')->with('success', 'Berhasil buka toko');
     }
 
     private function upload($name, UploadedFile $photo, $folder)

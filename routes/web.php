@@ -30,8 +30,9 @@ Route::group(['prefix' => 'profile'], function () {
     Route::get('', [ProfileController::class, 'index']);
     Route::put('update', [ProfileController::class, 'update']);
     Route::get('cities/{parent_id}', [ProfileController::class, 'cities']);
-    Route::get('product', [ProfileController::class, 'product']);
-    Route::get('open-store', [ProfileController::class, 'openStore']);
+    Route::get('product', [ProductController::class, 'index']);
+    Route::get('open-store', [OpenStoreController::class, 'index']);
+    Route::post('open-store', [OpenStoreController::class, 'open_store'])->name('open.store.post');
 });
 
 Route::group(['prefix' => 'login'], function () {
