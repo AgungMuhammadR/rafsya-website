@@ -1,14 +1,15 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Page\CategoryController;
+use App\Http\Controllers\Page\DashboardController;
 use App\Http\Controllers\Page\ProductController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard;
-use App\Http\Controllers\Kategori;
 use App\Http\Controllers\Page\OpenStoreController;
-use App\Http\Controllers\Transaksi;
+use App\Http\Controllers\Page\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,9 @@ use App\Http\Controllers\Transaksi;
 |
 */
 
-Route::get('/', [Dashboard::class, 'home']);
-Route::get('faq', [Dashboard::class, 'faq']);
-Route::get('consultation', [Dashboard::class, 'consultation']);
+Route::get('/', [DashboardController::class, 'home']);
+Route::get('faq', [DashboardController::class, 'faq']);
+Route::get('consultation', [DashboardController::class, 'consultation']);
 
 Route::group(['prefix' => 'profile'], function () {
     Route::get('', [ProfileController::class, 'index']);
@@ -43,14 +44,24 @@ Route::group(['prefix' => 'register'], function () {
     Route::post('', [RegisterController::class, 'register']);
 });
 
-Route::group(['prefix' => 'category'], function () {
-    Route::get('modern', [Kategori::class, 'modern']);
+Route::group(['prefix' => 'forget-password'], function () {
+    Route::get('', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+    Route::post('', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
 });
 
-Route::get('cart', [Transaksi::class, 'cart']);
-Route::get('payment_method', [Transaksi::class, 'payment_method']);
-Route::get('payment_detail', [Transaksi::class, 'payment_detail']);
-Route::get('payment_confirmed', [Transaksi::class, 'payment_confirmed']);
+Route::group(['prefix' => 'reset-password'], function () {
+    Route::get('{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+    Route::post('', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+});
+
+Route::group(['prefix' => 'category'], function () {
+    Route::get('modern', [CategoryController::class, 'modern']);
+});
+
+Route::get('cart', [TransactionController::class, 'cart']);
+Route::get('payment_method', [TransactionController::class, 'payment_method']);
+Route::get('payment_detail', [TransactionController::class, 'payment_detail']);
+Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed']);
 
 Route::post('testing1', [ProductController::class, 'insert_product']);
 Route::put('testing2', [OpenStoreController::class, 'open_store']);

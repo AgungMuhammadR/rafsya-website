@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
-class Dashboard extends Controller
+class DashboardController extends Controller
 {
-    public function home () {
-
+    public function home()
+    {
         return view('page.home');
     }
 
-    public function faq () {
-
+    public function faq()
+    {
         return view('page.faq');
     }
 
-    public function consultation () {
-
+    public function consultation()
+    {
         return view('page.consultation');
     }
 }
