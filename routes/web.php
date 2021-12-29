@@ -55,7 +55,7 @@ Route::group(['prefix' => 'reset-password'], function () {
 });
 
 Route::group(['prefix' => 'category'], function () {
-    Route::get('modern', [CategoryController::class, 'modern']);
+    Route::get('{category}', [CategoryController::class, 'modern']);
 });
 
 Route::get('cart', [TransactionController::class, 'cart']);
