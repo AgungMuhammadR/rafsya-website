@@ -14,7 +14,7 @@ class ProfileController extends Controller
     {
         $provinces = Location::where('parent_id', 0)->get();
 
-        return view('page.profile', [
+        return view('page.profile.profile', [
             'provinces' => $provinces
         ]);
     }

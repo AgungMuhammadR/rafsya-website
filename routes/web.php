@@ -30,8 +30,9 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('', [ProfileController::class, 'index']);
     Route::put('update', [ProfileController::class, 'update']);
     Route::get('cities/{parent_id}', [ProfileController::class, 'cities']);
-    Route::get('product', [ProductController::class, 'index']);
-    Route::post('product', [ProductController::class, 'insert_product'])->name('product.post');
+    Route::get('product', [ProductController::class, 'index_product']);
+    Route::get('insert-product', [ProductController::class, 'index_insert_product']);
+    Route::post('insert-product', [ProductController::class, 'insert_product'])->name('product.post');
     Route::get('open-store', [OpenStoreController::class, 'index']);
     Route::post('open-store', [OpenStoreController::class, 'open_store'])->name('open.store.post');
 });
@@ -68,11 +69,3 @@ Route::get('payment_confirmed', [TransactionController::class, 'payment_confirme
 
 Route::post('testing1', [ProductController::class, 'insert_product']);
 Route::put('testing2', [OpenStoreController::class, 'open_store']);
-
-Route::get('add_product', function () {
-    return view('page.add_product');
-});
-
-Route::get('product', function () {
-    return view('page.product');
-});
