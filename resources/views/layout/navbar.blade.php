@@ -56,7 +56,8 @@
 
             <div class="icon mt-2">
                 <h5>
-                    <a href="cart"><img src="{{ asset('images/cart.png') }}" class="icon-cart mx-3" alt=""></a>
+                    <a href="{{ url('cart') }}"><img src="{{ asset('images/cart.png') }}" class="icon-cart mx-3"
+                            alt=""></a>
 
                     @auth
                         <div class="d-inline-block">
