@@ -5,19 +5,29 @@ namespace App\Http\Controllers\Page;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Design;
+use App\Models\Location;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index_product()
+    {
+        $provinces = Location::where('parent_id', 0)->get();
+
+        return view('page.profile.list-product', [
+            'provinces' => $provinces
+        ]);
+    }
+
+    public function index_insert_product()
     {
         if (auth()->user()->role_id === 2) {
             return redirect('profile');
         }
 
-        return view('page.product', [
+        return view('page.profile.insert-product', [
             'categories' => Category::orderBy('id', 'ASC')->get(),
             'types' => Type::orderBy('id', 'ASC')->get()
         ]);

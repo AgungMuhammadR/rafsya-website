@@ -42,11 +42,6 @@
                                         </div>
 
                                         <div class="col-lg-3">
-                                            @if (auth()->user()->role_id === 1)
-                                                <a class="btn btn-primary" href="{{ 'profile/product' }}"> Tambah Produk
-                                                </a>
-                                            @endif
-
                                             @if (auth()->user()->role_id === 2)
                                                 <a class="btn btn-primary" href="{{ 'profile/open-store' }}"> Buka Toko
                                                 </a>
