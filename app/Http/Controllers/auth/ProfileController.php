@@ -26,12 +26,17 @@ class ProfileController extends Controller
         $validate = $request->validate([
             'username' => 'required|max:255',
             'email' => 'required|email:dns',
-            'password' => 'required|min:5|max:255',
+            'password' => 'nullable|min:5|max:255',
             'phone_number' => 'required|numeric',
             'address' => 'required',
         ]);
 
-        $validate['password'] = Hash::make($validate['password']);
+        if ($validate['password'] === null) {
+            $validate['password'] = $user->password;
+        } else {
+            $validate['password'] = Hash::make($validate['password']);
+        }
+
         $validate['location_id'] = $request->city;
 
         $user->fill($validate);
@@ -45,10 +50,5 @@ class ProfileController extends Controller
         $cities = Location::where('parent_id', $parent_id)->get();
 
         return $cities;
-    }
-
-    public function product () {
-
-        return view('page.product');
     }
 }

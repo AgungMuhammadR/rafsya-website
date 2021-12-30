@@ -13,17 +13,17 @@
         <h4> Halo, ayo isi data kamu </h4>
         <br>
 
-        <form method="POST" action="" class="mt-3 mb-5">
-            
+        <form method="POST" action="{{ route('open.store.post') }}" class="mt-3 mb-5" enctype="multipart/form-data">
+            @csrf
             <div class="form-group" style="color: #828599;">
                 <label> Nama Toko </label>
-                <input type="text" class="form-control" name="longname">
+                <input type="text" class="form-control" name="store_name">
             </div>
 
             <div class="form-group" style="color: #828599;">
                 <label> Upload License </label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile" style="color: #1ACBAA;">
+                    <input type="file" class="custom-file-input" name="license" id="license" style="color: #1ACBAA;">
                     <label class="custom-file-label" for="customFile">Choose file</label>
                 </div>
             </div>
@@ -33,7 +33,7 @@
             </div>
 
         </form>
-            
+
 
     </div>
 @endsection

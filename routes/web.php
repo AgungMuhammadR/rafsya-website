@@ -26,16 +26,17 @@ Route::get('/', [DashboardController::class, 'home']);
 Route::get('faq', [DashboardController::class, 'faq']);
 Route::get('consultation', [DashboardController::class, 'consultation']);
 
-Route::group(['prefix' => 'profile'], function () {
+Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('', [ProfileController::class, 'index']);
     Route::put('update', [ProfileController::class, 'update']);
     Route::get('cities/{parent_id}', [ProfileController::class, 'cities']);
-    Route::get('product', [ProfileController::class, 'product']);
-    Route::get('open-store', [ProfileController::class, 'openStore']);
+    Route::get('product', [ProductController::class, 'index']);
+    Route::get('open-store', [OpenStoreController::class, 'index']);
+    Route::post('open-store', [OpenStoreController::class, 'open_store'])->name('open.store.post');
 });
 
 Route::group(['prefix' => 'login'], function () {
-    Route::get('', [LoginController::class, 'index']);
+    Route::get('', [LoginController::class, 'index'])->name('login');
     Route::post('', [LoginController::class, 'login']);
 });
 Route::post('logout', [LoginController::class, 'logout']);

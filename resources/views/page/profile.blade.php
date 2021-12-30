@@ -6,10 +6,10 @@
             <div class="row">
                 <div class="col-md-2 bg-transparent">
                     <div class="card-body">
-                        <a href="{{ url ('profile') }}" class="nav-link">
+                        <a href="{{ url('profile') }}" class="nav-link">
                             <h4 class="profile" style="color: #1ACBAA;">Profil</h4>
                         </a>
-                        <a href="{{ url ('profile/product') }}" class="nav-link">
+                        <a href="{{ url('profile/product') }}" class="nav-link">
                             <h4 class="produk" style="color: #828599;">Product</h4>
                         </a>
                         <a href="" class="nav-link">
@@ -29,21 +29,30 @@
                                 <div class="col-lg-10 profile-panel">
                                     <div class="col-lg">
                                         <img src="images/profileImage.png" alt="">
-                                    </div> 
+                                    </div>
                                 </div>
                                 <div class="col-lg icon-manage">
                                     <img src="images/profileIcon.png" alt="">
                                 </div>
                                 <div class="profile-info">
                                     <div class="row">
-                                        <div class="col-lg-10">
+                                        <div class="col-lg-9">
                                             <h5 class="font-weight-bold">{{ auth()->user()->username }}</h5>
                                             <p style="color: #718096; font-size: 14px;">{{ auth()->user()->email }}</p>
                                         </div>
-                                        <div class="col-lg-2">
-                                            <a class="btn btn-primary" href="{{ ('profile/open-store') }}"> Buka Toko </a>
+
+                                        <div class="col-lg-3">
+                                            @if (auth()->user()->role_id === 1)
+                                                <a class="btn btn-primary" href="{{ 'profile/product' }}"> Tambah Produk
+                                                </a>
+                                            @endif
+
+                                            @if (auth()->user()->role_id === 2)
+                                                <a class="btn btn-primary" href="{{ 'profile/open-store' }}"> Buka Toko
+                                                </a>
+                                            @endif
                                         </div>
-                                </div>
+                                    </div>
                                 </div>
                                 {{-- <h1>Id : {{ auth()->user()->id }}</h1> --}}
                                 @if (session()->has('success'))

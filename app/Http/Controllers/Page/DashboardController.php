@@ -10,7 +10,9 @@ class DashboardController extends Controller
 {
     public function home()
     {
-        return view('page.home');
+        return view('page.home', [
+            'categories' => Category::orderBy('id', 'ASC')->get()
+        ]);
     }
 
     public function faq()

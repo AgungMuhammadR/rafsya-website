@@ -229,27 +229,11 @@
                 <div class="col-sm-3">
                     <div class="kategori">
                         <div class="card-body">
-                            <a href="category/modern" class="nav-link">
-                                <h3>Modern</h3>
-                            </a>
-                            <a href="category/kontemporer" class="nav-link">
-                                <h3>Kontemporer</h3>
-                            </a>
-                            <a href="category/coastal_style" class="nav-link">
-                                <h3>Coastal</h3>
-                            </a>
-                            <a href="category/eklektik" class="nav-link">
-                                <h3>Eklektik</h3>
-                            </a>
-                            <a href="category/maroko" class="nav-link">
-                                <h3>Maroko</h3>
-                            </a>
-                            <a href="category/rustic" class="nav-link">
-                                <h3>Rustic</h3>
-                            </a>
-                            <a href="category/skandinavian" class="nav-link">
-                                <h3>Skandinavian</h3>
-                            </a>
+                            @foreach ($categories as $category)
+                                <a href="category/{{ $category->slug }}" class="nav-link">
+                                    <h3>{{ $category->name }}</h3>
+                                </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>

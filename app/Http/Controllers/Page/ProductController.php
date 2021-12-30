@@ -9,6 +9,15 @@ use Illuminate\Http\UploadedFile;
 
 class ProductController extends Controller
 {
+    public function index()
+    {
+        if (auth()->user()->role_id === 2) {
+            return redirect('profile');
+        }
+
+        return view('page.product');
+    }
+
     public function insert_product(Request $request)
     {
         $this->validate($request, [
