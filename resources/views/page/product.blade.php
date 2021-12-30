@@ -21,19 +21,29 @@
 
     <div class="upload" style="width: 55rem;">
         <div class="card" style="margin-bottom: 20px; padding: 20px;">
-            <h4 class="font-weight-bold mb-2" style="color: #002678;">Upload Product</h4>
+            <h4 class="font-weight-bold mb-2" style="color: #002678;">Upload Product </h4>
             <div class="form-group" style="color: #828599;">
                 <label for="exampleFormControlInput1">Foto Produk</label>
-                <div class="card mb-2" style="width: 60px; height: 60px;">
-                    <img src="" class="container mt-3" alt="..." width="30px">
-                </div>
-            </div>
-            <div class="form-group" style="color: #828599;">
-                <label for="exampleFormControlInput1">File</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile" style="color: #1ACBAA;">
-                    <label class="custom-file-label" for="customFile">Choose file</label>
-                </div>
+                    <div class="row mb-3">
+                        <div class="col-lg-4">
+                            <div class="card" style="border: none; width: 50%;" id="card-upload-image">
+                                <input type="image" src="{{ asset('/images/icon_add.png') }}" class="container mt-3">
+                                <input type="file" id="my_file" name="fileimage[]" style="display: none;">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8">
+                            <div class="ml-4">
+                                <ol>
+                                   <div id="list_file"></div> 
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="file-caption">
+                        <i> Maksimum jumlah gambar yang dapat diunggah : 5 </i>
+                    </div>
             </div>
         </div>
         <form>
@@ -46,7 +56,7 @@
                 <div class="form-group" style="color: #828599;">
                     <label for="exampleFormControlSelect1">Kategori</label>
                     <select class="form-control" id="exampleFormControlSelect1" style="font-size: 14px; color: #828599;">
-                        <option>Pilih Kategori</option>
+                        <option>Pilih Kategori </option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -80,4 +90,34 @@
 </div> 
 </div>
 </div>
+
+
+<script type="text/javascript">
+
+    var sumFile = 0;
+
+    $("input[type='image']").click(function() {
+        $("input[id='my_file']").click();
+    });
+
+    $('#my_file').change(function() {
+
+      var i = $(this).prev('label').clone();
+      var file = $('#my_file')[0].files[0].name;
+      $('#list_file').append('<li>' + file + '</li>');
+
+      sumFile++;
+      $('#file-caption').html('<i> Maksimum jumlah gambar yang dapat diunggah : ' + (5-sumFile) + '</i>');
+      
+      if (sumFile > 4) {
+        $('#card-upload-image').hide();
+      }
+
+    });
+
+    
+
+</script>
+
 @endsection
+
