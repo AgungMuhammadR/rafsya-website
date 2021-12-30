@@ -31,6 +31,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::put('update', [ProfileController::class, 'update']);
     Route::get('cities/{parent_id}', [ProfileController::class, 'cities']);
     Route::get('product', [ProductController::class, 'index']);
+    Route::post('product', [ProductController::class, 'insert_product'])->name('product.post');
     Route::get('open-store', [OpenStoreController::class, 'index']);
     Route::post('open-store', [OpenStoreController::class, 'open_store'])->name('open.store.post');
 });
