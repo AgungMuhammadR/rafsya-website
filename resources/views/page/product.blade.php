@@ -21,17 +21,47 @@
 
     <div class="upload" style="width: 55rem;">
         <div class="card" style="margin-bottom: 20px; padding: 20px;">
-            <h4 class="font-weight-bold mb-2" style="color: #002678;">Upload Product</h4>
+            <h4 class="font-weight-bold mb-3" style="color: #002678;">Upload Product</h4>
             <div class="form-group" style="color: #828599;">
                 <label for="exampleFormControlInput1">Foto Produk</label>
-                <div class="card mb-2" style="width: 60px; height: 60px;">
-                    <img src="" class="container mt-3" alt="..." width="30px">
+                <div class="row" style="padding-right: 340px;">
+                    <div class="col-sm-2">
+                        <div class="card mb-2" style="width: 80px; height: 80px;">
+                            <img src="" class="container mt-4" style="padding-left: 30px" alt=".." width="30px">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="card mb-2" style="width: 80px; height: 80px;">
+                            <img src="" class="container mt-4" style="padding-left: 30px" alt=".." width="30px">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="card mb-2" style="width: 80px; height: 80px;">
+                            <img src="" class="container mt-4" style="padding-left: 30px" alt=".." width="30px">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="card mb-2" style="width: 80px; height: 80px;">
+                            <img src="" class="container mt-4" style="padding-left: 30px" alt=".." width="30px">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="card mb-2" style="width: 80px; height: 80px;">
+                            <img src="" class="container mt-4" style="padding-left: 30px" alt=".." width="30px">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="card mb-2" style="width: 80px; height: 80px;">
+                            <a class="container mt-4" style="color: #1ACBAA; padding-left:30px" alt=".." width="30px"> <i class="fas fa-plus"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="form-group" style="color: #828599;">
                 <label for="exampleFormControlInput1">File</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile" style="color: #1ACBAA;">
+                    <input type="file" class="custom-file-input" id="customFile">
                     <label class="custom-file-label" for="customFile">Choose file</label>
                 </div>
             </div>
@@ -71,11 +101,12 @@
                     <label for="exampleFormControlInput1">Harga</label>
                     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Harga">
                 </div>
-                <div class="col-12 mt-4 mb-5 text-md-right">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
             </div>
         </form>
+        <div class="mb-3 mt-5 mb-m-1 order-md-1 text-md-right" style="padding-right: 55px;">
+            <a href="">
+            <a id="Checkout" href="" class="btn mb-4 btn-lg pl-4 pr-4">Simpan</a>
+        </div>
     </div>
 </div> 
 </div>
