@@ -68,3 +68,11 @@ Route::get('payment_confirmed', [TransactionController::class, 'payment_confirme
 
 Route::post('testing1', [ProductController::class, 'insert_product']);
 Route::put('testing2', [OpenStoreController::class, 'open_store']);
+
+Route::get('add_product', function () {
+    return view('page.add_product');
+});
+
+Route::get('product', function () {
+    return view('page.product');
+});
