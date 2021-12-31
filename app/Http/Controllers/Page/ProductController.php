@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Page;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Design;
-use App\Models\Location;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -14,10 +13,16 @@ class ProductController extends Controller
 {
     public function index_product()
     {
-        $provinces = Location::where('parent_id', 0)->get();
+        $designs = Design::where('user_id', auth()->user()->id)->get();
+
+        $designs->transform(fn ($item) => [
+            'name' => $item->name,
+            'type' => Type::find($item->type_id)->value,
+            'price' => 'Rp.' . number_format($item->price, 0, ',', '.')
+        ]);
 
         return view('page.profile.list-product', [
-            'provinces' => $provinces
+            'designs' => $designs
         ]);
     }
 
@@ -38,7 +43,10 @@ class ProductController extends Controller
         $this->validate($request, [
             'image' => 'required',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'blueprint' => 'required|mimes:pdf'
+            'blueprint' => 'required|mimes:pdf',
+            'name' => 'required|unique:designs',
+            'description' => 'required',
+            'price' => 'required'
         ]);
 
         if ($request->hasFile('image')) {
@@ -65,7 +73,7 @@ class ProductController extends Controller
             'price' => $request->price
         ]);
 
-        dd($design);
+        return redirect('/profile')->with('success', 'Berhasil tambah produk');
     }
 
     private function upload($name, UploadedFile $photo, $folder)

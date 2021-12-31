@@ -10,6 +10,15 @@ class Design extends Model
     use HasFactory;
 
     protected $table = 'designs';
-
     protected $guarded = ['id'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(Type::class, 'type_id');
+    }
 }
