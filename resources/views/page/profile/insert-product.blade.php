@@ -65,8 +65,8 @@
                             <h4 class="font-weight-bold" style="color: #002678;">Informasi Product</h4>
                             <div class="form-group mt-2" style="color: #828599;">
                                 <label for="exampleFormControlInput1">Nama Produk</label>
-                                <input type="text" class="form-control" name="name" placeholder="contoh : Rumah Minimalis"
-                                    style="font-size: 14px; color: #828599;">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                                    placeholder="contoh : Rumah Minimalis" style="font-size: 14px; color: #828599;">
                             </div>
                             <div class="form-group" style="color: #828599;">
                                 <label for="exampleFormControlSelect1">Kategori</label>
@@ -88,13 +88,13 @@
                             </div>
                             <div class="form-group" style="color: #828599;">
                                 <label for="exampleFormControlTextarea1">Deskripsi Produk</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                    name="description"></textarea>
+                                <textarea class="form-control @error('description') is-invalid @enderror"
+                                    id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
                             </div>
                             <div class="form-group" style="color: #828599;">
                                 <label for="exampleFormControlInput1">Harga</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Masukkan Harga" name="price">
+                                <input type="text" class="form-control @error('price') is-invalid @enderror"
+                                    id="exampleFormControlInput1" placeholder="Masukkan Harga" name="price">
                             </div>
                             <div class="col-12 mt-4 mb-5 text-md-right">
                                 <button type="submit" class="btn btn-primary">Simpan</button>

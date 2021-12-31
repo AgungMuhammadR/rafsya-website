@@ -43,7 +43,10 @@ class ProductController extends Controller
         $this->validate($request, [
             'image' => 'required',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'blueprint' => 'required|mimes:pdf'
+            'blueprint' => 'required|mimes:pdf',
+            'name' => 'required|unique:designs',
+            'description' => 'required',
+            'price' => 'required'
         ]);
 
         if ($request->hasFile('image')) {
@@ -70,7 +73,7 @@ class ProductController extends Controller
             'price' => $request->price
         ]);
 
-        dd($design);
+        return redirect('/profile')->with('success', 'Berhasil tambah produk');
     }
 
     private function upload($name, UploadedFile $photo, $folder)

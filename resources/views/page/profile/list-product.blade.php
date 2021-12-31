@@ -70,7 +70,7 @@
                                             </div>
                                         </div>
                                     </div> --}}
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-3 m-3">
                                         <div class="shadow bg-body rounded">
                                             <img src="{{ asset('images/kategori.png') }}" class="card-img-top"
                                                 alt="...">

@@ -43,9 +43,9 @@
 
                 <div class="col-md-10">
                     <div class="kategori">
-                        @foreach ($designs as $design)
-                            <div class="row mt-3" style="width: 68rem;">
-                                <div class="col-sm-3">
+                        <div class="row mt-3" style="width: 68rem;">
+                            @foreach ($designs as $design)
+                                <div class="col-sm-3 m-3">
                                     <div class="product">
                                         <div class="product-header">
                                             <div class="shadow bg-body rounded">
@@ -64,9 +64,8 @@
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
 
                     <div class="row">
