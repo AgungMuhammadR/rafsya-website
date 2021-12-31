@@ -49,7 +49,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <h1>Id : {{ auth()->user()->id }}</h1> --}}
+
                                 @if (session()->has('success'))
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         {{ session('success') }}

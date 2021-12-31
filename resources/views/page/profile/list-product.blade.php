@@ -42,10 +42,14 @@
                                         </div>
 
                                         <div class="col-lg-3">
-                                            <a class="btn btn-primary" href="{{ 'insert-product' }}"> Tambah
-                                                Produk
-                                            </a>
+                                            @if (auth()->user()->role_id === 1)
+
+                                                <a class="btn btn-primary" href="{{ 'insert-product' }}"> Tambah
+                                                    Produk
+                                                </a>
+                                            @endif
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -54,38 +58,30 @@
                         <div class="tambah-product" style="margin-bottom: 100px;">
                             <h4 class="font-weight-bold mt-4" style="color: #002678; padding-left: 135px;">Produk</h4>
                             <div class="row mt-3" style="width: 68rem;">
-                                <div class="col-sm-3">
-                                    <div class="shadow bg-body rounded">
-                                        <img src="{{ asset('images/kategori.png') }}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h9 class="card-title font-weight-bold">Rumah Minimalis Modern</h9>
-                                            <p class="tipe">Tipe 34</p>
-                                            <h4 class="price font-weight-bold">Rp.7.000.000</h4>
+                                @foreach ($designs as $design)
+                                    {{-- <div class="col-sm-3">
+                                        <div class="shadow bg-body rounded">
+                                            <img src="{{ asset('images/kategori.png') }}" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h9 class="card-title font-weight-bold">Rumah Minimalis Modern</h9>
+                                                <p class="tipe">Tipe 34</p>
+                                                <h4 class="price font-weight-bold">Rp.7.000.000</h4>
+                                            </div>
+                                        </div>
+                                    </div> --}}
+                                    <div class="col-sm-3">
+                                        <div class="shadow bg-body rounded">
+                                            <img src="{{ asset('images/kategori.png') }}" class="card-img-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h9 class="card-title font-weight-bold">{{ $design['name'] }}</h9>
+                                                <p class="tipe">Tipe {{ $design['type'] }}</p>
+                                                <h4 class="price font-weight-bold">{{ $design['price'] }}</h4>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="col-sm-3">
-                                    <div class="shadow bg-body rounded">
-                                        <img src="{{ asset('images/kategori.png') }}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h9 class="card-title font-weight-bold">Rumah Minimalis Modern</h9>
-                                            <p class="tipe">Tipe 34</p>
-                                            <h8 class="price font-weight-bold">Rp.7.000.000</h8>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-3">
-                                    <div class="shadow bg-body rounded">
-                                        <img src="{{ asset('images/kategori.png') }}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h9 class="card-title font-weight-bold">Rumah Minimalis Modern</h9>
-                                            <p class="tipe">Tipe 34</p>
-                                            <h8 class="price font-weight-bold">Rp.7.000.000</h8>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

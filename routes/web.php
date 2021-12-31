@@ -59,7 +59,7 @@ Route::group(['prefix' => 'reset-password'], function () {
 });
 
 Route::group(['prefix' => 'category'], function () {
-    Route::get('{category}', [CategoryController::class, 'modern']);
+    Route::get('{category}', [CategoryController::class, 'index']);
 });
 
 Route::get('cart', [TransactionController::class, 'cart']);
@@ -67,5 +67,6 @@ Route::get('payment_method', [TransactionController::class, 'payment_method']);
 Route::get('payment_detail', [TransactionController::class, 'payment_detail']);
 Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed']);
 
+// Testing
 Route::post('testing1', [ProductController::class, 'insert_product']);
 Route::put('testing2', [OpenStoreController::class, 'open_store']);
