@@ -53,7 +53,8 @@
                                         <a href="#" class="facebook btn d-flex justify-content-center align-items-center">
                                             <span class="icon-facebook mr-3"></span>Facebook
                                         </a>
-                                        <a href="{{ url('auth/google') }}" class="google btn d-flex justify-content-center align-items-center">
+                                        <a href="{{ url('auth/google') }}"
+                                            class="google btn d-flex justify-content-center align-items-center">
                                             <span class="icon-google mr-3"></span>Google
                                         </a>
                                     </div>

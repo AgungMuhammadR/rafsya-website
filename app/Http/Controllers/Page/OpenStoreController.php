@@ -36,7 +36,7 @@ class OpenStoreController extends Controller
             'role_id' => 1
         ]);
 
-        return redirect('/profile')->with('success', 'Berhasil buka toko');
+        return redirect('/profile')->with('success', 'Successfully open a store!');
     }
 
     private function upload($name, UploadedFile $photo, $folder)
