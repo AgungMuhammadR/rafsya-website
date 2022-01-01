@@ -43,7 +43,7 @@ class ProfileController extends Controller
         $user->fill($validate);
         $user->save();
 
-        return back()->with('success', 'Profile successfully updated!');
+        return redirect('/profile')->with('success', 'Profile successfully updated!');
     }
 
     public function cities($parent_id)

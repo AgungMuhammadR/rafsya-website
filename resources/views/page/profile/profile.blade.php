@@ -46,11 +46,6 @@
                                                 <a class="btn btn-primary" href="{{ 'profile/open-store' }}"> Buka Toko
                                                 </a>
                                             @endif
-                                            
-                                            @if (auth()->user()->role_id === 1)
-                                                <a class="btn btn-primary" href="{{ 'profile/insert-product' }}"> Tambah Produk
-                                                </a>
-                                            @endif
                                         </div>
                                     </div>
                                 </div>

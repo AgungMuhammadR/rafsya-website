@@ -40,14 +40,18 @@ class ProductController extends Controller
 
     public function insert_product(Request $request)
     {
+        $messages = [
+            "image.max" => "file can't be more than 5."
+        ];
+
         $this->validate($request, [
-            'image' => 'nullable',
+            'image' => 'nullable|max:5',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'blueprint' => 'required|mimes:pdf',
-            'name' => 'required|unique:designs',
-            'description' => 'required',
-            'price' => 'required'
-        ]);
+            // 'blueprint' => 'required|mimes:pdf',
+            // 'name' => 'required|unique:designs',
+            // 'description' => 'required',
+            // 'price' => 'required'
+        ], $messages);
 
         $image_data = [];
         if ($request->hasFile('image')) {
@@ -74,7 +78,7 @@ class ProductController extends Controller
             'price' => $request->price
         ]);
 
-        return back()->with('success', 'Product has been added!');
+        return redirect('/profile/product')->with('success', 'Product has been added!');
     }
 
     private function upload($name, UploadedFile $photo, $folder)
