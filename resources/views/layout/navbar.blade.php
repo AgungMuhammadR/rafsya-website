@@ -65,8 +65,14 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="{{ asset('images/profil.png') }}" width="40" height="40"
+                                        
+                                        @if (Auth::user()->picture)    
+                                            <img src="{{ Auth::user()->picture }}" style="border-radius: 50%;" class="icon-profil" width="40" height="40">
+                                        @else
+                                            <img src="{{ asset('images/profil.png') }}" width="40" height="40"
                                             class="icon-profil">
+                                        @endif
+                                        
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item" href="{{ url('profile') }}">Profile</a>

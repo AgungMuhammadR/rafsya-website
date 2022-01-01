@@ -28,7 +28,11 @@
                                 </div>
                                 <div class="col-lg-10 profile-panel">
                                     <div class="col-lg">
-                                        <img src="images/profileImage.png" alt="">
+                                        @if (Auth::user()->picture)    
+                                            <img src="{{ Auth::user()->picture }}" style="width:9%" >
+                                        @else
+                                            <img src="images/profileImage.png" alt="">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg icon-manage">

@@ -68,8 +68,11 @@ Route::get('payment_method', [TransactionController::class, 'payment_method']);
 Route::get('payment_detail', [TransactionController::class, 'payment_detail']);
 Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed']);
 
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
-Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
+Route::group(['prefix' => 'auth'], function() {
+    Route::get('google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+    Route::get('google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
+});
+
 
 // Testing
 Route::post('testing1', [ProductController::class, 'insert_product']);
