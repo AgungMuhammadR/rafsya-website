@@ -19,11 +19,11 @@
 
                                 <div class="d-flex mb-5 align-items-center mt-4">
                                     <h5 class="font-weight-bold text-muted">Masuk</h5>
-                                    <span class="ml-auto"><a href="/register"
+                                    <span class="ml-auto"><a href="{{ url('/register') }}"
                                             class="login">Daftar</a></span>
                                 </div>
 
-                                <form action="/login" method="POST">
+                                <form action="{{ route('login.post') }}" method="POST">
                                     @csrf
                                     <div class="form-group first">
                                         <input type="text" name="username"
@@ -41,7 +41,8 @@
 
                                     <div class="d-flex mb-5 align-items-center mt-4">
                                         <span class="caption text-muted" style="font-size: 15px">Lupa kata sandi?</span>
-                                        <span class="ml-auto"><a href="/forget-password" class="forgot-pass">Klik
+                                        <span class="ml-auto"><a href="{{ url('/forget-password') }}"
+                                                class="forgot-pass">Klik
                                                 Disini</a></span>
                                     </div>
 

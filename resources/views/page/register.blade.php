@@ -19,10 +19,11 @@
 
                                 <div class="d-flex mb-5 align-items-center">
                                     <h5 class="font-weight-bold text-muted">Daftar</h5>
-                                    <span class="ml-auto"><a href="/login" class="login">Masuk</a></span>
+                                    <span class="ml-auto"><a href="{{ url('login') }}"
+                                            class="login">Masuk</a></span>
                                 </div>
 
-                                <form action="register" method="POST">
+                                <form action="{{ route('register.post') }}" method="POST">
                                     @csrf
                                     <div class="form-group first">
                                         <input type="text" name="username"

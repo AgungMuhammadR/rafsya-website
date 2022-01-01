@@ -18,7 +18,7 @@ class OpenStoreController extends Controller
         return view('page.open_store');
     }
 
-    public function open_store(Request $request)
+    public function openStore(Request $request)
     {
         $this->validate($request, [
             'license' => 'required|mimes:pdf',

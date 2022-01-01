@@ -11,7 +11,7 @@ use Illuminate\Http\UploadedFile;
 
 class ProductController extends Controller
 {
-    public function index_product()
+    public function index()
     {
         $designs = Design::where('user_id', auth()->user()->id)->get();
 
@@ -26,7 +26,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function index_insert_product()
+    public function insertProductPage()
     {
         if (auth()->user()->role_id === 2) {
             return redirect('profile');
@@ -38,7 +38,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function insert_product(Request $request)
+    public function insertProductData(Request $request)
     {
         $messages = [
             "image.max" => "file can't be more than 5."
@@ -47,10 +47,10 @@ class ProductController extends Controller
         $this->validate($request, [
             'image' => 'nullable|max:5',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            // 'blueprint' => 'required|mimes:pdf',
-            // 'name' => 'required|unique:designs',
-            // 'description' => 'required',
-            // 'price' => 'required'
+            'blueprint' => 'required|mimes:pdf',
+            'name' => 'required|unique:designs',
+            'description' => 'required',
+            'price' => 'required'
         ], $messages);
 
         $image_data = [];

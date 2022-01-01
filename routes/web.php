@@ -31,22 +31,22 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('', [ProfileController::class, 'index']);
     Route::put('update', [ProfileController::class, 'update']);
     Route::get('cities/{parent_id}', [ProfileController::class, 'cities']);
-    Route::get('product', [ProductController::class, 'index_product']);
-    Route::get('insert-product', [ProductController::class, 'index_insert_product']);
-    Route::post('insert-product', [ProductController::class, 'insert_product'])->name('product.post');
+    Route::get('product', [ProductController::class, 'index']);
+    Route::get('insert-product', [ProductController::class, 'insertProductPage']);
+    Route::post('insert-product', [ProductController::class, 'insertProductData'])->name('product.post');
     Route::get('open-store', [OpenStoreController::class, 'index']);
-    Route::post('open-store', [OpenStoreController::class, 'open_store'])->name('open.store.post');
+    Route::put('open-store', [OpenStoreController::class, 'openStore'])->name('open.store.post');
 });
 
 Route::group(['prefix' => 'login'], function () {
     Route::get('', [LoginController::class, 'index'])->name('login');
-    Route::post('', [LoginController::class, 'login']);
+    Route::post('', [LoginController::class, 'login'])->name('login.post');
 });
-Route::post('logout', [LoginController::class, 'logout']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'register'], function () {
-    Route::get('', [RegisterController::class, 'index']);
-    Route::post('', [RegisterController::class, 'register']);
+    Route::get('', [RegisterController::class, 'index'])->name('register');
+    Route::post('', [RegisterController::class, 'register'])->name('register.post');
 });
 
 Route::group(['prefix' => 'auth'], function () {
@@ -74,5 +74,5 @@ Route::get('payment_detail', [TransactionController::class, 'payment_detail']);
 Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed']);
 
 // Testing
-Route::post('testing1', [ProductController::class, 'insert_product']);
-Route::put('testing2', [OpenStoreController::class, 'open_store']);
+Route::post('testing1', [ProductController::class, 'insertProductData']);
+Route::put('testing2', [OpenStoreController::class, 'openStore']);
