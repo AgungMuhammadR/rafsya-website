@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Page\CategoryController;
@@ -66,6 +67,9 @@ Route::get('cart', [TransactionController::class, 'cart']);
 Route::get('payment_method', [TransactionController::class, 'payment_method']);
 Route::get('payment_detail', [TransactionController::class, 'payment_detail']);
 Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed']);
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
 // Testing
 Route::post('testing1', [ProductController::class, 'insert_product']);
