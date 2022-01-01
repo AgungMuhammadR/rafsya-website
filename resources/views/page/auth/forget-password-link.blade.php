@@ -3,13 +3,6 @@
 @section('container')
     <div class="container">
         <div class="card-body">
-            @if (session()->has('error'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
             <img src="{{ asset('/images/logo.png') }}" alt="">
 
             <div class="d-lg-flex half">

@@ -40,7 +40,7 @@ class ForgotPasswordController extends Controller
             $message->subject('Reset Password');
         });
 
-        return back()->with('message', 'We have e-mailed your password reset link!');
+        return back()->with('info', 'We have e-mailed your password reset link!');
     }
 
     public function showResetPasswordForm($token)
@@ -66,7 +66,7 @@ class ForgotPasswordController extends Controller
             ])->first();
 
         if (!$updatePassword) {
-            return back()->withInput()->with('error', 'Invalid token!');
+            return back()->withInput()->with('error', 'Invalid token or email!');
         }
 
         $user = User::where('email', $request->email)->update(['password' => Hash::make($request->password)]);

@@ -10,7 +10,7 @@
                             <h4 class="profil" style="color: #828599;">Profil</h4>
                         </a>
                         <a href="{{ url('profile/product') }}" class="nav-link">
-                            <h4 class="produkr" style="color: #1ACBAA;">Product</h4>
+                            <h4 class="produk" style="color: #1ACBAA;">Product</h4>
                         </a>
                         <a href="#" class="nav-link">
                             <h4 class="dashboard" style="color: #828599;">Dashboard</h4>

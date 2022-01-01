@@ -41,7 +41,7 @@ class ProductController extends Controller
     public function insert_product(Request $request)
     {
         $this->validate($request, [
-            'image' => 'required',
+            'image' => 'nullable',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'blueprint' => 'required|mimes:pdf',
             'name' => 'required|unique:designs',
@@ -49,6 +49,7 @@ class ProductController extends Controller
             'price' => 'required'
         ]);
 
+        $image_data = [];
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $image) {
                 $name = $image->getClientOriginalName();
@@ -73,7 +74,7 @@ class ProductController extends Controller
             'price' => $request->price
         ]);
 
-        return redirect('/profile')->with('success', 'Berhasil tambah produk');
+        return back()->with('success', 'Product has been added!');
     }
 
     private function upload($name, UploadedFile $photo, $folder)

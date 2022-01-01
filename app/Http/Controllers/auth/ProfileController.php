@@ -32,17 +32,18 @@ class ProfileController extends Controller
         ]);
 
         if ($validate['password'] === null) {
-            $validate['password'] = $user->password;
+            $password = $user->password;
         } else {
-            $validate['password'] = Hash::make($validate['password']);
+            $password = Hash::make($validate['password']);
         }
 
-        $validate['location_id'] = $request->city;
+        $validate['password'] = $password;
+        $validate['location_id'] = $request->city === null ? $user->location_id : $request->city;
 
         $user->fill($validate);
         $user->save();
 
-        return redirect('/profile')->with('success', 'Profile successfully updated');
+        return back()->with('success', 'Profile successfully updated!');
     }
 
     public function cities($parent_id)

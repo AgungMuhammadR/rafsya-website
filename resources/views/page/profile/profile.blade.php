@@ -50,14 +50,6 @@
                                     </div>
                                 </div>
 
-                                @if (session()->has('success'))
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        {{ session('success') }}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
-                                    </div>
-                                @endif
-
                                 <form action="profile/update" class="row g-12 mt-5" style="background-color: #F7F8FA;"
                                     method="POST">
                                     @method('PUT')

@@ -16,6 +16,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div class="wrapper">
         @yield('container')
     </div>

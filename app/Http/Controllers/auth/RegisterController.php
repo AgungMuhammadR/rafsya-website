@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-
 
 class RegisterController extends Controller
 {
@@ -30,6 +28,6 @@ class RegisterController extends Controller
 
         User::create($validate);
 
-        return redirect('/login')->with('success', 'Registration successful! Please login');
+        return redirect('/login')->with('success', 'Registration successful!');
     }
 }
