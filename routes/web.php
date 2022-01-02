@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\Auth\FacebookController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Page\CategoryController;
@@ -72,6 +73,15 @@ Route::get('cart', [TransactionController::class, 'cart']);
 Route::get('payment_method', [TransactionController::class, 'payment_method']);
 Route::get('payment_detail', [TransactionController::class, 'payment_detail']);
 Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed']);
+
+
+Route::group(['prefix' => 'auth'], function() {
+    Route::get('google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+    Route::get('google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
+    Route::get('facebook', [FacebookController::class, 'redirectToFacebook'])->name('facebook.login');
+    Route::get('facebook/callback', [FacebookController::class, 'handleFacebookCallback'])->name('facebook.callback');
+});
+
 
 // Testing
 Route::post('testing1', [ProductController::class, 'insertProductData']);

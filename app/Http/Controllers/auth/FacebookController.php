@@ -7,54 +7,61 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
-class GoogleController extends Controller
+class FacebookController extends Controller
 {
-    public function redirectToGoogle()
-    {
-        return Socialite::driver('google')->redirect();
+    public function redirectToFacebook () {
+        
+        return Socialite::driver('facebook')->redirect();
     }
     
-    public function handleGoogleCallback () {
+    
+    public function handleFacebookCallback () {
+
  
-        $user = Socialite::driver('google')->stateless()->user();    
-        $findUser = User::where('google_id', $user->getId())->first();
+        $user = Socialite::driver('facebook')->stateless()->user();
+        $findUser = User::where('facebook_id', $user->id)->first();
             
         if($findUser) {
+            
             $newUser = User::where('email', $user->email)->update([
-                'google_id' => $user->id,
+                'facebook_id' => $user->id,
                 'username' => $user->name,
-                'picture' => $user->avatar_original
+                'picture' => $user->avatar
             ]);
             
             Auth::login($findUser);
             return redirect ('/');
-        } else {
+        }
+            
+        else {
             
             $checkEmail = User::where('email', $user->email)->first();
             
-            if ($checkEmail != NULL) {
-                
-                $newUser = User::where('email', $user->email)->update([
-                    'google_id' => $user->id,
+            if ($checkEmail != NULL) {    
+               
+               $newUser = User::where('email', $user->email)->update([
+                    'facebook_id' => $user->id,
                     'username' => $user->name,
-                    'picture' => $user->avatar_original
+                    'picture' => $user->avatar
                ]);
-                
-                $newUser = $checkEmail;
-            } else {
+               
+               $newUser = $checkEmail;
+            }
+            
+            else {
                 $newUser = User::create([
                     'email' => $user->email,
-                    'google_id' => $user->id,
+                    'facebook_id' => $user->id,
                     'username' => $user->name,
                     'password' => bcrypt('12345678'),
-                    'picture' => $user->avatar_original
+                    'picture' => $user->avatar
                 ]);
             }
                 
             Auth::login($newUser);
             return redirect('/');
         }
+
     }
 }
