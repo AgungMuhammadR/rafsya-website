@@ -13,7 +13,7 @@
         <h4> Halo, ayo isi data kamu </h4>
         <br>
 
-        <form method="POST" action="{{ route('open.store.post') }}" class="mt-3 mb-5" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('open.store.put') }}" class="mt-3 mb-5" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="form-group" style="color: #828599;">

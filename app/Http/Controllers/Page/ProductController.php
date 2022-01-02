@@ -21,7 +21,7 @@ class ProductController extends Controller
             'price' => 'Rp.' . number_format($item->price, 0, ',', '.')
         ]);
 
-        return view('page.profile.list-product', [
+        return view('page.profile.list_product', [
             'designs' => $designs
         ]);
     }
@@ -32,7 +32,7 @@ class ProductController extends Controller
             return redirect('profile');
         }
 
-        return view('page.profile.insert-product', [
+        return view('page.profile.insert_product', [
             'categories' => Category::orderBy('id', 'ASC')->get(),
             'types' => Type::orderBy('id', 'ASC')->get()
         ]);

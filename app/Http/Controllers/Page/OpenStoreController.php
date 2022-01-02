@@ -15,7 +15,7 @@ class OpenStoreController extends Controller
             return redirect('profile');
         }
 
-        return view('page.open_store');
+        return view('page.profile.open_store');
     }
 
     public function openStore(Request $request)

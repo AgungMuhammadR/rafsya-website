@@ -16,7 +16,7 @@ class ForgotPasswordController extends Controller
 {
     public function showForgetPasswordForm()
     {
-        return view('page.auth.forget-password', [
+        return view('page.auth.forget_password', [
             'title' => 'Forget Password'
         ]);
     }
@@ -35,7 +35,7 @@ class ForgotPasswordController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        Mail::send('page.auth.email-forget-password', ['token' => $token], function ($message) use ($request) {
+        Mail::send('page.auth.email_forget_password', ['token' => $token], function ($message) use ($request) {
             $message->to($request->email);
             $message->subject('Reset Password');
         });
@@ -45,7 +45,7 @@ class ForgotPasswordController extends Controller
 
     public function showResetPasswordForm($token)
     {
-        return view('page.auth.forget-password-link', [
+        return view('page.auth.forget_password_link', [
             'title' => 'Reset Password',
             'token' => $token
         ]);

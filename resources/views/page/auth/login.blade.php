@@ -41,7 +41,7 @@
 
                                     <div class="d-flex mb-5 align-items-center mt-4">
                                         <span class="caption text-muted" style="font-size: 15px">Lupa kata sandi?</span>
-                                        <span class="ml-auto"><a href="{{ url('/forget-password') }}"
+                                        <span class="ml-auto"><a href="{{ route('forget.password.get') }}"
                                                 class="forgot-pass">Klik
                                                 Disini</a></span>
                                     </div>

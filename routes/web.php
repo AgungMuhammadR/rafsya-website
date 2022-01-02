@@ -29,13 +29,13 @@ Route::get('consultation', [DashboardController::class, 'consultation']);
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('', [ProfileController::class, 'index']);
-    Route::put('update', [ProfileController::class, 'update']);
+    Route::put('update', [ProfileController::class, 'update'])->name('profile.put');
     Route::get('cities/{parent_id}', [ProfileController::class, 'cities']);
     Route::get('product', [ProductController::class, 'index']);
-    Route::get('insert-product', [ProductController::class, 'insertProductPage']);
-    Route::post('insert-product', [ProductController::class, 'insertProductData'])->name('product.post');
-    Route::get('open-store', [OpenStoreController::class, 'index']);
-    Route::put('open-store', [OpenStoreController::class, 'openStore'])->name('open.store.post');
+    Route::get('insert_product', [ProductController::class, 'insertProductPage']);
+    Route::post('insert_product', [ProductController::class, 'insertProductData'])->name('product.post');
+    Route::get('open_store', [OpenStoreController::class, 'index']);
+    Route::put('open_store', [OpenStoreController::class, 'openStore'])->name('open.store.put');
 });
 
 Route::group(['prefix' => 'login'], function () {
@@ -54,12 +54,12 @@ Route::group(['prefix' => 'auth'], function () {
     Route::get('google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 });
 
-Route::group(['prefix' => 'forget-password'], function () {
+Route::group(['prefix' => 'forget_password'], function () {
     Route::get('', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
     Route::post('', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
 });
 
-Route::group(['prefix' => 'reset-password'], function () {
+Route::group(['prefix' => 'reset_password'], function () {
     Route::get('{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
     Route::post('', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
