@@ -10,7 +10,7 @@
                             <h4 class="profil" style="color: #828599;">Profil</h4>
                         </a>
                         <a href="{{ url('profile/product') }}" class="nav-link">
-                            <h4 class="produkr" style="color: #1ACBAA;">Product</h4>
+                            <h4 class="produk" style="color: #1ACBAA;">Product</h4>
                         </a>
                         <a href="#" class="nav-link">
                             <h4 class="dashboard" style="color: #828599;">Dashboard</h4>
@@ -28,7 +28,11 @@
                                 </div>
                                 <div class="col-lg-10 profile-panel">
                                     <div class="col-lg">
-                                        <img src="{{ asset('images/profileImage.png') }}" alt="">
+                                        @if (Auth::user()->picture)
+                                            <img src="{{ Auth::user()->picture }}" style="width:9%">
+                                        @else
+                                            <img src="images/profileImage.png" alt="">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg icon-manage">
@@ -44,7 +48,8 @@
                                         <div class="col-lg-3">
                                             @if (auth()->user()->role_id === 1)
 
-                                                <a class="btn btn-primary" href="{{ 'insert-product' }}"> Tambah
+                                                <a class="btn btn-primary" href="{{ url('/profile/insert_product') }}">
+                                                    Tambah
                                                     Produk
                                                 </a>
                                             @endif
@@ -59,17 +64,6 @@
                             <h4 class="font-weight-bold mt-4" style="color: #002678; padding-left: 135px;">Produk</h4>
                             <div class="row mt-3" style="width: 68rem;">
                                 @foreach ($designs as $design)
-                                    {{-- <div class="col-sm-3">
-                                        <div class="shadow bg-body rounded">
-                                            <img src="{{ asset('images/kategori.png') }}" class="card-img-top"
-                                                alt="...">
-                                            <div class="card-body">
-                                                <h9 class="card-title font-weight-bold">Rumah Minimalis Modern</h9>
-                                                <p class="tipe">Tipe 34</p>
-                                                <h4 class="price font-weight-bold">Rp.7.000.000</h4>
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                     <div class="col-sm-3 m-3">
                                         <div class="shadow bg-body rounded">
                                             <img src="{{ asset('images/kategori.png') }}" class="card-img-top"

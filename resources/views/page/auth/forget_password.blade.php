@@ -3,13 +3,6 @@
 @section('container')
     <div class="container">
         <div class="card-body">
-            @if (session()->has('message'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('message') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
             <img src="{{ asset('/images/logo.png') }}" alt="">
 
             <div class="d-lg-flex half">
@@ -26,7 +19,8 @@
 
                                 <div class="d-flex mb-5 align-items-center">
                                     <h5 class="font-weight-bold text-muted">Lupa Password</h5>
-                                    <span class="ml-auto"><a href="/login" class="login">Masuk</a></span>
+                                    <span class="ml-auto"><a href="{{ url('/login') }}"
+                                            class="login">Masuk</a></span>
                                 </div>
 
                                 <form action="{{ route('forget.password.post') }}" method="POST">

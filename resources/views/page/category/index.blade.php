@@ -52,8 +52,12 @@
                                                 <img src="{{ asset('images/kategori.png') }}" class="card-img-top"
                                                     alt="...">
                                                 <ul class="icons">
-                                                    <span><i class="bx bx-heart"></i></span>
-                                                    <span><i class="bx bx-shopping-bag"></i></span>
+                                                    <a href="{{ url('/') }}">
+                                                        <span><i class="bx bx-heart"></i></span>
+                                                    </a>
+                                                    <a href="{{ url('/') }}">
+                                                        <span><i class="bx bx-shopping-bag"></i></span>
+                                                    </a>
                                                 </ul>
                                                 <div class="card-body">
                                                     <h9 class="card-title font-weight-bold">{{ $design['name'] }}</h9>

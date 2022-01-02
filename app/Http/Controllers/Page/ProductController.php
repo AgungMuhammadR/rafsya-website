@@ -11,7 +11,7 @@ use Illuminate\Http\UploadedFile;
 
 class ProductController extends Controller
 {
-    public function index_product()
+    public function index()
     {
         $designs = Design::where('user_id', auth()->user()->id)->get();
 
@@ -21,34 +21,39 @@ class ProductController extends Controller
             'price' => 'Rp.' . number_format($item->price, 0, ',', '.')
         ]);
 
-        return view('page.profile.list-product', [
+        return view('page.profile.list_product', [
             'designs' => $designs
         ]);
     }
 
-    public function index_insert_product()
+    public function insertProductPage()
     {
         if (auth()->user()->role_id === 2) {
             return redirect('profile');
         }
 
-        return view('page.profile.insert-product', [
+        return view('page.profile.insert_product', [
             'categories' => Category::orderBy('id', 'ASC')->get(),
             'types' => Type::orderBy('id', 'ASC')->get()
         ]);
     }
 
-    public function insert_product(Request $request)
+    public function insertProductData(Request $request)
     {
+        $messages = [
+            "image.max" => "file can't be more than 5."
+        ];
+
         $this->validate($request, [
-            'image' => 'required',
+            'image' => 'nullable|max:5',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'blueprint' => 'required|mimes:pdf',
             'name' => 'required|unique:designs',
             'description' => 'required',
             'price' => 'required'
-        ]);
+        ], $messages);
 
+        $image_data = [];
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $image) {
                 $name = $image->getClientOriginalName();
@@ -73,7 +78,7 @@ class ProductController extends Controller
             'price' => $request->price
         ]);
 
-        return redirect('/profile')->with('success', 'Berhasil tambah produk');
+        return redirect('/profile/product')->with('success', 'Product has been added!');
     }
 
     private function upload($name, UploadedFile $photo, $folder)

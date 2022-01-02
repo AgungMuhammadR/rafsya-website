@@ -37,46 +37,6 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td data-th="Product">
-                                    <div class="row">
-                                        <div class="col-md-3 text-left">
-                                            <img src="images/kategori4.png" alt=""
-                                                class="img-fluid d-none d-md-block rounded mb-2 shadow ">
-                                        </div>
-                                        <div class="col-md-9 text-left mt-sm-2">
-                                            <h6>Rumah minimalis modern</h6>
-                                            <a href="" class="font-weight-light" style="color: #1ACBAA;">Remove</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td data-th="Price">$49.00</td>
-                                <td class="actions" data-th="">
-                                    <div class="text-right">
-                                        <p>Rp.1.299.000</p>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td data-th="Product">
-                                    <div class="row">
-                                        <div class="col-md-3 text-left">
-                                            <img src="images/kategori4.png" alt=""
-                                                class="img-fluid d-none d-md-block rounded mb-2 shadow ">
-                                        </div>
-                                        <div class="col-md-9 text-left mt-sm-2">
-                                            <h6>Rumah minimalis modern</h6>
-                                            <a href="" class="font-weight-light" style="color: #1ACBAA;">Remove</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td data-th="Price">$49.00</td>
-                                <td class="actions" data-th="">
-                                    <div class="text-right">
-                                        <p>Rp.1.299.000</p>
-                                    </div>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                     <div class="float-right text-right">

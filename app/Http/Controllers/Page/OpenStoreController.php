@@ -15,10 +15,10 @@ class OpenStoreController extends Controller
             return redirect('profile');
         }
 
-        return view('page.open_store');
+        return view('page.profile.open_store');
     }
 
-    public function open_store(Request $request)
+    public function openStore(Request $request)
     {
         $this->validate($request, [
             'license' => 'required|mimes:pdf',
@@ -36,7 +36,7 @@ class OpenStoreController extends Controller
             'role_id' => 1
         ]);
 
-        return redirect('/profile')->with('success', 'Berhasil buka toko');
+        return redirect('/profile')->with('success', 'Successfully open a store!');
     }
 
     private function upload($name, UploadedFile $photo, $folder)

@@ -28,7 +28,11 @@
                                 </div>
                                 <div class="col-lg-10 profile-panel">
                                     <div class="col-lg">
-                                        <img src="images/profileImage.png" alt="">
+                                        @if (Auth::user()->picture)
+                                            <img src="{{ Auth::user()->picture }}" style="width:9%">
+                                        @else
+                                            <img src="images/profileImage.png" alt="">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg icon-manage">
@@ -43,23 +47,16 @@
 
                                         <div class="col-lg-3">
                                             @if (auth()->user()->role_id === 2)
-                                                <a class="btn btn-primary" href="{{ 'profile/open-store' }}"> Buka Toko
+                                                <a class="btn btn-primary" href="{{ url('profile/open_store') }}"> Buka
+                                                    Toko
                                                 </a>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
 
-                                @if (session()->has('success'))
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                        {{ session('success') }}
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
-                                    </div>
-                                @endif
-
-                                <form action="profile/update" class="row g-12 mt-5" style="background-color: #F7F8FA;"
-                                    method="POST">
+                                <form action="{{ route('profile.put') }}" class="row g-12 mt-5"
+                                    style="background-color: #F7F8FA;" method="POST">
                                     @method('PUT')
                                     @csrf
                                     <div class="col-6 mt-4">

@@ -116,11 +116,12 @@
 
         $('#my_file').change(function() {
 
-            var i = $(this).prev('label').clone();
-            var file = $('#my_file')[0].files[0].name;
-            $('#list_file').append('<li>' + file + '</li>');
+            for (var i = 0; i < this.files.length; i++) {
+                var fileName = this.files[i].name;
+                $('#list_file').append('<li>' + fileName + '</li>');
+                sumFile++;
+            }
 
-            sumFile++;
             $('#file-caption').html('<i> Maksimum jumlah gambar yang dapat diunggah : ' + (5 - sumFile) + '</i>');
 
             if (sumFile > 4) {

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
     <div class="container">
 
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="{{ url('/') }}">
             <img width="100 " src="{{ asset('images/logo.png') }}" alt="#" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -37,7 +37,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="faq">FAQ</a>
+                    <a class="nav-link" href="{{ url('/faq') }}">FAQ</a>
                 </li>
             </ul>
 
@@ -65,13 +65,20 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="{{ asset('images/profil.png') }}" width="40" height="40"
-                                            class="icon-profil">
+
+                                        @if (Auth::user()->picture)
+                                            <img src="{{ Auth::user()->picture }}" style="border-radius: 50%;"
+                                                class="icon-profil" width="40" height="40">
+                                        @else
+                                            <img src="{{ asset('images/profil.png') }}" width="40" height="40"
+                                                class="icon-profil">
+                                        @endif
+
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="{{ url('profile') }}">Profile</a>
+                                        <a class="dropdown-item" href="{{ url('/profile') }}">Profile</a>
 
-                                        <form action="/logout" method="POST">
+                                        <form action="{{ route('logout') }}" method="POST">
                                             @csrf
                                             <button type="submit" class="dropdown-item">Logout</button>
                                         </form>
@@ -82,15 +89,12 @@
                     @else
                         <div class="d-inline-block">
                             <ul class="navbar-nav">
-                                <a class="nav-link" href="login">
+                                <a class="nav-link" href="{{ url('/login') }}">
                                     <img src="{{ asset('images/logo_login.png') }}" class="icon-profil">
                                 </a>
                             </ul>
                         </div>
                     @endauth
-
-                    {{-- <a href="profile"><img src="{{ asset('images/profil.png') }}" class="icon-profil mr-3"
-                    alt=""></a> --}}
                 </h5>
             </div>
 
