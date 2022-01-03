@@ -49,7 +49,7 @@
                         <div class="form-group" style="color: #828599;">
                             <label for="exampleFormControlSelect1">File Blueprint (Gambar Kerja)</label>
                             <div class="custom-file">
-                                <label class="custom-file-label" for="blueprintFile">Choose file</label>
+                                <label class="custom-file-label" for="blueprintFile" id="blueprint">Choose file</label>
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,8 @@
                                     id="exampleFormControlInput1" placeholder="Masukkan Harga" name="price">
                             </div>
                             <div class="col-12 mt-4 mb-5 text-md-right">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-primary pl-5 pr-5 rounded"
+                                    id="Checkout">Simpan</button>
                             </div>
                         </div>
                     </form>
@@ -106,29 +107,36 @@
         </div>
     </div>
 
+    @push('js')
+        <script type="text/javascript">
+            var sumFile = 0;
 
-    <script type="text/javascript">
-        var sumFile = 0;
+            $("input[type='image']").click(function() {
+                $("input[id='my_file']").click();
+            });
 
-        $("input[type='image']").click(function() {
-            $("input[id='my_file']").click();
-        });
+            $('#my_file').change(function() {
 
-        $('#my_file').change(function() {
+                for (var i = 0; i < this.files.length; i++) {
+                    var fileName = this.files[i].name;
+                    $('#list_file').append('<li>' + fileName + '</li>');
+                    sumFile++;
+                }
 
-            for (var i = 0; i < this.files.length; i++) {
-                var fileName = this.files[i].name;
-                $('#list_file').append('<li>' + fileName + '</li>');
-                sumFile++;
-            }
+                $('#file-caption').html('<i> Maksimum jumlah gambar yang dapat diunggah : ' + (5 - sumFile) + '</i>');
 
-            $('#file-caption').html('<i> Maksimum jumlah gambar yang dapat diunggah : ' + (5 - sumFile) + '</i>');
+                if (sumFile > 4) {
+                    $('#card-upload-image').hide();
+                }
 
-            if (sumFile > 4) {
-                $('#card-upload-image').hide();
-            }
+            });
 
-        });
-    </script>
+            $('#blueprintFile').change(function() {
+                var filename = this.files[0].name
 
+                $('#blueprint').text(filename)
+            })
+            $('#blueprintFile').val('')
+        </script>
+    @endpush
 @endsection
