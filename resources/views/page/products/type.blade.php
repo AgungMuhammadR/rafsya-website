@@ -52,7 +52,7 @@
                                                 <img src="{{ asset('images/kategori.png') }}" class="card-img-top"
                                                     alt="...">
                                                 <ul class="icons">
-                                                    <a href="{{ url('/') }}">
+                                                    <a href="{{ url('/consultation') }}">
                                                         <span><i class="bx bx-heart"></i></span>
                                                     </a>
                                                     <a href="{{ url('/') }}">
