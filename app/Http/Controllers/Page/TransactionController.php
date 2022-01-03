@@ -17,7 +17,7 @@ class TransactionController extends Controller
 
         $myCart = Cart::with('design')->where('user_id', Auth::id())->get();
 
-        return view('page.cart',[
+        return view('page.cart', [
             'carts' => $myCart
         ]);
     }
@@ -36,9 +36,9 @@ class TransactionController extends Controller
     {
         return view('page.payment.payment_confirmed');
     }
-    
-    public function add_cart (Request $request) {
-        
+
+    public function add_cart(Request $request)
+    {
         $data = [
             'user_id' => Auth::id(),
             'design_id' => $request->design_id
@@ -47,18 +47,14 @@ class TransactionController extends Controller
 
         if (Cart::where($data)->first() != NULL) {
             return redirect('/category/modern')->with('error', 'Produk sudah ditambahkan pada cart');
-        }
-
-        else {
+        } else {
             Cart::insert($data);
             return redirect('/category/modern')->with('success', 'Produk berhasil ditambahkan ke cart');
         }
-        
-
     }
 
-    public function delete_cart (Request $request) {
-
+    public function delete_cart(Request $request)
+    {
         $data = [
             'user_id' => Auth::id(),
             'design_id' => $request->design_id
@@ -66,6 +62,6 @@ class TransactionController extends Controller
 
         Cart::where($data)->delete();
 
-        return redirect ('/cart')->with('success', 'Produk berhasil dihapus dari cart');
+        return redirect('/cart')->with('success', 'Produk berhasil dihapus dari cart');
     }
 }

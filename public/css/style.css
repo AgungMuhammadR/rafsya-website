@@ -266,19 +266,34 @@ body {
     background-color: #f7f7f7;
 }
 
- /* Profile style */
- .rectangle {
-	margin-top: -50px;
-	padding-left: 10px;
+/* Profile style */
+.rectangle {
+    margin-top: -50px;
+    padding-left: 10px;
 }
+
 .profile-panel {
-	margin-top: -110px;
+    margin-top: -110px;
 }
+
 .icon-manage {
-	margin-top: -20px;
-	padding-left: 75px;
+    margin-top: -20px;
+    padding-left: 75px;
 }
+
 .profile-info {
-	margin-top: -75px;
-	padding-left: 120px;
+    margin-top: -75px;
+    padding-left: 120px;
+}
+
+.add-to-cart {
+    padding: 0;
+    border: none;
+    background: none
+}
+
+.badge {
+    padding: 4px 7px;
+    font-size: 14px;
+    border-radius: 10px;
 }

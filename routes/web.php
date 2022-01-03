@@ -6,13 +6,12 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\FacebookController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Page\CategoryController;
 use App\Http\Controllers\Page\DashboardController;
-use App\Http\Controllers\Page\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Page\OpenStoreController;
+use App\Http\Controllers\Page\ProductController;
 use App\Http\Controllers\Page\TransactionController;
-use App\Http\Controllers\Page\TypeController;
+use App\Http\Controllers\Page\UserProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +25,8 @@ use App\Http\Controllers\Page\TypeController;
 */
 
 Route::get('/', [DashboardController::class, 'home']);
-Route::get('category/{category}', [CategoryController::class, 'index']);
-Route::get('type/{type}', [TypeController::class, 'index']);
+Route::get('category/{category}', [ProductController::class, 'category']);
+Route::get('type/{type}', [ProductController::class, 'type']);
 Route::get('faq', [DashboardController::class, 'faq']);
 Route::get('consultation', [DashboardController::class, 'consultation']);
 
@@ -35,9 +34,9 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('', [ProfileController::class, 'index']);
     Route::put('update', [ProfileController::class, 'update'])->name('profile.put');
     Route::get('cities/{parent_id}', [ProfileController::class, 'cities']);
-    Route::get('product', [ProductController::class, 'index']);
-    Route::get('insert_product', [ProductController::class, 'insertProductPage']);
-    Route::post('insert_product', [ProductController::class, 'insertProductData'])->name('product.post');
+    Route::get('product', [UserProductController::class, 'index']);
+    Route::get('insert_product', [UserProductController::class, 'insertProductPage']);
+    Route::post('insert_product', [UserProductController::class, 'insertProductData'])->name('product.post');
     Route::get('open_store', [OpenStoreController::class, 'index']);
     Route::put('open_store', [OpenStoreController::class, 'openStore'])->name('open.store.put');
 });
@@ -74,6 +73,6 @@ Route::get('cart', [TransactionController::class, 'cart']);
 Route::get('payment_method', [TransactionController::class, 'payment_method']);
 Route::get('payment_detail', [TransactionController::class, 'payment_detail']);
 Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed']);
-Route::get('detail_product', [CategoryController::class, 'detail']);
-Route::post('add-cart',[TransactionController::class, 'add_cart'])->name('add.cart');
-Route::post('delete-cart',[TransactionController::class, 'delete_cart'])->name('delete.cart');
+Route::get('detail_product', [ProductController::class, 'detail']);
+Route::post('add-cart', [TransactionController::class, 'add_cart'])->name('add.cart');
+Route::post('delete-cart', [TransactionController::class, 'delete_cart'])->name('delete.cart');
