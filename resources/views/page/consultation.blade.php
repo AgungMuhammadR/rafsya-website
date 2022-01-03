@@ -4,23 +4,6 @@
 <div class="content mt-5" style="padding-right: 100px">
 <div class="profil">
 <div class="row">
-    <div class="bg-transparent">
-      <div class="card-body" style="width: 18rem;">
-        <a href="" class="nav-link">
-          <h4 class="profil" style="color: #828599;">Profil</h4>
-        </a>
-        <a href="" class="nav-link">
-          <h4 class="produk" style="color: #828599;">Product</h4>
-        </a>
-        <a href="#" class="nav-link">
-          <h4 class="chat" style="color: #1ACBAA;">Chat</h4>
-        </a>
-        <a href="" class="nav-link">
-          <h4 class="pesanan" style="color: #828599;">Pesanan</h4>
-        </a>
-      </div>
-    </div>
-
     <div class="konsultasi" style="width: 40rem;">
         <h4 class="font-weight-bold mb-3 text-center" style="color: #002678;">Konsultasi</h4>
         <p class="text-center">Silahkan pilih platform untuk melakukan <br>

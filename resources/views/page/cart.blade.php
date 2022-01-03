@@ -13,7 +13,7 @@
                             <tr>
                                 <th style="width:65%">Product</th>
                                 <th style="width:30%">Price</th>
-                                <th style="width:5%;text-align: right;">Total</th>
+                                <th style="width:5%;text-align: right;">subtotal</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,7 +40,7 @@
                         </tbody>
                     </table>
                     <div class="float-right text-right">
-                        <h4>Subtotal:</h4>
+                        <h4>Total:</h4>
                         <p>Rp. 1.299.000</p>
                     </div>
                 </div>
