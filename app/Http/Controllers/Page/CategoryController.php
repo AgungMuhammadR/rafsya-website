@@ -26,4 +26,9 @@ class CategoryController extends Controller
             'current_category' => $category
         ]);
     }
+
+    public function detail()
+    {
+        return view('page.products.detail_product');
+    }
 }
