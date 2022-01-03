@@ -39,6 +39,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::post('insert_product', [UserProductController::class, 'insertProductData'])->name('product.post');
     Route::get('open_store', [OpenStoreController::class, 'index']);
     Route::put('open_store', [OpenStoreController::class, 'openStore'])->name('open.store.put');
+    Route::get('dashboard', [ProfileController::class, 'dashboard']);
 });
 
 Route::group(['prefix' => 'login'], function () {
@@ -76,7 +77,5 @@ Route::get('payment_confirmed', [TransactionController::class, 'payment_confirme
 Route::get('detail_product', [ProductController::class, 'detail']);
 Route::post('add-cart', [TransactionController::class, 'add_cart'])->name('add.cart');
 Route::post('delete-cart', [TransactionController::class, 'delete_cart'])->name('delete.cart');
-Route::get('detail_product', [CategoryController::class, 'detail']);
-Route::get('dashboard', function () {
-    return view('page.dashboard');
-});
+Route::post('checkout', [TransactionController::class, 'checkout'])->name('checkout.post');
+Route::get('detail_product', [ProductController::class, 'detail']);

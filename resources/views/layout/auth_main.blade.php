@@ -11,6 +11,7 @@
         integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+    <link rel="shortcut icon" href="{{ asset('images/ic-baseline-home-work.ico') }}">
 
     <title>{{ $title }}</title>
 </head>

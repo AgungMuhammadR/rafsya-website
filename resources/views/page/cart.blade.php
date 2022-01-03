@@ -23,13 +23,12 @@ $sumTotal = 0;
                             </tr>
                         </thead>
                         <tbody>
-
                             @foreach ($carts as $cart)
                                 <tr>
                                     <td data-th="Product">
                                         <div class="row">
                                             <div class="col-md-3 text-left">
-                                                <img src="images/kategori4.png" alt=""
+                                                <img src="{{ asset('images/kategori4.png') }}" alt=""
                                                     class="img-fluid d-none d-md-block rounded mb-2 shadow ">
                                             </div>
                                             <div class="col-md-9 text-left mt-sm-2">
@@ -44,7 +43,8 @@ $sumTotal = 0;
                                             </div>
                                         </div>
                                     </td>
-                                    <td data-th="Price"> Rp. {{ number_format($cart->design->price, 0, ',', '.') }} </td>
+                                    <td data-th="Price"> Rp. {{ number_format($cart->design->price, 0, ',', '.') }}
+                                    </td>
                                 </tr>
 
                                 <?php $sumTotal = $sumTotal + $cart->design->price; ?>
@@ -60,10 +60,8 @@ $sumTotal = 0;
                 </div>
             </div>
             <div class="mb-3 mb-m-1 order-md-1 text-md-right">
-                <a href="catalog.html">
-                    <a id="Checkout" href="{{ url('payment_method') }}" class="btn mb-4 btn-lg pl-5 pr-5">Checkout</a>
+                <a href="{{ url('payment_method') }}" id="Checkout" class="btn mb-4 btn-lg pl-5 pr-5">Checkout</a>
             </div>
-        </div>
         </div>
     </section>
 @endsection

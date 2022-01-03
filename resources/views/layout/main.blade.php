@@ -22,6 +22,8 @@
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <link rel="shortcut icon" href="{{ asset('images/ic-baseline-home-work.ico') }}">
     <title>RAFSYA</title>
 
     @if (Request::is('faq'))
@@ -40,7 +42,7 @@
     @include('layout.navbar', [
     'categories' => \App\Models\Category::orderBy('id', 'ASC')->get(),
     'types' => \App\Models\Type::orderBy('id', 'ASC')->get(),
-    'total_item' => \App\Models\Cart::all()->count()
+    'total_item' => \App\Models\Cart::where('user_id', auth()->user()->id)->count()
     ])
 
     <div class="wrapper">

@@ -52,4 +52,13 @@ class ProfileController extends Controller
 
         return $cities;
     }
+
+    public function dashboard()
+    {
+        if (auth()->user()->role_id === 2) {
+            return redirect('/profile');
+        }
+
+        return view('page.profile.dashboard');
+    }
 }

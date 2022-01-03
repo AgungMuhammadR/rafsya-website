@@ -4,17 +4,19 @@
     <div class="content mt-5" style="padding-left: 65px;">
         <div class="profile">
             <div class="row">
-                <div class="col-md-2 bg-transparent">
+                <div class="bg-transparent">
                     <div class="card-body">
                         <a href="{{ url('profile') }}" class="nav-link">
-                            <h4 class="profile" style="color: #1ACBAA;">Profil</h4>
+                            <h4 class="profil" style="color: #1ACBAA;">Profil</h4>
                         </a>
-                        <a href="{{ url('profile/product') }}" class="nav-link">
-                            <h4 class="produk" style="color: #828599;">Product</h4>
-                        </a>
-                        <a href="" class="nav-link">
-                            <h4 class="pesanan" style="color: #828599;">Pesanan</h4>
-                        </a>
+                        @if (auth()->user()->role_id === 1)
+                            <a href="{{ url('profile/product') }}" class="nav-link">
+                                <h4 class="produk" style="color: #828599;">Product</h4>
+                            </a>
+                            <a href="{{ url('profile/dashboard') }}" class="nav-link">
+                                <h4 class="dashboard" style="color: #828599;">Dashboard</h4>
+                            </a>
+                        @endif
                     </div>
                 </div>
 

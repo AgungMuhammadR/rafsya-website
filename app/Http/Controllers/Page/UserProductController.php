@@ -21,6 +21,10 @@ class UserProductController extends Controller
             'price' => 'Rp.' . number_format($item->price, 0, ',', '.')
         ]);
 
+        if (auth()->user()->role_id === 2) {
+            return redirect('/profile');
+        }
+
         return view('page.profile.list_product', [
             'designs' => $designs
         ]);
