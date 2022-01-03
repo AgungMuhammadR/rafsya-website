@@ -13,9 +13,8 @@ class ProfileController extends Controller
     public function index()
     {
         $provinces = Location::where('parent_id', 0)->get();
-        // $cities = Location::where('parent_id', $id)->get();
 
-        return view('page.profile', [
+        return view('page.profile.profile', [
             'provinces' => $provinces
         ]);
     }
@@ -26,19 +25,25 @@ class ProfileController extends Controller
 
         $validate = $request->validate([
             'username' => 'required|max:255',
-            'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:5|max:255',
+            'email' => 'required|email:dns',
+            'password' => 'nullable|min:5|max:255',
             'phone_number' => 'required|numeric',
             'address' => 'required',
         ]);
 
-        $validate['password'] = Hash::make($validate['password']);
-        $validate['location_id'] = $request->city;
+        if ($validate['password'] === null) {
+            $password = $user->password;
+        } else {
+            $password = Hash::make($validate['password']);
+        }
+
+        $validate['password'] = $password;
+        $validate['location_id'] = $request->city === null ? $user->location_id : $request->city;
 
         $user->fill($validate);
         $user->save();
 
-        return redirect('/profile')->with('success', 'Profile successfully updated');
+        return redirect('/profile')->with('success', 'Profile successfully updated!');
     }
 
     public function cities($parent_id)
@@ -46,5 +51,14 @@ class ProfileController extends Controller
         $cities = Location::where('parent_id', $parent_id)->get();
 
         return $cities;
+    }
+
+    public function dashboard()
+    {
+        if (auth()->user()->role_id === 2) {
+            return redirect('/profile');
+        }
+
+        return view('page.profile.dashboard');
     }
 }

@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('page.login', [
+        return view('page.auth.login', [
             'title' => 'Login'
         ]);
     }
@@ -37,8 +37,10 @@ class LoginController extends Controller
     {
         Auth::logout();
 
+        
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return redirect('/login');
     }
 }
