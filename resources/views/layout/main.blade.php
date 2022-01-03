@@ -39,7 +39,8 @@
     @include('sweetalert::alert')
     @include('layout.navbar', [
     'categories' => \App\Models\Category::orderBy('id', 'ASC')->get(),
-    'types' => \App\Models\Type::orderBy('id', 'ASC')->get()
+    'types' => \App\Models\Type::orderBy('id', 'ASC')->get(),
+    'total_item' => \App\Models\Cart::all()->count()
     ])
 
     <div class="wrapper">

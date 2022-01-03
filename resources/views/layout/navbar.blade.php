@@ -56,8 +56,10 @@
 
             <div class="icon mt-2">
                 <h5>
-                    <a href="{{ url('cart') }}"><img src="{{ asset('images/cart.png') }}" class="icon-cart mx-3"
-                            alt=""></a>
+                    <a href="{{ url('cart') }}" style="text-decoration: none"><img
+                            src="{{ asset('images/cart.png') }}" class="icon-cart mx-3" alt="">
+                        <span class="badge badge-dark ml-n3 mt-n5">{{ $total_item }}</span>
+                    </a>
 
                     @auth
                         <div class="d-inline-block">

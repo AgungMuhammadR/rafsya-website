@@ -4,8 +4,9 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb" style="background: #fff;">
-                <li class="breadcrumb-item active" aria-current="page">Tipe</li>
-                <li class="breadcrumb-item" style="font-style: #1ACBAA;"><a href="#">{{ $current_type }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
+                <li class="breadcrumb-item" style="font-style: #1ACBAA;"><a href="#">{{ $current_state }}</a>
+                </li>
             </ol>
         </nav>
     </div>
@@ -14,7 +15,7 @@
         <div class="container">
             <div class="row workingspace">
                 <div class="col-lg-6 mt-5">
-                    <h2 class="font-weight-bold" style="color: #002678; padding-left: 32px;">Tipe</h2>
+                    <h2 class="font-weight-bold" style="color: #002678; padding-left: 32px;">{{ $title }}</h2>
                 </div>
                 <div class="col-lg-6 mt-5">
                     <div class="urutan text-md-right">
@@ -30,13 +31,23 @@
             <div class="row">
                 <div class="col-md-2 bg-transparent">
                     <div class="card-body">
-                        @foreach ($types as $type)
-                            <a href="{{ $type->value }}" class="nav-link">
-                                <h4 class="{{ $type->value }}"
-                                    style="{{ Request::is('type/' . $type->value) ? 'color:#1ACBBA;' : 'color:#828599' }}">
-                                    {{ $type->value }}
-                                </h4>
-                            </a>
+                        @foreach ($items as $item)
+                            @if (Request::is('category*'))
+                                <a href="{{ $item->slug }}" class="nav-link">
+                                    <h4 class="{{ $item->slug }}"
+                                        style="{{ Request::is('category/' . $item->slug) ? 'color:#1ACBBA;' : 'color:#828599' }}">
+                                        {{ $item->name }}
+                                    </h4>
+                                </a>
+                            @endif
+                            @if (Request::is('type*'))
+                                <a href="{{ $item->value }}" class="nav-link">
+                                    <h4 class="{{ $item->value }}"
+                                        style="{{ Request::is('type/' . $item->value) ? 'color:#1ACBBA;' : 'color:#828599' }}">
+                                        {{ $item->value }}
+                                    </h4>
+                                </a>
+                            @endif
                         @endforeach
                     </div>
                 </div>
@@ -55,9 +66,14 @@
                                                     <a href="{{ url('/consultation') }}">
                                                         <span><i class="bx bx-heart"></i></span>
                                                     </a>
-                                                    <a href="{{ url('/') }}">
-                                                        <span><i class="bx bx-shopping-bag"></i></span>
-                                                    </a>
+                                                    <form method="POST" action="{{ route('add.cart') }}">
+                                                        @csrf
+                                                        <input type="hidden" name="design_id"
+                                                            value="{{ $design['id'] }}" />
+                                                        <button type="submit" class="add-to-cart">
+                                                            <span><i class="bx bx-shopping-bag"></i></span>
+                                                        </button>
+                                                    </form>
                                                 </ul>
                                                 <div class="card-body">
                                                     <h9 class="card-title font-weight-bold">{{ $design['name'] }}</h9>
@@ -101,5 +117,9 @@
                 </div>
             </div>
         </div>
-        <br><br>
-    @endsection
+    </div>
+
+    <script>
+    </script>
+
+@endsection
