@@ -37,7 +37,10 @@
 
 <body>
     @include('sweetalert::alert')
-    @include('layout.navbar')
+    @include('layout.navbar', [
+    'categories' => \App\Models\Category::orderBy('id', 'ASC')->get(),
+    'types' => \App\Models\Type::orderBy('id', 'ASC')->get()
+    ])
 
     <div class="wrapper">
         @yield('container')

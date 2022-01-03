@@ -12,6 +12,7 @@ use App\Http\Controllers\Page\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Page\OpenStoreController;
 use App\Http\Controllers\Page\TransactionController;
+use App\Http\Controllers\Page\TypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,9 +68,8 @@ Route::group(['prefix' => 'reset_password'], function () {
     Route::post('', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
 
-Route::group(['prefix' => 'category'], function () {
-    Route::get('{category}', [CategoryController::class, 'index']);
-});
+Route::get('category/{category}', [CategoryController::class, 'index']);
+Route::get('type/{type}', [TypeController::class, 'index']);
 
 Route::get('cart', [TransactionController::class, 'cart']);
 Route::get('payment_method', [TransactionController::class, 'payment_method']);

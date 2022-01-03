@@ -20,9 +20,10 @@ class CategoryController extends Controller
             'price' => 'Rp.' . number_format($item->price, 0, ',', '.')
         ]);
 
-        return view('page.category.index', [
+        return view('page.products.category', [
             'categories' => Category::orderBy('id', 'ASC')->get(),
-            'designs' => $designs
+            'designs' => $designs,
+            'current_category' => $category
         ]);
     }
 }
