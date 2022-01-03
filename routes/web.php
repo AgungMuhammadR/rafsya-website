@@ -26,6 +26,8 @@ use App\Http\Controllers\Page\TypeController;
 */
 
 Route::get('/', [DashboardController::class, 'home']);
+Route::get('category/{category}', [CategoryController::class, 'index']);
+Route::get('type/{type}', [TypeController::class, 'index']);
 Route::get('faq', [DashboardController::class, 'faq']);
 Route::get('consultation', [DashboardController::class, 'consultation']);
 
@@ -67,9 +69,6 @@ Route::group(['prefix' => 'reset_password'], function () {
     Route::get('{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
     Route::post('', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
-
-Route::get('category/{category}', [CategoryController::class, 'index']);
-Route::get('type/{type}', [TypeController::class, 'index']);
 
 Route::get('cart', [TransactionController::class, 'cart']);
 Route::get('payment_method', [TransactionController::class, 'payment_method']);

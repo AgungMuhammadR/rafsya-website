@@ -27,7 +27,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-expanded="false">
-                        Type
+                        Tipe
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @foreach ($types as $type)
