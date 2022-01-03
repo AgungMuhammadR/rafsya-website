@@ -13,8 +13,9 @@ class CategoryController extends Controller
     public function index($category)
     {
         $designs = Design::whereHas('category', fn ($query) => $query->where('slug', $category))->get();
-
+        
         $designs->transform(fn ($item) => [
+            'id' => $item->id,
             'name' => $item->name,
             'type' => Type::find($item->type_id)->value,
             'price' => 'Rp.' . number_format($item->price, 0, ',', '.')

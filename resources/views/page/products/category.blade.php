@@ -56,9 +56,13 @@
                                                     <a href="{{ url('/consultation') }}">
                                                         <span><i class="bx bx-heart"></i></span>
                                                     </a>
-                                                    <a href="{{ url('/') }}">
-                                                        <span><i class="bx bx-shopping-bag"></i></span>
-                                                    </a>
+                                                    <form method="post" action="{{route('add.cart')}}" id="form-cart">
+                                                        @csrf
+                                                        <input type="hidden" name="design_id" value="{{ $design['id'] }}" />
+                                                        <a href="#" id="link-submit">
+                                                            <span type="submit"><i class="bx bx-shopping-bag"></i></span>
+                                                        </a>
+                                                    </form>                                                    
                                                 </ul>
                                                 <div class="card-body">
                                                     <h9 class="card-title font-weight-bold">{{ $design['name'] }}</h9>
@@ -103,4 +107,15 @@
             </div>
         </div>
         <br><br>
+        
+        <script>
+            
+            $('#link-submit').on('click', function () {
+                
+                $('#form-cart').submit();
+            
+            });
+            
+        </script>
+        
     @endsection

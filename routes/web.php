@@ -75,3 +75,5 @@ Route::get('payment_method', [TransactionController::class, 'payment_method']);
 Route::get('payment_detail', [TransactionController::class, 'payment_detail']);
 Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed']);
 Route::get('detail_product', [CategoryController::class, 'detail']);
+Route::post('add-cart',[TransactionController::class, 'add_cart'])->name('add.cart');
+Route::post('delete-cart',[TransactionController::class, 'delete_cart'])->name('delete.cart');
