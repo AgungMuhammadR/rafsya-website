@@ -1,6 +1,26 @@
 @extends('layout.main')
 
 @section('container')
+<<<<<<< HEAD
+<div class="content mt-5" style="padding-right: 100px">
+<div class="profil">
+<div class="row">
+    <div class="konsultasi" style="width: 40rem;">
+        <h4 class="font-weight-bold mb-3 text-center" style="color: #002678;">Konsultasi</h4>
+        <p class="text-center">Silahkan pilih platform untuk melakukan <br>
+            konsultasi dengan arsitek</p>
+        <div class="row mt-5">
+        <div class="col-sm-6">
+        <button class="btn btn-light btn-block text-left collapsed p-3 rounded-0 border-bottom-custom shadow" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <div class="container">
+            <div class="d-flex" style="padding-left: 90px;"> 
+                <img src="images/icongmail.png" width="53%">
+            </div>
+            <div class="mt-5" style="text-align: center;">E-Mail</div> 
+        </div>
+        </button>
+    </div>
+=======
     <div class="content mt-5" style="padding-right: 100px">
         <div class="profil">
             <div class="row">
@@ -42,6 +62,7 @@
                                 </div>
                             </button>
                         </div>
+>>>>>>> 5179634e468d67afd0340d735031ea377becdcc9
 
                         <div class="col-sm-6">
                             <button
