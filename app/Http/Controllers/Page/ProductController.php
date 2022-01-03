@@ -40,6 +40,7 @@ class ProductController extends Controller
 
     public function insertProductData(Request $request)
     {
+        dd($request->blueprint);
         $messages = [
             "image.max" => "file can't be more than 5."
         ];

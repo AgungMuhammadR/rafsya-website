@@ -18,22 +18,22 @@
                         Kategori
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        @foreach ($categories as $category)
+                            <a class="dropdown-item"
+                                href="{{ url("/category/{$category->slug}") }}">{{ $category->name }}</a>
+                        @endforeach
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-expanded="false">
-                        Type
+                        Tipe
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        @foreach ($types as $type)
+                            <a class="dropdown-item"
+                                href="{{ url("/type/{$type->value}") }}">{{ $type->value }}</a>
+                        @endforeach
                     </div>
                 </li>
                 <li class="nav-item">

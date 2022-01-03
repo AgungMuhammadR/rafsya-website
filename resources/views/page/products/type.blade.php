@@ -4,8 +4,8 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb" style="background: #fff;">
-                <li class="breadcrumb-item active" aria-current="page">Kategori</li>
-                <li class="breadcrumb-item" style="font-style: #1ACBAA;"><a href="#">Modern</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tipe</li>
+                <li class="breadcrumb-item" style="font-style: #1ACBAA;"><a href="#">{{ $current_type }}</a></li>
             </ol>
         </nav>
     </div>
@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row workingspace">
                 <div class="col-lg-6 mt-5">
-                    <h2 class="font-weight-bold" style="color: #002678; padding-left: 32px;">Kategori</h2>
+                    <h2 class="font-weight-bold" style="color: #002678; padding-left: 32px;">Tipe</h2>
                 </div>
                 <div class="col-lg-6 mt-5">
                     <div class="urutan text-md-right">
@@ -30,11 +30,11 @@
             <div class="row">
                 <div class="col-md-2 bg-transparent">
                     <div class="card-body">
-                        @foreach ($categories as $category)
-                            <a href="{{ $category->slug }}" class="nav-link">
-                                <h4 class="{{ $category->slug }}"
-                                    style="{{ Request::is('category/' . $category->slug) ? 'color:#1ACBBA;' : 'color:#828599' }}">
-                                    {{ $category->name }}
+                        @foreach ($types as $type)
+                            <a href="{{ $type->value }}" class="nav-link">
+                                <h4 class="{{ $type->value }}"
+                                    style="{{ Request::is('type/' . $type->value) ? 'color:#1ACBBA;' : 'color:#828599' }}">
+                                    {{ $type->value }}
                                 </h4>
                             </a>
                         @endforeach
@@ -52,7 +52,7 @@
                                                 <img src="{{ asset('images/kategori.png') }}" class="card-img-top"
                                                     alt="...">
                                                 <ul class="icons">
-                                                    <a href="{{ url('/') }}">
+                                                    <a href="{{ url('/consultation') }}">
                                                         <span><i class="bx bx-heart"></i></span>
                                                     </a>
                                                     <a href="{{ url('/') }}">

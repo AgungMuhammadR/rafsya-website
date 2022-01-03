@@ -12,6 +12,7 @@ use App\Http\Controllers\Page\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Page\OpenStoreController;
 use App\Http\Controllers\Page\TransactionController;
+use App\Http\Controllers\Page\TypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,8 @@ use App\Http\Controllers\Page\TransactionController;
 */
 
 Route::get('/', [DashboardController::class, 'home']);
+Route::get('category/{category}', [CategoryController::class, 'index']);
+Route::get('type/{type}', [TypeController::class, 'index']);
 Route::get('faq', [DashboardController::class, 'faq']);
 Route::get('consultation', [DashboardController::class, 'consultation']);
 
@@ -67,11 +70,8 @@ Route::group(['prefix' => 'reset_password'], function () {
     Route::post('', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
 
-Route::group(['prefix' => 'category'], function () {
-    Route::get('{category}', [CategoryController::class, 'index']);
-});
-
 Route::get('cart', [TransactionController::class, 'cart']);
 Route::get('payment_method', [TransactionController::class, 'payment_method']);
 Route::get('payment_detail', [TransactionController::class, 'payment_detail']);
 Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed']);
+Route::get('detail_product', [CategoryController::class, 'detail']);
