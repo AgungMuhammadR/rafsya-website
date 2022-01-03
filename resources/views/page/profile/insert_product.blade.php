@@ -97,7 +97,8 @@
                                     id="exampleFormControlInput1" placeholder="Masukkan Harga" name="price">
                             </div>
                             <div class="col-12 mt-4 mb-5 text-md-right">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-primary pl-5 pr-5 rounded"
+                                    id="Checkout">Simpan</button>
                             </div>
                         </div>
                     </form>
