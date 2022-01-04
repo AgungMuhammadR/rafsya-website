@@ -25,10 +25,18 @@ use App\Http\Controllers\Page\UserProductController;
 */
 
 Route::get('/', [DashboardController::class, 'home']);
-Route::get('category/{category}', [ProductController::class, 'category']);
-Route::get('type/{type}', [ProductController::class, 'type']);
 Route::get('faq', [DashboardController::class, 'faq']);
 Route::get('consultation', [DashboardController::class, 'consultation']);
+
+Route::group(['prefix' => 'category'], function () {
+    Route::get('{category}', [ProductController::class, 'category']);
+    Route::get('{category}/{id}', [ProductController::class, 'detail_category']);
+});
+
+Route::group(['prefix' => 'type'], function () {
+    Route::get('{type}', [ProductController::class, 'type']);
+    Route::get('{type}/{id}', [ProductController::class, 'detail_type']);
+});
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('', [ProfileController::class, 'index']);

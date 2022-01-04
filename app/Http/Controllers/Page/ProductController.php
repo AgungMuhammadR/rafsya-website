@@ -29,6 +29,18 @@ class ProductController extends Controller
         ]);
     }
 
+    public function detail_category($category, $id)
+    {
+        $design = Design::where('id', $id)->whereHas('category', fn ($query) => $query->where('slug', $category))->first();
+
+        return view('page.product.detail_product', [
+            'title' => 'Kategori',
+            'items' => Category::orderBy('id', 'ASC')->get(),
+            'design' => $design,
+            'current_state' => ucwords($category)
+        ]);
+    }
+
     public function type($type)
     {
         $designs = Design::whereHas('type', fn ($query) => $query->where('value', $type))->get();
@@ -45,6 +57,18 @@ class ProductController extends Controller
             'items' => Type::orderBy('id', 'ASC')->get(),
             'designs' => $designs,
             'current_state' => $type
+        ]);
+    }
+
+    public function detail_type($type, $id)
+    {
+        $design = Design::where('id', $id)->whereHas('type', fn ($query) => $query->where('value', $type))->first();
+
+        return view('page.product.detail_product', [
+            'title' => 'Tipe',
+            'items' => Category::orderBy('id', 'ASC')->get(),
+            'design' => $design,
+            'current_state' => ucwords($type)
         ]);
     }
 
