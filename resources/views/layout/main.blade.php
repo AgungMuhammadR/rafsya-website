@@ -42,7 +42,7 @@
     @include('layout.navbar', [
     'categories' => \App\Models\Category::orderBy('id', 'ASC')->get(),
     'types' => \App\Models\Type::orderBy('id', 'ASC')->get(),
-    'total_item' => \App\Models\Cart::where('user_id', auth()->user()->id)->count()
+    'total_item' => (Auth::check()) ? \App\Models\Cart::where('user_id', auth()->user()->id)->count() : 0
     ])
 
     <div class="wrapper">

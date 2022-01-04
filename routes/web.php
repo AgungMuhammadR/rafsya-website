@@ -25,10 +25,18 @@ use App\Http\Controllers\Page\UserProductController;
 */
 
 Route::get('/', [DashboardController::class, 'home']);
-Route::get('category/{category}', [ProductController::class, 'category']);
-Route::get('type/{type}', [ProductController::class, 'type']);
 Route::get('faq', [DashboardController::class, 'faq']);
 Route::get('consultation', [DashboardController::class, 'consultation']);
+
+Route::group(['prefix' => 'category'], function () {
+    Route::get('{category}', [ProductController::class, 'category']);
+    Route::get('{category}/{id}', [ProductController::class, 'detail_category']);
+});
+
+Route::group(['prefix' => 'type'], function () {
+    Route::get('{type}', [ProductController::class, 'type']);
+    Route::get('{type}/{id}', [ProductController::class, 'detail_type']);
+});
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('', [ProfileController::class, 'index']);
@@ -70,12 +78,11 @@ Route::group(['prefix' => 'reset_password'], function () {
     Route::post('', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
 
-Route::get('cart', [TransactionController::class, 'cart']);
-Route::get('payment_method', [TransactionController::class, 'payment_method']);
-Route::get('payment_detail', [TransactionController::class, 'payment_detail']);
-Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed']);
-Route::get('detail_product', [ProductController::class, 'detail']);
-Route::post('add-cart', [TransactionController::class, 'add_cart'])->name('add.cart');
-Route::post('delete-cart', [TransactionController::class, 'delete_cart'])->name('delete.cart');
-Route::post('checkout', [TransactionController::class, 'checkout'])->name('checkout.post');
-Route::get('detail_product', [ProductController::class, 'detail']);
+Route::get('cart', [TransactionController::class, 'cart'])->middleware('auth');
+Route::get('payment_method', [TransactionController::class, 'payment_method'])->middleware('auth');
+Route::get('payment_detail', [TransactionController::class, 'payment_detail'])->middleware('auth');
+Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed'])->middleware('auth');
+Route::post('add-cart', [TransactionController::class, 'add_cart'])->name('add.cart')->middleware('auth');
+Route::post('delete-cart', [TransactionController::class, 'delete_cart'])->name('delete.cart')->middleware('auth');
+Route::post('checkout', [TransactionController::class, 'checkout'])->name('checkout.post')->middleware('auth');
+Route::get('detail_product', [ProductController::class, 'detail'])->middleware('auth');

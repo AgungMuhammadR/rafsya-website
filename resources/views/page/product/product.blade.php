@@ -63,9 +63,19 @@
                                                 <img src="{{ asset('images/kategori.png') }}" class="card-img-top"
                                                     alt="...">
                                                 <ul class="icons">
-                                                    <a href="{{ url('/consultation') }}">
-                                                        <span><i class="bx bx-heart"></i></span>
-                                                    </a>
+                                                    @if (Request::is('category*'))
+                                                        <a
+                                                            href="{{ url('category/' . strtolower($current_state) . '/' . $design['id']) }}">
+                                                            <span><i class="bx bx-info-circle"></i></span>
+                                                        </a>
+                                                    @endif
+                                                    @if (Request::is('type*'))
+                                                        <a
+                                                            href="{{ url('type/' . $current_state . '/' . $design['id']) }}">
+                                                            <span><i class="bx bx-info-circle"></i></span>
+                                                        </a>
+                                                    @endif
+
                                                     <form method="POST" action="{{ route('add.cart') }}">
                                                         @csrf
                                                         <input type="hidden" name="design_id"
@@ -118,8 +128,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-    </script>
 
 @endsection
