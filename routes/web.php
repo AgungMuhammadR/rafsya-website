@@ -70,12 +70,11 @@ Route::group(['prefix' => 'reset_password'], function () {
     Route::post('', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
 
-Route::get('cart', [TransactionController::class, 'cart']);
-Route::get('payment_method', [TransactionController::class, 'payment_method']);
-Route::get('payment_detail', [TransactionController::class, 'payment_detail']);
-Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed']);
-Route::get('detail_product', [ProductController::class, 'detail']);
-Route::post('add-cart', [TransactionController::class, 'add_cart'])->name('add.cart');
-Route::post('delete-cart', [TransactionController::class, 'delete_cart'])->name('delete.cart');
-Route::post('checkout', [TransactionController::class, 'checkout'])->name('checkout.post');
-Route::get('detail_product', [ProductController::class, 'detail']);
+Route::get('cart', [TransactionController::class, 'cart'])->middleware('auth');
+Route::get('payment_method', [TransactionController::class, 'payment_method'])->middleware('auth');
+Route::get('payment_detail', [TransactionController::class, 'payment_detail'])->middleware('auth');
+Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed'])->middleware('auth');
+Route::post('add-cart', [TransactionController::class, 'add_cart'])->name('add.cart')->middleware('auth');
+Route::post('delete-cart', [TransactionController::class, 'delete_cart'])->name('delete.cart')->middleware('auth');
+Route::post('checkout', [TransactionController::class, 'checkout'])->name('checkout.post')->middleware('auth');
+Route::get('detail_product', [ProductController::class, 'detail'])->middleware('auth');
