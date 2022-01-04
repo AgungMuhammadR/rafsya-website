@@ -17,15 +17,6 @@
                 <div class="col-lg-6 mt-5">
                     <h2 class="font-weight-bold" style="color: #002678; padding-left: 32px;">{{ $title }}</h2>
                 </div>
-                <div class="col-lg-6 mt-5">
-                    <div class="urutan text-md-right">
-                        <button type="button " class="btn"
-                            style="background: #1ACBAA; color: #fff;">Terkait</button>
-                        <button type="button" class="btn btn-light">Terbaru</button>
-                        <button type="button" class="btn btn-light">Terlaris</button>
-                        <button type="button" class="btn btn-light">Tipe</button>
-                    </div>
-                </div>
             </div>
 
             <div class="row">

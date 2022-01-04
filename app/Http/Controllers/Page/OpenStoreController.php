@@ -21,7 +21,7 @@ class OpenStoreController extends Controller
     public function openStore(Request $request)
     {
         $this->validate($request, [
-            'license' => 'required|mimes:pdf',
+            'license' => 'nullable|mimes:pdf',
             'store_name' => 'required'
         ]);
 
