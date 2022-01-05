@@ -31,7 +31,7 @@
                                         @if (Auth::user()->picture)
                                             <img src="{{ Auth::user()->picture }}" style="width:9%">
                                         @else
-                                            <img src="images/profileImage.png" alt="">
+                                            <img src="{{ asset('images/profileImage.png') }}" alt="">
                                         @endif
                                     </div>
                                 </div>
@@ -46,13 +46,12 @@
                                         </div>
 
                                         <div class="col-lg-3">
-                                            @if (auth()->user()->role_id === 1)
-
+                                            @can('architect')
                                                 <a class="btn btn-primary" href="{{ url('/profile/insert_product') }}">
                                                     Tambah
                                                     Produk
                                                 </a>
-                                            @endif
+                                            @endcan
                                         </div>
 
                                     </div>

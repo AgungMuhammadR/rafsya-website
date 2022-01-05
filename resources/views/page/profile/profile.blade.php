@@ -9,14 +9,14 @@
                         <a href="{{ url('profile') }}" class="nav-link">
                             <h4 class="profil" style="color: #1ACBAA;">Profil</h4>
                         </a>
-                        @if (auth()->user()->role_id === 1)
+                        @can('architect')
                             <a href="{{ url('profile/product') }}" class="nav-link">
                                 <h4 class="produk" style="color: #828599;">Product</h4>
                             </a>
                             <a href="{{ url('profile/dashboard') }}" class="nav-link">
                                 <h4 class="dashboard" style="color: #828599;">Dashboard</h4>
                             </a>
-                        @endif
+                        @endcan
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@
                                         @if (Auth::user()->picture)
                                             <img src="{{ Auth::user()->picture }}" style="width:9%">
                                         @else
-                                            <img src="images/profileImage.png" alt="">
+                                            <img src="{{ asset('images/profileImage.png') }}" alt="">
                                         @endif
                                     </div>
                                 </div>
@@ -48,11 +48,12 @@
                                         </div>
 
                                         <div class="col-lg-3">
-                                            @if (auth()->user()->role_id === 2)
-                                                <a class="btn btn-primary" href="{{ url('profile/open_store') }}"> Buka
+                                            @can('customer')
+                                                <a id="Checkout" class="btn mb-4 btn-lg"
+                                                    href="{{ url('profile/open_store') }}"> Buka
                                                     Toko
                                                 </a>
-                                            @endif
+                                            @endcan
                                         </div>
                                     </div>
                                 </div>

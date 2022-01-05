@@ -144,7 +144,11 @@
                                     Masukkan Keranjang <i class="fas fa-shopping-cart"></i>
                                 </button>
                             </form>
-                            <button type="button" class="btn mb-4 btn-lg pl-4 pr-4">Belanja Sekarang</button>
+                            <form method="POST" action="{{ route('shop.now') }}" class="d-inline-block">
+                                @csrf
+                                <input type="hidden" name="design_id" value="{{ $design['id'] }}" />
+                                <button type="submit" class="btn mb-4 btn-lg pl-4 pr-4">Belanja Sekarang</button>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -42,12 +42,18 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('', [ProfileController::class, 'index']);
     Route::put('update', [ProfileController::class, 'update'])->name('profile.put');
     Route::get('cities/{parent_id}', [ProfileController::class, 'cities']);
-    Route::get('product', [UserProductController::class, 'index']);
-    Route::get('insert_product', [UserProductController::class, 'insertProductPage']);
-    Route::post('insert_product', [UserProductController::class, 'insertProductData'])->name('product.post');
-    Route::get('open_store', [OpenStoreController::class, 'index']);
-    Route::put('open_store', [OpenStoreController::class, 'openStore'])->name('open.store.put');
-    Route::get('dashboard', [ProfileController::class, 'dashboard']);
+
+    Route::group(['middleware' => 'customer'], function () {
+        Route::get('open_store', [OpenStoreController::class, 'index']);
+        Route::put('open_store', [OpenStoreController::class, 'openStore'])->name('open.store.put');
+    });
+
+    Route::group(['middleware' => 'architect'], function () {
+        Route::get('product', [UserProductController::class, 'index']);
+        Route::get('insert_product', [UserProductController::class, 'insertProductPage']);
+        Route::post('insert_product', [UserProductController::class, 'insertProductData'])->name('product.post');
+        Route::get('dashboard', [ProfileController::class, 'dashboard']);
+    });
 });
 
 Route::group(['prefix' => 'login'], function () {
@@ -78,12 +84,11 @@ Route::group(['prefix' => 'reset_password'], function () {
     Route::post('', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
 
-Route::group(['prefix' => 'cart', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'cart', 'middleware' => ['auth', 'customer']], function () {
     Route::get('', [TransactionController::class, 'cart']);
+    Route::post('shop-now', [TransactionController::class, 'shop_now'])->name('shop.now');
     Route::post('add-cart', [TransactionController::class, 'add_cart'])->name('add.cart');
     Route::post('delete-cart', [TransactionController::class, 'delete_cart'])->name('delete.cart');
-    Route::get('payment_method', [TransactionController::class, 'payment_method'])->middleware('auth');
-    Route::get('payment_detail', [TransactionController::class, 'payment_detail'])->middleware('auth');
-    Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed']);
-    Route::post('checkout', [TransactionController::class, 'checkout'])->name('checkout.post');
+    Route::get('payment_method', [TransactionController::class, 'payment_method']);
+    Route::post('payment_method', [TransactionController::class, 'checkout'])->name('checkout.post');
 });

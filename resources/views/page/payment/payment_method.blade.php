@@ -53,9 +53,12 @@
                                 <a href="{{ url('cart') }}" style="color: #1ACBAA;">Back to Cart</a>
                             </div>
                             <div class="col-md-6 text-md-right">
-                                <a id="Checkout" href="{{ url('cart/payment_detail') }}"
-                                    class="btn mb-4 btn-lg pl-5 pr-5 rounded-pill"
-                                    style=" background-color: rgba(26, 203, 170, 1); color: white;">Checkout</a>
+                                <form action="{{ route('checkout.post') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="items" value="{{ $carts }}">
+                                    <button type="submit" id="Checkout" class="btn mb-4 btn-lg pl-5 pr-5 rounded-pill"
+                                        style=" background-color: rgba(26, 203, 170, 1); color: white;">Checkout</button>
+                                </form>
                             </div>
                         </div>
                     </div>

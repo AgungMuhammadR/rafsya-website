@@ -21,10 +21,6 @@ class UserProductController extends Controller
             'price' => 'Rp.' . number_format($item->price, 0, ',', '.')
         ]);
 
-        if (auth()->user()->role_id === 2) {
-            return redirect('/profile');
-        }
-
         return view('page.profile.list_product', [
             'designs' => $designs
         ]);
@@ -32,10 +28,6 @@ class UserProductController extends Controller
 
     public function insertProductPage()
     {
-        if (auth()->user()->role_id === 2) {
-            return redirect('profile');
-        }
-
         return view('page.profile.insert_product', [
             'categories' => Category::orderBy('id', 'ASC')->get(),
             'types' => Type::orderBy('id', 'ASC')->get()

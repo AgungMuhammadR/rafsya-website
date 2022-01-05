@@ -11,10 +11,6 @@ class OpenStoreController extends Controller
 {
     public function index()
     {
-        if (auth()->user()->role_id === 1) {
-            return redirect('profile');
-        }
-
         return view('page.profile.open_store');
     }
 

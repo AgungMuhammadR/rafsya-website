@@ -55,10 +55,6 @@ class ProfileController extends Controller
 
     public function dashboard()
     {
-        if (auth()->user()->role_id === 2) {
-            return redirect('/profile');
-        }
-
         return view('page.profile.dashboard');
     }
 }
