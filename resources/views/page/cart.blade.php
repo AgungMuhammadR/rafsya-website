@@ -60,7 +60,7 @@ $sumTotal = 0;
                 </div>
             </div>
             <div class="mb-3 mb-m-1 order-md-1 text-md-right">
-                <a href="{{ url('payment_method') }}" id="Checkout" class="btn mb-4 btn-lg pl-5 pr-5">Checkout</a>
+                <a href="{{ url('cart/payment_method') }}" id="Checkout" class="btn mb-4 btn-lg pl-5 pr-5">Checkout</a>
             </div>
         </div>
     </section>

@@ -33,7 +33,7 @@
                                             type="button" data-toggle="collapse" data-target="#collapseTwo"
                                             aria-expanded="false" aria-controls="collapseTwo">
                                             <div class="d-flex align-items-center">
-                                                <img src="images/mandiri.jpeg" width="20%">
+                                                <img src="{{ asset('images/mandiri.jpeg') }}" width="20%">
                                                 <span class="pl-4">Mandiri Virtual Account</span>
                                             </div>
                                         </button>
@@ -53,7 +53,7 @@
                                 <a href="{{ url('cart') }}" style="color: #1ACBAA;">Back to Cart</a>
                             </div>
                             <div class="col-md-6 text-md-right">
-                                <a id="Checkout" href="{{ url('payment_detail') }}"
+                                <a id="Checkout" href="{{ url('cart/payment_detail') }}"
                                     class="btn mb-4 btn-lg pl-5 pr-5 rounded-pill"
                                     style=" background-color: rgba(26, 203, 170, 1); color: white;">Checkout</a>
                             </div>

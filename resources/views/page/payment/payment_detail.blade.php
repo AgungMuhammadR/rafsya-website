@@ -29,10 +29,10 @@
                     <div class="mt-5">
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="{{ url('payment_method') }}" style="color: #1ACBAA;">Back to Cart</a>
+                                <a href="{{ url('cart/payment_method') }}" style="color: #1ACBAA;">Back to Cart</a>
                             </div>
                             <div class="col-md-6 text-md-right">
-                                <a id="Checkout" href="{{ url('payment_confirmed') }}"
+                                <a id="Checkout" href="{{ url('cart/payment_confirmed') }}"
                                     class="btn mb-4 btn-lg pl-5 pr-5 rounded-pill"
                                     style=" background-color: rgba(26, 203, 170, 1); color: white;">Checkout</a>
                             </div>

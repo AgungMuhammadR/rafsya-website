@@ -71,9 +71,4 @@ class ProductController extends Controller
             'current_state' => ucwords($type)
         ]);
     }
-
-    public function detail()
-    {
-        return view('page.product.detail_product');
-    }
 }
