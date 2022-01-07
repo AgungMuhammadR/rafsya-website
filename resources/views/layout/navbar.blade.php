@@ -42,16 +42,16 @@
             </ul>
 
             <div class="col-sm-6">
-                <form action="#" class="search">
+                <span class="search">
                     <div class="input-group w-100">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" placeholder="Cari Produk" name="keyword">
                         <div class="input-group-append">
-                            <button class="btn" type="submit" style="background-color: #1ACBAA;">
+                            <button class="btn" style="background-color: #1ACBAA;" id="btnSearch"data-toggle="modal" data-target="#exampleModalLong">
                                 <i class="fa fa-search" style="color: #fff;"></i>
                             </button>
                         </div>
                     </div>
-                </form>
+                </span>
             </div>
 
             <div class="icon mt-2">
@@ -105,3 +105,70 @@
         </div>
     </div>
 </nav>
+
+
+@include('layout.result_search')
+
+<script type="text/javascript">
+
+    $('.pencarian').hide();
+    var tagHtml = '';
+
+    function addId (id) {
+
+        tagHtml = '<div class="col-sm-3"> <div class="product"> <div class="product-header"> <div class="bg-body rounded"> <img src="{{ asset('images/kategori.png') }}" class="card-img-top" alt="..."> <ul class="icons"> <a id="link-info'+id+'" href=""> <span><i class="bx bx-info-circle"></i></span> </a> <form method="POST" action="{{ route("add.cart") }}"> @csrf <input type="hidden" id="input'+id+'" name="design_id" value="" /> <button type="submit" class="add-to-cart"> <span><i class="bx bx-shopping-bag"></i></span> </button> </form> </ul> <div class="card-body"> <h9 class="card-title font-weight-bold"> <div id="nama-produk'+id+'"></div> </h9> <p class="tipe"><div id="tipe-produk'+id+'"></div></p><h8 class="price font-weight-bold"><div id="harga-produk'+id+'"></div></h8> </div> </div> </div> </div></div>';
+    }
+
+    function formatNomor(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+    
+    $('#btnSearch').on('click', function () {
+
+        $('#konten').html('');
+        $('.pencarian').hide();
+        $('#no-result').show();
+
+        var key = $('input[name=keyword]').val();
+        var productUrl = '';
+
+        $.ajax({
+            url: '{{url('search-product')}}',
+            type: 'get',
+            data: {keyword: key},
+            success: function(data){
+
+                $('.wrapper').hide();
+                $('.pencarian').show();
+
+                for (var i=0; i<data.length; i++) {
+                    $('#no-result').hide();
+                    addId(i);
+                    $('#konten').append(tagHtml);
+                    $('#nama-produk'+i).append(data[i].name);
+                    $('#tipe-produk'+i).append('Tipe ' + data[i].type.value);
+                    $('#harga-produk'+i).append('Rp. ' + formatNomor(data[i].price));
+
+                    productUrl = 'http://localhost:8000/type/' + data[i].type.value + '/' + data[i].id;
+
+                    $('#link-info'+i).prop('href', productUrl);
+                    $('#input'+i).prop('value', data[i].id);
+
+                }
+                
+            }
+        });
+
+    })
+
+    $('#closeSearch').on('click', function () {
+
+        $('#konten').html('');
+        $('.pencarian').hide();
+        $('.wrapper').show();
+        $('#no-result').hide();
+
+
+    });
+
+</script>

@@ -27,6 +27,7 @@ use App\Http\Controllers\Page\UserProductController;
 Route::get('/', [DashboardController::class, 'home']);
 Route::get('faq', [DashboardController::class, 'faq']);
 Route::get('consultation', [DashboardController::class, 'consultation']);
+Route::get('search-product', [ProductController::class, 'search_product']);
 
 Route::group(['prefix' => 'category'], function () {
     Route::get('{category}', [ProductController::class, 'category']);

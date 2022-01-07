@@ -71,4 +71,12 @@ class ProductController extends Controller
             'current_state' => ucwords($type)
         ]);
     }
+
+
+    public function search_product (Request $request) {
+
+        $data = Design::with('type')->where('name','like','%'.$request->keyword.'%')->get();
+        return $data;
+
+    }
 }
