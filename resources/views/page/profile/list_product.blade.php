@@ -47,7 +47,8 @@
 
                                         <div class="col-lg-3">
                                             @can('architect')
-                                                <a class="btn btn-primary" href="{{ url('/profile/insert_product') }}">
+                                                <a id="Checkout" class="btn mb-4 btn-lg"
+                                                    href="{{ url('/profile/insert_product') }}">
                                                     Tambah
                                                     Produk
                                                 </a>

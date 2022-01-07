@@ -110,4 +110,13 @@ class TransactionController extends Controller
 
         return redirect('/cart')->with('success', 'Produk berhasil dihapus dari cart');
     }
+
+    // public function download_blueprint()
+    // {
+    //     $file = public_path() . '/filename.pdf';
+
+    //     $headers = array('Content-Type: application/pdf');
+
+    //     return response()->download($file, 'filename.pdf', $headers);
+    // }
 }

@@ -36,7 +36,6 @@ class UserProductController extends Controller
 
     public function insertProductData(Request $request)
     {
-
         $messages = [
             "image.max" => "file can't be more than 5."
         ];

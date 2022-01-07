@@ -109,7 +109,8 @@
                                             value="{{ old('address', auth()->user()->address) }}">
                                     </div>
                                     <div class="col-12 mt-4 mb-5 text-md-right">
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button id="Checkout" type="submit"
+                                            class="btn btn-primary pl-5 pr-5 rounded">Save</button>
                                     </div>
                                 </form>
                             </div>

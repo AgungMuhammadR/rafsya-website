@@ -64,8 +64,11 @@
                             <img src="{{ url('images/testi1.png') }}" alt="" width="100px">
                         </div>
                         <div class="purchase-info col-6">
-                            <a href="{{ url('/consultation') }}" type="button"
-                                class="btn mb-4 btn-lg pl-4 pr-4">Consultation</a>
+                            <form action="{{ route('consultation.post') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="data" value="{{ $design }}">
+                                <button type="submit" class="btn mb-4 btn-lg pl-4 pr-4">Consultation</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -157,21 +160,12 @@
 
         <div class="product-detail">
             <div class="nav-link">
-                <h4 class="nav-kategory text-center">
-                    <a href="#" class="deskripsi" style="color:#1ACBAA; padding-right: 18px;">Deskripsi</a>
-                    <a href="" class="spesifikasi" style="color: #616161; padding-right: 18px;">Spesifikasi</a>
-                    <a href="" class="info" style="color: #616161;">Info Penting</a>
+                <h4 class="nav-kategory text-center deskripsi" style="color:#3A3A3A; padding-right: 18px;">
+                    Deskripsi
                 </h4>
             </div>
             <div class="container">
-                <p>Desain rumah minimalis pertama dengan tiga kamar yang berada pada sisi kiri. Konsep rumah ini menyamping.
-                    Bagian ruang tamu dari desain rumah ini berada di bagian tengah dan bagian dapur berada di sisi kanan.
-                    Konsep desain rumah minimalis ini sangat menarik dan patut untuk kamu coba.</p>
-                <ul>
-                    <li>Tipe 36</li>
-                    <li>Ukuran 6x6</li>
-                </ul>
-                <a href="" class="text-info font-weight-bold"> Lihat Selengkapnya</a>
+                <p>{{ $design->description }}</p>
             </div>
         </div>
     </div>
