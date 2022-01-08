@@ -2,7 +2,7 @@
 
 @section('container')
     <section class="pt-5 pb-5">
-        <div class="content" style="padding-left: 148px;">
+        <div class="content" style="padding-left: 40px;">
             <div class="bg-transparent">
                 <div class="content" style="padding-left: 20px;">
                     <div class="card-body">
@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="content" style="padding-left: 600px; margin-top: -150px;">
+        <div class="content" style="padding-left: 420px; margin-top: -150px;">
             <h4 class="font-weight-bold" style="color: #002678;">Daftar Transaksi</h4>
 
             <div class="row w-100">
