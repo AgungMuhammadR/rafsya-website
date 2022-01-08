@@ -5,8 +5,8 @@
         <div class="nav-detail mt-4">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb" style="background: #fff;">
-                    <li class="breadcrumb-item active" aria-current="page">Kategori</li>
-                    <li class="breadcrumb-item"><a href="#" style="color: #1ACBAA">Modern</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
+                    <li class="breadcrumb-item"><a href="#" style="color: #1ACBAA">{{ $current_state }}</a></li>
                 </ol>
             </nav>
         </div>
@@ -61,10 +61,14 @@
                 <div class="card" style="width: 490px">
                     <div class="row">
                         <div class="col-6">
-                            <img src="images/testi1.png" alt="" width="100px">
+                            <img src="{{ url('images/testi1.png') }}" alt="" width="100px">
                         </div>
                         <div class="purchase-info col-6">
-                            <button type="button" class="btn mb-4 btn-lg pl-4 pr-4">Consultation</button>
+                            <form action="{{ route('consultation.post') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="data" value="{{ $design }}">
+                                <button type="submit" class="btn mb-4 btn-lg pl-4 pr-4">Consultation</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -75,7 +79,7 @@
             <div class="col-6">
                 <div class="container">
                     <div class="product-content" style="padding-right: 5px;">
-                        <h4 class="product-title">Rumah Minimalis Modern</h4>
+                        <h4 class="product-title">{{ $design->name }}</h4>
                         <div class="product-rating">
                             <i class="fas fa-star"></i>
                             <span>4.8 (75 Review) | Terjual (73)</span>
@@ -131,14 +135,23 @@
                                 <div style="color: #828599;">Harga</div>
                             </div>
                             <div class="col-6 text-right">
-                                <h2 class="font-weight-bold" style="color: #002678;">Rp. 1.299.000</h2>
+                                <h2 class="font-weight-bold" style="color: #002678;">
+                                    {{ 'Rp.' . number_format($design->price, 0, ',', '.') }}</h2>
                             </div>
                         </div>
                         <div class="purchase-info">
-                            <button type="button " class="btn btn-outline-primary mb-4 btn-lg pl-4 pr-4">
-                                Masukkan Keranjang <i class="fas fa-shopping-cart"></i>
-                            </button>
-                            <button type="button" class="btn mb-4 btn-lg pl-4 pr-4">Belanja Sekarang</button>
+                            <form method="POST" action="{{ route('add.cart') }}" class="d-inline-block">
+                                @csrf
+                                <input type="hidden" name="design_id" value="{{ $design['id'] }}" />
+                                <button type="submit " class="btn btn-outline-primary mb-4 btn-lg pl-4 pr-4">
+                                    Masukkan Keranjang <i class="fas fa-shopping-cart"></i>
+                                </button>
+                            </form>
+                            <form method="POST" action="{{ route('shop.now') }}" class="d-inline-block">
+                                @csrf
+                                <input type="hidden" name="design_id" value="{{ $design['id'] }}" />
+                                <button type="submit" class="btn mb-4 btn-lg pl-4 pr-4">Belanja Sekarang</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -147,21 +160,12 @@
 
         <div class="product-detail">
             <div class="nav-link">
-                <h4 class="nav-kategory text-center">
-                    <a href="#" class="deskripsi" style="color:#1ACBAA; padding-right: 18px;">Deskripsi</a>
-                    <a href="" class="spesifikasi" style="color: #616161; padding-right: 18px;">Spesifikasi</a>
-                    <a href="" class="info" style="color: #616161;">Info Penting</a>
+                <h4 class="nav-kategory text-center deskripsi" style="color:#3A3A3A; padding-right: 18px;">
+                    Deskripsi
                 </h4>
             </div>
             <div class="container">
-                <p>Desain rumah minimalis pertama dengan tiga kamar yang berada pada sisi kiri. Konsep rumah ini menyamping.
-                    Bagian ruang tamu dari desain rumah ini berada di bagian tengah dan bagian dapur berada di sisi kanan.
-                    Konsep desain rumah minimalis ini sangat menarik dan patut untuk kamu coba.</p>
-                <ul>
-                    <li>Tipe 36</li>
-                    <li>Ukuran 6x6</li>
-                </ul>
-                <a href="" class="text-info font-weight-bold"> Lihat Selengkapnya</a>
+                <p>{{ $design->description }}</p>
             </div>
         </div>
     </div>

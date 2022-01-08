@@ -28,10 +28,6 @@ class UserProductController extends Controller
 
     public function insertProductPage()
     {
-        if (auth()->user()->role_id === 2) {
-            return redirect('profile');
-        }
-
         return view('page.profile.insert_product', [
             'categories' => Category::orderBy('id', 'ASC')->get(),
             'types' => Type::orderBy('id', 'ASC')->get()
@@ -40,7 +36,6 @@ class UserProductController extends Controller
 
     public function insertProductData(Request $request)
     {
-
         $messages = [
             "image.max" => "file can't be more than 5."
         ];

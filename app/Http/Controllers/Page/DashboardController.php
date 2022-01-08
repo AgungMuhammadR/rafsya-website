@@ -19,9 +19,4 @@ class DashboardController extends Controller
     {
         return view('page.faq');
     }
-
-    public function consultation()
-    {
-        return view('page.consultation');
-    }
 }

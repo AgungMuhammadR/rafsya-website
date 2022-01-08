@@ -4,17 +4,19 @@
     <div class="content mt-5" style="padding-left: 65px;">
         <div class="profile">
             <div class="row">
-                <div class="col-md-2 bg-transparent">
+                <div class="bg-transparent">
                     <div class="card-body">
                         <a href="{{ url('profile') }}" class="nav-link">
-                            <h4 class="profile" style="color: #1ACBAA;">Profil</h4>
+                            <h4 class="profil" style="color: #1ACBAA;">Profil</h4>
                         </a>
-                        <a href="{{ url('profile/product') }}" class="nav-link">
-                            <h4 class="produk" style="color: #828599;">Product</h4>
-                        </a>
-                        <a href="" class="nav-link">
-                            <h4 class="pesanan" style="color: #828599;">Pesanan</h4>
-                        </a>
+                        @can('architect')
+                            <a href="{{ url('profile/product') }}" class="nav-link">
+                                <h4 class="produk" style="color: #828599;">Product</h4>
+                            </a>
+                            <a href="{{ url('profile/dashboard') }}" class="nav-link">
+                                <h4 class="dashboard" style="color: #828599;">Dashboard</h4>
+                            </a>
+                        @endcan
                     </div>
                 </div>
 
@@ -31,7 +33,7 @@
                                         @if (Auth::user()->picture)
                                             <img src="{{ Auth::user()->picture }}" style="width:9%">
                                         @else
-                                            <img src="images/profileImage.png" alt="">
+                                            <img src="{{ asset('images/profileImage.png') }}" alt="">
                                         @endif
                                     </div>
                                 </div>
@@ -46,11 +48,12 @@
                                         </div>
 
                                         <div class="col-lg-3">
-                                            @if (auth()->user()->role_id === 2)
-                                                <a class="btn btn-primary" href="{{ url('profile/open_store') }}"> Buka
+                                            @can('customer')
+                                                <a id="Checkout" class="btn mb-4 btn-lg"
+                                                    href="{{ url('profile/open_store') }}"> Buka
                                                     Toko
                                                 </a>
-                                            @endif
+                                            @endcan
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +109,8 @@
                                             value="{{ old('address', auth()->user()->address) }}">
                                     </div>
                                     <div class="col-12 mt-4 mb-5 text-md-right">
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button id="Checkout" type="submit"
+                                            class="btn btn-primary pl-5 pr-5 rounded">Save</button>
                                     </div>
                                 </form>
                             </div>

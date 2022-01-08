@@ -17,15 +17,6 @@
                 <div class="col-lg-6 mt-5">
                     <h2 class="font-weight-bold" style="color: #002678; padding-left: 32px;">{{ $title }}</h2>
                 </div>
-                <div class="col-lg-6 mt-5">
-                    <div class="urutan text-md-right">
-                        <button type="button " class="btn"
-                            style="background: #1ACBAA; color: #fff;">Terkait</button>
-                        <button type="button" class="btn btn-light">Terbaru</button>
-                        <button type="button" class="btn btn-light">Terlaris</button>
-                        <button type="button" class="btn btn-light">Tipe</button>
-                    </div>
-                </div>
             </div>
 
             <div class="row">
@@ -63,9 +54,19 @@
                                                 <img src="{{ asset('images/kategori.png') }}" class="card-img-top"
                                                     alt="...">
                                                 <ul class="icons">
-                                                    <a href="{{ url('/consultation') }}">
-                                                        <span><i class="bx bx-heart"></i></span>
-                                                    </a>
+                                                    @if (Request::is('category*'))
+                                                        <a
+                                                            href="{{ url('category/' . strtolower($current_state) . '/' . $design['id']) }}">
+                                                            <span><i class="bx bx-info-circle"></i></span>
+                                                        </a>
+                                                    @endif
+                                                    @if (Request::is('type*'))
+                                                        <a
+                                                            href="{{ url('type/' . $current_state . '/' . $design['id']) }}">
+                                                            <span><i class="bx bx-info-circle"></i></span>
+                                                        </a>
+                                                    @endif
+
                                                     <form method="POST" action="{{ route('add.cart') }}">
                                                         @csrf
                                                         <input type="hidden" name="design_id"
@@ -118,8 +119,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-    </script>
 
 @endsection

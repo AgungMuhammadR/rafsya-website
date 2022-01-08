@@ -11,17 +11,13 @@ class OpenStoreController extends Controller
 {
     public function index()
     {
-        if (auth()->user()->role_id === 1) {
-            return redirect('profile');
-        }
-
         return view('page.profile.open_store');
     }
 
     public function openStore(Request $request)
     {
         $this->validate($request, [
-            'license' => 'required|mimes:pdf',
+            'license' => 'nullable|mimes:pdf',
             'store_name' => 'required'
         ]);
 

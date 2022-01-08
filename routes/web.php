@@ -25,20 +25,36 @@ use App\Http\Controllers\Page\UserProductController;
 */
 
 Route::get('/', [DashboardController::class, 'home']);
-Route::get('category/{category}', [ProductController::class, 'category']);
-Route::get('type/{type}', [ProductController::class, 'type']);
 Route::get('faq', [DashboardController::class, 'faq']);
-Route::get('consultation', [DashboardController::class, 'consultation']);
+Route::post('consultation', [ProductController::class, 'consultation'])->name('consultation.post');
+Route::get('search-product', [ProductController::class, 'search_product']);
+
+Route::group(['prefix' => 'category'], function () {
+    Route::get('{category}', [ProductController::class, 'category']);
+    Route::get('{category}/{id}', [ProductController::class, 'detail_category']);
+});
+
+Route::group(['prefix' => 'type'], function () {
+    Route::get('{type}', [ProductController::class, 'type']);
+    Route::get('{type}/{id}', [ProductController::class, 'detail_type']);
+});
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('', [ProfileController::class, 'index']);
     Route::put('update', [ProfileController::class, 'update'])->name('profile.put');
     Route::get('cities/{parent_id}', [ProfileController::class, 'cities']);
-    Route::get('product', [UserProductController::class, 'index']);
-    Route::get('insert_product', [UserProductController::class, 'insertProductPage']);
-    Route::post('insert_product', [UserProductController::class, 'insertProductData'])->name('product.post');
-    Route::get('open_store', [OpenStoreController::class, 'index']);
-    Route::put('open_store', [OpenStoreController::class, 'openStore'])->name('open.store.put');
+
+    Route::group(['middleware' => 'customer'], function () {
+        Route::get('open_store', [OpenStoreController::class, 'index']);
+        Route::put('open_store', [OpenStoreController::class, 'openStore'])->name('open.store.put');
+    });
+
+    Route::group(['middleware' => 'architect'], function () {
+        Route::get('product', [UserProductController::class, 'index']);
+        Route::get('insert_product', [UserProductController::class, 'insertProductPage']);
+        Route::post('insert_product', [UserProductController::class, 'insertProductData'])->name('product.post');
+        Route::get('dashboard', [ProfileController::class, 'dashboard']);
+    });
 });
 
 Route::group(['prefix' => 'login'], function () {
@@ -69,14 +85,11 @@ Route::group(['prefix' => 'reset_password'], function () {
     Route::post('', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 });
 
-Route::get('cart', [TransactionController::class, 'cart']);
-Route::get('payment_method', [TransactionController::class, 'payment_method']);
-Route::get('payment_detail', [TransactionController::class, 'payment_detail']);
-Route::get('payment_confirmed', [TransactionController::class, 'payment_confirmed']);
-Route::get('detail_product', [ProductController::class, 'detail']);
-Route::post('add-cart', [TransactionController::class, 'add_cart'])->name('add.cart');
-Route::post('delete-cart', [TransactionController::class, 'delete_cart'])->name('delete.cart');
-Route::get('detail_product', [CategoryController::class, 'detail']);
-Route::get('dashboard', function () {
-    return view('page.dashboard');
+Route::group(['prefix' => 'cart', 'middleware' => ['auth', 'customer']], function () {
+    Route::get('', [TransactionController::class, 'cart']);
+    Route::post('shop-now', [TransactionController::class, 'shop_now'])->name('shop.now');
+    Route::post('add-cart', [TransactionController::class, 'add_cart'])->name('add.cart');
+    Route::post('delete-cart', [TransactionController::class, 'delete_cart'])->name('delete.cart');
+    Route::get('payment_method', [TransactionController::class, 'payment_method']);
+    Route::post('payment_method', [TransactionController::class, 'checkout'])->name('checkout.post');
 });

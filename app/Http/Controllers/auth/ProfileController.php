@@ -52,4 +52,9 @@ class ProfileController extends Controller
 
         return $cities;
     }
+
+    public function dashboard()
+    {
+        return view('page.profile.dashboard');
+    }
 }
