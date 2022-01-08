@@ -45,6 +45,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('cities/{parent_id}', [ProfileController::class, 'cities']);
 
     Route::group(['middleware' => 'customer'], function () {
+        Route::get('transaction_list', [ProfileController::class, 'transaction_list']);
         Route::get('open_store', [OpenStoreController::class, 'index']);
         Route::put('open_store', [OpenStoreController::class, 'openStore'])->name('open.store.put');
     });

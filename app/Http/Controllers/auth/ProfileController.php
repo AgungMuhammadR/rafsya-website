@@ -53,6 +53,11 @@ class ProfileController extends Controller
         return $cities;
     }
 
+    public function transaction_list()
+    {
+        return view('page.profile.transaction_list');
+    }
+
     public function dashboard()
     {
         return view('page.profile.dashboard');
