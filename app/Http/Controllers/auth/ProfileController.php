@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Location;
+use App\Models\Transaction;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -55,7 +57,16 @@ class ProfileController extends Controller
 
     public function transaction_list()
     {
-        return view('page.profile.transaction_list');
+        $transactions = Transaction::where('user_id', auth()->user()->id)->orderBy('date', 'DESC')->get();
+
+        $transactions->transform(fn ($item) => [
+            'date' => Carbon::createFromFormat('Y-m-d', $item->date)->format('d F Y'),
+            'detail' => json_decode($item->detail)
+        ]);
+
+        return view('page.profile.transaction_list', [
+            'transactions' => $transactions
+        ]);
     }
 
     public function dashboard()
