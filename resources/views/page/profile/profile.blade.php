@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('container')
-    <div class="content mt-5" style="padding-left: 65px;">
+    <div class="content mt-5">
         <div class="profile">
             <div class="row">
                 <div class="bg-transparent">
@@ -11,7 +11,7 @@
                         </a>
                         @can('customer')
                             <a href="{{ url('profile/transaction_list') }}" class="nav-link">
-                                <h4 class="daftar-transaksi text-wrap" style="color: #828599; ">Transaksi</h4>
+                                <h4 class="daftar-transaksi text-wrap" style="color: #828599;">Daftar Transaksi</h4>
                             </a>
                         @endcan
                         @can('architect')
