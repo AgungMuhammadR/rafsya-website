@@ -13,7 +13,7 @@
         </ol>
 
         <div class="container">
-            <div class="carousel-inner">
+            <div class="carousel-inner mt-4">
                 <div class="carousel-item active">
                     <img src="images/carousel1.png" class="d-block w-90" alt="...">
                 </div>
@@ -31,7 +31,7 @@
 
     </div>
 
-    <div class="workingspace">
+    <div class="workingspace mb-3">
 
         <div class="container">
             <div class="row mt-4">
@@ -40,7 +40,7 @@
                         <div class="brand-img mr-3">
                             <img src="images/trophy.png" alt="">
                         </div>
-                        <div class="branding">
+                        <div class="branding mt-2">
                             <h5 class="title font-weight-bold">Kualitas Terbaik</h5>
                             <p>Dari Design Asiktektur Profesional</p>
                         </div>
@@ -52,7 +52,7 @@
                         <div class="brand-img mr-3">
                             <img src="images/guarantee.png" alt="">
                         </div>
-                        <div class="branding">
+                        <div class="branding mt-2">
                             <h5 class="title font-weight-bold">Aman Digunakan</h5>
                             <p>Bangun Rumah Impianmu</p>
                         </div>
@@ -64,7 +64,7 @@
                         <div class="brand-img mr-3">
                             <img src="images/shipping.png" alt="">
                         </div>
-                        <div class="branding">
+                        <div class="branding mt-2">
                             <h5 class="title font-weight-bold">Mudah dan Cepat</h5>
                             <p>Selesaikan Pembayaran & Download</p>
                         </div>
