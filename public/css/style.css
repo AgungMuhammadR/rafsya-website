@@ -31,7 +31,7 @@ body {
 }
 
 .jumbotron .display-4 {
-    margin-top: 220px;
+    margin-top: 180px;
     font-size: 64px;
     font-family: "Gilroy";
 }
@@ -294,8 +294,10 @@ body {
 
 .badge {
     padding: 4px 7px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 10px;
+    background-color: red;
+    
 }
 
 /* Detail-Product Style */

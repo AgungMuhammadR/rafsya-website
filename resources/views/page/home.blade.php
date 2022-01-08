@@ -42,7 +42,7 @@
                         </div>
                         <div class="branding">
                             <h5 class="title font-weight-bold">Kualitas Terbaik</h5>
-                            <p>Dari Design Asiktektur Profesionala</p>
+                            <p>Dari Design Asiktektur Profesional</p>
                         </div>
                     </div>
                 </div>
@@ -81,18 +81,20 @@
     <!-- jumbotron -->
     <div class="jumbotron text-center text-white">
         <h1 class="display-4">Discover The Best <br> Dreams House for You!</h1>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Explore All Products</a>
+        <div class="mb-3 mb-m-1 order-md-1">
+            <a id="Checkout" href="" class="btn mb-4 btn-lg pl-4 pr-4" style="margin-top: 25px;">Explore All Products</a>
+        </div>
     </div>
 
     <div class="container">
         <div class="kategori">
             <img src="images/Rectangle.png" alt="">
-            <h2 class="title font-weight-bold" style="color: #002678;">Cari Rumah Impian Anda</h2>
+            <h2 class="title font-weight-bold mt-2" style="color: #002678;">Cari Rumah Impian Anda</h2>
             <div class="row mt-4">
                 <div class="col-sm-4 card w-50">
                     <div class="card-body text-center">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-expanded="false" style="color: #1ACBAA; border-radius:50px">
                             Kategori
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -105,8 +107,8 @@
 
                 <div class="col-sm-4 card w-50">
                     <div class="card-body text-center">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-expanded="false" style="color: #1ACBAA">
                             Tipe
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -119,8 +121,8 @@
 
                 <div class="col-sm-4 card w-50">
                     <div class="card-body text-center">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-expanded="false" style="color: #1ACBAA">
                             Harga
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -137,13 +139,13 @@
 
     <!-- Rekomendasi -->
     <div class="container">
-        <div class="kategori">
+        <div class="kategori mt-3">
             <h2 class="title font-weight-bold" style="color: #002678;">Rekomendasi</h2>
             <div class="row mt-3">
                 <div class="col-sm-3">
                     <div class="product">
                         <div class="product-header">
-                            <div class="bg-body rounded">
+                            <div class="shadow bg-body rounded">
                                 <img src="images/kategori.png" class="card-img-top" alt="...">
                                 <ul class="icons">
                                     <span><i class="bx bx-heart"></i></span>
@@ -162,7 +164,7 @@
                 <div class="col-sm-3">
                     <div class="product">
                         <div class="product-header">
-                            <div class="bg-body rounded">
+                            <div class="shadow bg-body rounded">
                                 <img src="images/kategori.png" class="card-img-top" alt="...">
                                 <ul class="icons">
                                     <span><i class="bx bx-heart"></i></span>
@@ -181,7 +183,7 @@
                 <div class="col-sm-3">
                     <div class="product">
                         <div class="product-header">
-                            <div class="bg-body rounded">
+                            <div class="shadow bg-body rounded">
                                 <img src="images/kategori.png" class="card-img-top" alt="...">
                                 <ul class="icons">
                                     <span><i class="bx bx-heart"></i></span>
@@ -200,7 +202,7 @@
                 <div class="col-sm-3">
                     <div class="product">
                         <div class="product-header">
-                            <div class="bg-body rounded">
+                            <div class="shadow bg-body rounded">
                                 <img src="images/kategori.png" class="card-img-top" alt="...">
                                 <ul class="icons">
                                     <span><i class="bx bx-heart"></i></span>
@@ -278,11 +280,13 @@
 
     <div class="Explore">
         <div class="container">
-            <div class="row mt-5 no-gutters">
-                <div class="col-md-2 bg-transparent" id="explore-home">
+            <div class="row mt-3 no-gutters">
+                <div class="col-md-2 bg-transparent mt-4" id="explore-home">
                     <h2 class="font-weight-bold mt-5">500+ Beautiful house inspiration</h2>
-                    <p class="text-home mt-5">Our architect already made a lot of beautiful dream house</p>
-                    <a class="btn btn-primary btn-lg" href="#" role="button">Explore More</a>
+                    <p class="text-home mt-4">Our architect already made a lot of beautiful dream house</p>
+                    <div class="mb-3 mb-m-1 order-md-1">
+                        <a id="Checkout" href="" class="btn mb-4 btn-lg pl-4 pr-4">Explore More</a>
+                    </div>
                 </div>
 
                 <div class="col-md-10">
@@ -317,7 +321,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -330,6 +333,7 @@
     <div class="testimonials" style="background: rgb(86, 178, 128,18%);">
         <div class="inner">
             <h1>Testimonials</h1>
+            <p style="color: #5E6E89">Some quotes from our happy customers</p>
 
             <div class="row">
                 <div class="col">
