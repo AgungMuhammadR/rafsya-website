@@ -7,8 +7,13 @@
                 <div class="bg-transparent">
                     <div class="card-body">
                         <a href="{{ url('profile') }}" class="nav-link">
-                            <h4 class="profil" style="color: #1ACBAA;">Profil</h4>
+                            <h4 class="profil" style="color: #1ACBAA;">Profile</h4>
                         </a>
+                        @can('customer')
+                            <a href="{{ url('profile/transaction_list') }}" class="nav-link">
+                                <h4 class="daftar-transaksi text-wrap" style="color: #828599; ">Transaksi</h4>
+                            </a>
+                        @endcan
                         @can('architect')
                             <a href="{{ url('profile/product') }}" class="nav-link">
                                 <h4 class="produk" style="color: #828599;">Product</h4>
