@@ -27,7 +27,7 @@
                             <div class="row mb-3">
                                 <div class="col-lg-4">
                                     <div class="card" style="border: none; width: 50%;" id="card-upload-image">
-                                        <input type="image" src="{{ asset('/images/icon_add.png') }}"
+                                        <input type="image" src="{{ asset('/images/upload-icon.png') }}"
                                             class="container mt-3">
                                     </div>
                                 </div>
@@ -112,10 +112,21 @@
             var sumFile = 0;
 
             $("input[type='image']").click(function() {
-                $("input[id='my_file']").click();
+                $("input[id=my_file]").click();
+                $("input[id=my_file]").val(null);
             });
 
-            $('#my_file').change(function() {
+            $('#my_file').on ('change', function() {
+
+                $('#list_file').html('');
+                sumFile = 0;
+
+                if (this.files.length > 5) {
+                    alert('Jumlah File Melebihi Batas, Ulangi Upload File');
+                    $('#list_file').html('');
+                    sumFile = 0;
+                    $("input[id=my_file]").val(null);
+                }
 
                 for (var i = 0; i < this.files.length; i++) {
                     var fileName = this.files[i].name;
@@ -134,9 +145,9 @@
             $('#blueprintFile').change(function() {
                 var filename = this.files[0].name
 
-                $('#blueprint').text(filename)
+                $('#blueprint').text(filename);
             })
-            $('#blueprintFile').val('')
+            $('#blueprintFile').val('');
         </script>
     @endpush
 @endsection
