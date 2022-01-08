@@ -270,10 +270,11 @@ body {
 .rectangle {
     margin-top: -50px;
     padding-left: 10px;
+    width: 50px;
 }
 
 .profile-panel {
-    margin-top: -110px;
+    margin-top: -97px;
 }
 
 .icon-manage {

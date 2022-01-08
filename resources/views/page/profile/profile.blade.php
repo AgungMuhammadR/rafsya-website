@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('container')
-    <div class="content mt-5">
+    <div class="content mt-5" style="padding-left: 65px;">
         <div class="profile">
             <div class="row">
                 <div class="bg-transparent">
@@ -27,11 +27,11 @@
 
                 <div class="col-md-10">
                     <div class="kategori">
-                        <div class="row mt-12" style="width: 70rem;">
+                        <div class="row mt-12" style="width: 62rem;">
                             <div class="col-sm-12">
-                                <img src="images/Breadcrumb.png" alt="">
+                                <img src="images/Breadcrumb.png" alt="" width="960px">
                                 <div class="rectangle">
-                                    <img src="images/Rectangle 41.png" alt="">
+                                    <img src="images/Rectangle 41.png" alt="" width="940px">
                                 </div>
                                 <div class="col-lg-10 profile-panel">
                                     <div class="col-lg">
