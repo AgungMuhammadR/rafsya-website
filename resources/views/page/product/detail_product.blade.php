@@ -64,9 +64,10 @@
                             <img src="{{ url('images/testi1.png') }}" alt="" width="100px">
                         </div>
                         <div class="purchase-info col-6">
-                            <form action="{{ route('consultation.post') }}" method="post">
-                                @csrf
-                                <input type="hidden" name="data" value="{{ $design }}">
+                            <form action="{{ route('consultation') }}" method="GET">
+                                <input type="hidden" name="data[]" value="{{ Crypt::encrypt($design->owner->email) }}">
+                                <input type="hidden" name="data[]"
+                                    value="{{ Crypt::encrypt($design->owner->phone_number) }}">
                                 <button type="submit" class="btn mb-4 btn-lg pl-4 pr-4">Consultation</button>
                             </form>
                         </div>

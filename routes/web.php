@@ -27,7 +27,7 @@ use App\Models\Transaction;
 
 Route::get('/', [DashboardController::class, 'home']);
 Route::get('faq', [DashboardController::class, 'faq']);
-Route::post('consultation', [ProductController::class, 'consultation'])->name('consultation.post');
+Route::get('consultation', [ProductController::class, 'consultation'])->name('consultation');
 Route::get('search-product', [ProductController::class, 'search_product']);
 
 Route::group(['prefix' => 'category'], function () {
