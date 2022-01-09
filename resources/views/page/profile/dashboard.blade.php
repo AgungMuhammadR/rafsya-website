@@ -17,49 +17,44 @@
                 </div>
 
                 <div class="col-md-10">
-
+                    <h2 style="color: #002678;"> Hallo, Frans </h2>
+                    <p> Selamat datang di dashboard Anda ! </p>
                     <div class="row">
                         <div class="col-sm-3">
-                            <h1 style="color: #002678;"> Hallo, Frans </h1>
-                            <p> Selamat datang di dashboard Anda ! </p>
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-header">
                                     <h5 class="font-weight-bold mb-3 text-center">Produk Terjual</h5>
-                                    </br> </br>
-                                    <h1 class="font-weight-bold mb-3 text-center"> </b> {{ $product_sold }} </h1>
-                                    </br> </br>
+                                </div>
+                                <div class="card-body">
+                                    <h2 class="font-weight-bold mb-3 text-center"> </b> {{ $product_sold }} </h2>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-3">
-                            </br> </br> </br> </br>
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-header">
                                     <h5 class="font-weight-bold mb-3 text-center">Semua Produk</h5>
-                                    </br> </br>
-                                    <h1 class="font-weight-bold mb-3 text-center"> </b> {{ $all_product }} </h1>
-                                    </br> </br>
                                 </div>
-                            </div>
-                            </br> </br>
-                        </div>
-                        </br> </br>
-                        <div class="col-sm-5">
-                            </br> </br> </br> </br>
-                            <div class="card text-center">
                                 <div class="card-body">
+                                    <h2 class="font-weight-bold mb-3 text-center"> </b> {{ $all_product }} </h2>
+                                </div>
+                            </div>
+               
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card text-center">
+                                <div class="card-header">
                                     <h5 class="font-weight-bold mb-3 text-center">Your Earning this month </h5>
-                                    </br> </br>
-                                    <h2 class="font-weight-bold mb-3 text-center"> Rp. 18.000.000,00 </h2>
-                                    </br>
-                                    <button type="button" class="btn btn-outline-primary">Tarik Penghasilan Anda</button>
+                                </div>
+                                <div class="card-body">
+                                    <h2 class="font-weight-bold mb-3 text-center">{{ 'Rp.' . number_format($sum, 0, ',', '.') }}</h2>
                                 </div>
                             </div>
                         </div>
-                        </br> </br>
                     </div>
 
-                    <div class="card">
+                    <div class="card mt-5" style="border:none;">
+
                         <table id="shoppingCart" class="table table-condensed table-responsive">
                             <thead>
                                 <tr>
@@ -70,7 +65,7 @@
                             </thead>
 
                             <tbody>
-                                <h5> List Produk Terjual </h5>
+                                <h5 style="color: #002678;"> List Produk Terjual </h5>
                                 @foreach ($transactions as $transaction)
                                     @foreach ($transaction['detail'] as $item)
                                         <tr>

@@ -6,11 +6,11 @@
             <div class="bg-transparent">
                 <div class="content" style="padding-left: 20px;">
                     <div class="card-body">
-                        <a href="" class="nav-link">
+                        <a href="{{ url('profile') }}" class="nav-link">
                             <h4 class="profile" style="color: #828599;">Profile</h4>
                         </a>
-                        <a href="" class="nav-link">
-                            <h4 class="daftar-transaksi" style="color: #1ACBAA;">Daftar Transaksi</h4>
+                        <a href="{{ url('profile/transaction_list') }}" class="nav-link">
+                            <h4 class="daftar-transaksi" style="color: #1ACBAA;">Daftar <br> Transaksi</h4>
                         </a>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ $sumTotal = 0;
                 <div class="col-lg-12 col-md-12 col-12">
                     <h3 class="display-6 mb-2 text-center">Your Cart Item</h3>
                     <p class="mb-5 text-center">
-                        <a href="{{ url('/') }}" class="font-weight-light" style="color: #1ACBAA;">Back to
+                        <a href="{{ url('/category/modern') }}" class="font-weight-light" style="color: #1ACBAA;">Back to
                             shopping</a>
                     <table id="shoppingCart" class="table table-condensed table-responsive">
                         <thead>
