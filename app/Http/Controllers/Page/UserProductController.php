@@ -13,12 +13,14 @@ class UserProductController extends Controller
 {
     public function index()
     {
-        $designs = Design::where('user_id', auth()->user()->id)->get();
+        $designs = Design::with('owner')->where('user_id', auth()->user()->id)->get();
 
         $designs->transform(fn ($item) => [
             'name' => $item->name,
             'type' => Type::find($item->type_id)->value,
-            'price' => 'Rp.' . number_format($item->price, 0, ',', '.')
+            'price' => 'Rp.' . number_format($item->price, 0, ',', '.'),
+            'owner' => $item->owner->username,
+            'image' => json_decode($item->image)
         ]);
 
         return view('page.profile.list_product', [

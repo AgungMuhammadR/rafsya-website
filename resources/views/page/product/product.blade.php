@@ -51,7 +51,7 @@
                                     <div class="product">
                                         <div class="product-header">
                                             <div class="shadow bg-body rounded">
-                                                <img src="{{ asset('images/kategori.png') }}" class="card-img-top"
+                                                <img src="{{ asset('/designs/'.$design['owner'].'/'.$design['name'].'/'.$design['image'][0]) }}" class="card-img-top"
                                                     alt="...">
                                                 <ul class="icons">
                                                     @if (Request::is('category*'))

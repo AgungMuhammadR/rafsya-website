@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Design;
 use App\Models\Location;
 use App\Models\Transaction;
 use App\Models\User;
@@ -62,8 +63,9 @@ class ProfileController extends Controller
         $transactions->transform(fn ($item) => [
             'date' => Carbon::createFromFormat('Y-m-d', $item->date)->format('d F Y'),
             'detail' => json_decode($item->detail),
-            'seller' => $item->seller_id
+            'seller' => $item->seller_id,
         ]);
+
 
         return view('page.profile.transaction_list', [
             'transactions' => $transactions
@@ -83,6 +85,37 @@ class ProfileController extends Controller
 
     public function dashboard()
     {
-        return view('page.profile.dashboard');
+        $transactions = Transaction::whereJsonContains('detail', [['seller_id' => auth()->user()->id]])->orderBy('date', 'DESC')->get();
+
+        $transactions->transform(fn ($item) => [
+            'date' => Carbon::createFromFormat('Y-m-d', $item->date)->format('M d, Y'),
+            'detail' => array_filter(json_decode($item->detail), fn ($item) => $item->seller_id === auth()->user()->id)
+        ]);
+
+        $design = Design::where('user_id', auth()->user()->id)->get();
+        $product_sold = $design->sum(fn ($item) => $item->sold);
+        $sum = 0;
+
+        foreach ($transactions as $transaction) {
+            $time1 = strtotime($transaction['date']);
+            $time1 = date('m', $time1);
+            $time2 = date('m');
+
+            if ($time1 == $time2) {
+                foreach($transaction['detail'] as $item) {
+                    $sum = $sum + $item->product_price;
+                }
+            }
+        }
+
+        return view('page.profile.dashboard', [
+            'transactions' => $transactions,
+            'product_sold' => $product_sold,
+            'all_product' => $design->count(),
+            'sum' => $sum
+        ]);
+
+       
+
     }
 }

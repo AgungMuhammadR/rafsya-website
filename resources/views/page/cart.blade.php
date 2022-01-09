@@ -13,7 +13,7 @@ $sumTotal = 0;
                 <div class="col-lg-12 col-md-12 col-12">
                     <h3 class="display-6 mb-2 text-center">Your Cart Item</h3>
                     <p class="mb-5 text-center">
-                        <a href="{{ url('/') }}" class="font-weight-light" style="color: #1ACBAA;">Back to
+                        <a href="{{ url('/category/modern') }}" class="font-weight-light" style="color: #1ACBAA;">Back to
                             shopping</a>
                     <table id="shoppingCart" class="table table-condensed table-responsive">
                         <thead>
@@ -24,11 +24,13 @@ $sumTotal = 0;
                         </thead>
                         <tbody>
                             @foreach ($carts as $cart)
+
+                                <?php $img = json_decode($cart->design->image) ?>
                                 <tr>
                                     <td data-th="Product">
                                         <div class="row">
                                             <div class="col-md-3 text-left">
-                                                <img src="{{ asset('images/kategori4.png') }}" alt=""
+                                                <img src="{{ asset('/designs/'.$cart->design->owner->username.'/'.$cart->design->name.'/'.$img[0])}}" alt=""
                                                     class="img-fluid d-none d-md-block rounded mb-2 shadow ">
                                             </div>
                                             <div class="col-md-9 text-left mt-sm-2">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
+use App\Models\Design;
 use App\Models\Transaction;
 use App\Models\User;
 use Carbon\Carbon;
@@ -14,7 +15,7 @@ class TransactionController extends Controller
 {
     public function cart()
     {
-        $myCart = Cart::with('design')->where('user_id', Auth::id())->get();
+        $myCart = Cart::with('design.owner')->where('user_id', Auth::id())->get();
 
         return view('page.cart', [
             'carts' => $myCart
@@ -23,7 +24,7 @@ class TransactionController extends Controller
 
     public function payment_method()
     {
-        $myCart = Cart::with('design')->where('user_id', Auth::id())->get();
+        $myCart = Cart::with('design.owner')->where('user_id', Auth::id())->get();
         $sum = $myCart->sum(fn ($item) => $item->design->price);
 
         if ($myCart->count() === 0) {
@@ -54,6 +55,10 @@ class TransactionController extends Controller
 
         foreach ($items as $item) {
             $sum = $sum + $item->design->price;
+
+            Design::where('name', $item->design->name)->update([
+                'sold' => $item->design->sold + 1
+            ]);
         }
 
         Transaction::create([
