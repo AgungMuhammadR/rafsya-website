@@ -63,8 +63,9 @@ class ProfileController extends Controller
         $transactions->transform(fn ($item) => [
             'date' => Carbon::createFromFormat('Y-m-d', $item->date)->format('d F Y'),
             'detail' => json_decode($item->detail),
-            'seller' => $item->seller_id
+            'seller' => $item->seller_id,
         ]);
+
 
         return view('page.profile.transaction_list', [
             'transactions' => $transactions
@@ -85,9 +86,10 @@ class ProfileController extends Controller
     public function dashboard()
     {
         $transactions = Transaction::whereJsonContains('detail', [['seller_id' => auth()->user()->id]])->orderBy('date', 'DESC')->get();
+
         $transactions->transform(fn ($item) => [
             'date' => Carbon::createFromFormat('Y-m-d', $item->date)->format('M d, Y'),
-            'detail' => array_filter(json_decode($item->detail), fn ($item) => $item->seller_id === auth()->user()->id),
+            'detail' => array_filter(json_decode($item->detail), fn ($item) => $item->seller_id === auth()->user()->id)
         ]);
 
         $design = Design::where('user_id', auth()->user()->id)->get();

@@ -24,11 +24,13 @@ $sumTotal = 0;
                         </thead>
                         <tbody>
                             @foreach ($carts as $cart)
+
+                                <?php $img = json_decode($cart->design->image) ?>
                                 <tr>
                                     <td data-th="Product">
                                         <div class="row">
                                             <div class="col-md-3 text-left">
-                                                <img src="{{ asset('images/kategori4.png') }}" alt=""
+                                                <img src="{{ asset('/designs/'.$cart->design->owner->username.'/'.$cart->design->name.'/'.$img[0])}}" alt=""
                                                     class="img-fluid d-none d-md-block rounded mb-2 shadow ">
                                             </div>
                                             <div class="col-md-9 text-left mt-sm-2">

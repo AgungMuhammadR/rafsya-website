@@ -66,7 +66,7 @@
                                 @foreach ($designs as $design)
                                     <div class="col-sm-3 m-3">
                                         <div class="shadow bg-body rounded">
-                                            <img src="{{ asset('images/kategori.png') }}" class="card-img-top"
+                                            <img src="{{ asset('/designs/'.$design['owner'].'/'.$design['name'].'/'.$design['image'][0]) }}" class="card-img-top"
                                                 alt="...">
                                             <div class="card-body">
                                                 <h9 class="card-title font-weight-bold">{{ $design['name'] }}</h9>

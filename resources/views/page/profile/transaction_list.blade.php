@@ -1,3 +1,15 @@
+<?php 
+
+    Use App\Models\Design;
+
+    function getName ($name) {
+
+        $data = Design::with('owner')->where('name', $name)->first();
+        return $data->owner->username;
+    }
+
+?>
+
 @extends('layout.main')
 
 @section('container')
@@ -27,16 +39,15 @@
                             <span class="pr-3" style="color: #828599;">{{ $transaction['date'] }}</span>
                             <span class="text-white text text-left pl-3 pr-3" style="background: #1ACBAA;">Selesai</span>
                         </label>
-
-                        @foreach ($transaction['detail'] as $item)
+                        @foreach ($transaction['detail'] as $key => $item)
                             <table id="shoppingCart" class="table table-condensed table-responsive">
                                 <tbody>
                                     <tr>
                                         <td data-th="Product">
                                             <div class="row">
                                                 <div class="col-md-3 text-left">
-                                                    <img src="{{ asset('images/kategori4.png') }}" alt=""
-                                                        class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                                    <img src="{{asset('designs/'.getName($item->product_name).'/'. $item->product_name.'/'.$item->product_photo[0])}}" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                                        
                                                 </div>
                                                 <div class="col-md-9 text-left mt-sm-2">
                                                     <h5 class="font-weight-bold" style="color: #002678;">

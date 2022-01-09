@@ -15,7 +15,7 @@ class TransactionController extends Controller
 {
     public function cart()
     {
-        $myCart = Cart::with('design')->where('user_id', Auth::id())->get();
+        $myCart = Cart::with('design.owner')->where('user_id', Auth::id())->get();
 
         return view('page.cart', [
             'carts' => $myCart
@@ -24,7 +24,7 @@ class TransactionController extends Controller
 
     public function payment_method()
     {
-        $myCart = Cart::with('design')->where('user_id', Auth::id())->get();
+        $myCart = Cart::with('design.owner')->where('user_id', Auth::id())->get();
         $sum = $myCart->sum(fn ($item) => $item->design->price);
 
         if ($myCart->count() === 0) {

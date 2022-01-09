@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Design;
 use App\Models\Type;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -19,7 +20,9 @@ class ProductController extends Controller
             'id' => $item->id,
             'name' => $item->name,
             'type' => Type::find($item->type_id)->value,
-            'price' => 'Rp.' . number_format($item->price, 0, ',', '.')
+            'price' => 'Rp.' . number_format($item->price, 0, ',', '.'),
+            'owner' => $item->owner->username,
+            'image' => json_decode($item->image)
         ]);
 
         return view('page.product.product', [
@@ -50,7 +53,9 @@ class ProductController extends Controller
             'id' => $item->id,
             'name' => $item->name,
             'type' => $item->type->value,
-            'price' => 'Rp.' . number_format($item->price, 0, ',', '.')
+            'price' => 'Rp.' . number_format($item->price, 0, ',', '.'),
+            'owner' => $item->owner->username,
+            'image' => json_decode($item->image)
         ]);
 
         return view('page.product.product', [
@@ -69,7 +74,7 @@ class ProductController extends Controller
             'title' => 'Tipe',
             'items' => Category::orderBy('id', 'ASC')->get(),
             'design' => $design,
-            'current_state' => ucwords($type)
+            'current_state' => ucwords($type),
         ]);
     }
 
@@ -87,7 +92,9 @@ class ProductController extends Controller
 
     public function search_product(Request $request)
     {
-        $data = Design::with('type')->where('name', 'like', '%' . $request->keyword . '%')->get();
+        $data = Design::with('owner','type')->where('name', 'like', '%' . $request->keyword . '%')->get();
         return $data;
     }
+
+    
 }

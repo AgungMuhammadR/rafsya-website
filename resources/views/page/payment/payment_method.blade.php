@@ -68,9 +68,10 @@
                 <div class="detail_payment" style="background: #F2F2F2; height: 100%;">
                     <div class="container" style="padding: 60px;">
                         @foreach ($carts as $item)
+                            <?php $img = json_decode($item->design->image) ?>
                             <div class="row">
                                 <div class="col-md-3 mt-4">
-                                    <img src="{{ asset('images/img1.png') }}" style="width: 100%;">
+                                    <img src="{{ asset('/designs/'.$item->design->owner->username.'/'.$item->design->name.'/'.$img[0]) }}" style="width: 100%;">
                                 </div>
                                 <div class="col-md-8 pl-5 mt-3 font-weight-bold">
                                     <div style="font-size: 18px;">{{ $item->design->name }}</div>

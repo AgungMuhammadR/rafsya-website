@@ -116,7 +116,7 @@
 
     function addId (id) {
 
-        tagHtml = '<div class="col-sm-3"> <div class="product"> <div class="product-header"> <div class="bg-body rounded"> <img src="{{ asset('images/kategori.png') }}" class="card-img-top" alt="..."> <ul class="icons"> <a id="link-info'+id+'" href=""> <span><i class="bx bx-info-circle"></i></span> </a> <form method="POST" action="{{ route("add.cart") }}"> @csrf <input type="hidden" id="input'+id+'" name="design_id" value="" /> <button type="submit" class="add-to-cart"> <span><i class="bx bx-shopping-bag"></i></span> </button> </form> </ul> <div class="card-body"> <h9 class="card-title font-weight-bold"> <div id="nama-produk'+id+'"></div> </h9> <p class="tipe"><div id="tipe-produk'+id+'"></div></p><h8 class="price font-weight-bold"><div id="harga-produk'+id+'"></div></h8> </div> </div> </div> </div></div>';
+        tagHtml = '<div class="col-sm-3"> <div class="product"> <div class="product-header"> <div class="bg-body rounded"> <img id="gambar'+id+'" src="" class="card-img-top" alt="..."> <ul class="icons"> <a id="link-info'+id+'" href=""> <span><i class="bx bx-info-circle"></i></span> </a> <form method="POST" action="{{ route("add.cart") }}"> @csrf <input type="hidden" id="input'+id+'" name="design_id" value="" /> <button type="submit" class="add-to-cart"> <span><i class="bx bx-shopping-bag"></i></span> </button> </form> </ul> <div class="card-body"> <h9 class="card-title font-weight-bold"> <div id="nama-produk'+id+'"></div> </h9> <p class="tipe"><div id="tipe-produk'+id+'"></div></p><h8 class="price font-weight-bold"><div id="harga-produk'+id+'"></div></h8> </div> </div> </div> </div></div>';
     }
 
     function formatNomor(x) {
@@ -149,9 +149,12 @@
                     $('#tipe-produk'+i).append('Tipe ' + data[i].type.value);
                     $('#harga-produk'+i).append('Rp. ' + formatNomor(data[i].price));
 
-                    productUrl = 'http://localhost:8000/type/' + data[i].type.value + '/' + data[i].id;
 
+                    nameImage = JSON.parse(data[i].image);
+                    productUrl = 'http://localhost:8000/type/' + data[i].type.value + '/' + data[i].id;
+                    imageUrl = 'http://localhost:8000/designs/' + data[i].owner.username + '/' + data[i].name + '/' + nameImage[0];
                     $('#link-info'+i).prop('href', productUrl);
+                    $('#gambar'+i).prop('src', imageUrl);
                     $('#input'+i).prop('value', data[i].id);
 
                 }

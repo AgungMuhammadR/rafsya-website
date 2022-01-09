@@ -17,45 +17,19 @@
                 <div class="product-imgs container" style="padding: 50px; margin-top: -30px; padding-left: 5px;">
                     <div class="img-display">
                         <div class="img-showcase">
-                            <img src="{{ asset('images/detail/gmr1.png') }}" alt="..." id="img-detail">
-                            <img src="{{ asset('images/detail/gmr2.png') }}" alt="..." id="img-detail">
-                            <img src="{{ asset('images/detail/gmr3.png') }}" alt="..." id="img-detail">
-                            <img src="{{ asset('images/detail/gmr4.png') }}" alt="..." id="img-detail">
-                            <img src="{{ asset('images/detail/gmr5.png') }}" alt="..." id="img-detail">
-                            <img src="{{ asset('images/detail/gmr6.png') }}" alt="..." id="img-detail">
+                            @foreach (json_decode($design->image) as $img)
+                                <img src="{{ asset('/designs/'.$design->owner->username.'/'.$design->name.'/'.$img)}}" alt="..." id="img-detail">
+                            @endforeach
                         </div>
                     </div>
                     <div class="img-select">
+                        @foreach (json_decode($design->image) as $key=>$img)
                         <div class="img-item">
-                            <a href="#" data-id="1">
-                                <img src="{{ asset('images/detail/gmr1.png') }}" alt="..." style="width: 76px">
+                            <a href="#" data-id="{{ $key+1 }}">
+                                <img src="{{ asset('/designs/'.$design->owner->username.'/'.$design->name.'/'.$img)}}" alt="..." style="width: 76px">
                             </a>
                         </div>
-                        <div class="img-item">
-                            <a href="#" data-id="2">
-                                <img src="{{ asset('images/detail/gmr2.png') }}" alt="..." style="width: 76px">
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="3">
-                                <img src="{{ asset('images/detail/gmr3.png') }}" alt="..." style="width: 76px">
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="4">
-                                <img src="{{ asset('images/detail/gmr4.png') }}" alt="..." style="width: 76px">
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="5">
-                                <img src="{{ asset('images/detail/gmr5.png') }}" alt="..." style="width: 76px">
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="6">
-                                <img src="{{ asset('images/detail/gmr6.png') }}" alt="..." style="width: 76px">
-                            </a>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="card" style="width: 490px">
