@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Design;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class ProductController extends Controller
 {
@@ -74,8 +75,9 @@ class ProductController extends Controller
 
     public function consultation(Request $request)
     {
-        $email = json_decode($request->data)->owner->email;
-        $phone_number = substr(json_decode($request->data)->owner->phone_number, 0, 1) === '0' ? substr_replace(json_decode($request->data)->owner->phone_number, '62', 0, 1) : json_decode($request->data)->owner->phone_number;
+        $email = Crypt::decrypt($request->data[0]);
+        $phone_number = Crypt::decrypt($request->data[1]);
+        $phone_number = substr($phone_number, 0, 1) === '0' ? substr_replace($phone_number, '62', 0, 1) : $phone_number;
 
         return view('page.consultation', [
             'email' => $email,

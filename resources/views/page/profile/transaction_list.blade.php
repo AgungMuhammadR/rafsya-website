@@ -53,8 +53,16 @@
                                             <div class="text-right">
                                                 <label style="color: #828599;">File Gambar Kerja</lebel>
                                                     <div class="mb-3 mb-m-1 order-md-1 text-md-right">
-                                                        <a id="Checkout" href="" class="btn pl-4 pr-4"
-                                                            style="margin-top: 20px;">Download</a>
+                                                        <form action="{{ route('download-blueprint') }}" method="GET">
+                                                            <input type="hidden" name="seller_id"
+                                                                value="{{ $item->seller_id }}">
+                                                            <input type="hidden" name="design_name"
+                                                                value="{{ $item->product_name }}">
+                                                            <input type="hidden" name="blueprint"
+                                                                value="{{ $item->blueprint }}">
+                                                            <button type="submit" id="Checkout" class="btn pl-4 pr-4"
+                                                                style="margin-top: 20px;">Download</button>
+                                                        </form>
                                                     </div>
                                             </div>
                                         </td>

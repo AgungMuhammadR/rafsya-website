@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
 use App\Models\Transaction;
+use App\Models\User;
 use Carbon\Carbon;
 
 class TransactionController extends Controller
@@ -110,13 +111,4 @@ class TransactionController extends Controller
 
         return redirect('/cart')->with('success', 'Produk berhasil dihapus dari cart');
     }
-
-    // public function download_blueprint()
-    // {
-    //     $file = public_path() . '/filename.pdf';
-
-    //     $headers = array('Content-Type: application/pdf');
-
-    //     return response()->download($file, 'filename.pdf', $headers);
-    // }
 }

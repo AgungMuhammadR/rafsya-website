@@ -61,12 +61,24 @@ class ProfileController extends Controller
 
         $transactions->transform(fn ($item) => [
             'date' => Carbon::createFromFormat('Y-m-d', $item->date)->format('d F Y'),
-            'detail' => json_decode($item->detail)
+            'detail' => json_decode($item->detail),
+            'seller' => $item->seller_id
         ]);
 
         return view('page.profile.transaction_list', [
             'transactions' => $transactions
         ]);
+    }
+
+    public function download_blueprint(Request $request)
+    {
+        $author = User::find($request->seller_id);
+
+        $file = public_path() . "/designs/{$author->username}/{$request->design_name}/{$request->blueprint}";
+
+        $headers = array('Content-Type: application/pdf');
+
+        return response()->download($file, $request->blueprint, $headers);
     }
 
     public function dashboard()

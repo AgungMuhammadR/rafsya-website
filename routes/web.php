@@ -12,6 +12,7 @@ use App\Http\Controllers\Page\OpenStoreController;
 use App\Http\Controllers\Page\ProductController;
 use App\Http\Controllers\Page\TransactionController;
 use App\Http\Controllers\Page\UserProductController;
+use App\Models\Transaction;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ use App\Http\Controllers\Page\UserProductController;
 
 Route::get('/', [DashboardController::class, 'home']);
 Route::get('faq', [DashboardController::class, 'faq']);
-Route::post('consultation', [ProductController::class, 'consultation'])->name('consultation.post');
+Route::get('consultation', [ProductController::class, 'consultation'])->name('consultation');
 Route::get('search-product', [ProductController::class, 'search_product']);
 
 Route::group(['prefix' => 'category'], function () {
@@ -46,6 +47,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'customer'], function () {
         Route::get('transaction_list', [ProfileController::class, 'transaction_list']);
+        Route::get('download_blueprint', [ProfileController::class, 'download_blueprint'])->name('download-blueprint');
         Route::get('open_store', [OpenStoreController::class, 'index']);
         Route::put('open_store', [OpenStoreController::class, 'openStore'])->name('open.store.put');
     });
