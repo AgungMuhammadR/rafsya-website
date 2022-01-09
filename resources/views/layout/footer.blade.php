@@ -35,12 +35,18 @@
             </div>
 
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                <div class="single-widget">
+                <div class="widget">
                     <h4 class="text-uppercase mb-4 font-weight-bold text-black">Call Us</h4>
-                    <form action="#" class="searchform">
-                        <input type="text" placeholder="Your email address" />
-                        <button type="submit" class="btn btn-default "><i class="fab fa-telegram-plane"></i></button>
-                    </form>
+                        <span class="call us">
+                            <div class="input-group w-100">
+                                <input type="text" class="form-control" placeholder="Send Email!" name="keyword">
+                                <div class="input-group-append">
+                                    <button class="btn" style="background-color: #1ACBAA;" id="btnSearch"data-toggle="modal" data-target="#exampleModalLong">
+                                        <i class="fab fa-telegram-plane" style="color: #fff;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </span>
                 </div>
             </div>
 

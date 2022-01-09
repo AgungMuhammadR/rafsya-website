@@ -220,19 +220,31 @@
             </div>
         </div>
         <br><br>
-        <img src="images/unsplash.png" class="img-fluid" alt="...">
+        <div class="row">
+            <div class="banner-disc">
+                <img src="images/unsplash.png" alt="">
+                <h2 class="heading">Get Discount up <br> to 50% off Today!</h2>
+                <div class=" button-heading mb-3 mb-m-1 order-md-1">
+                    <a href="" id="Checkout" class="btn mb-4 btn-lg">Explore All Products</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- sub kategori-->
     <div class="subkategori">
         <div class="container">
-            <h2 class="font-weight-bold" style="color: #002678;">Kategori</h2>
+            <h2 class="font-weight-bold" style="color: #002678; padding-left: 59px;">Kategori</h2>
+            <ul class="icons text-right text-white">
+                <span><i class="fas fa-chevron-left"></i></span>
+                <span><i class="fas fa-chevron-right"></i></span>
+            </ul>
             <div class="row mt-5">
                 <div class="col-sm-3">
                     <div class="kategori">
                         <div class="card-body">
                             @foreach ($categories as $category)
-                                <a href="category/{{ $category->slug }}" class="nav-link">
+                                <a href="category/{{ $category->slug }}" class="nav-link" style="margin-top: -70px; padding:40px; color:#5E6E89">
                                     <h3>{{ $category->name }}</h3>
                                 </a>
                             @endforeach
