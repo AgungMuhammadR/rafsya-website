@@ -92,9 +92,7 @@ class ProductController extends Controller
 
     public function search_product(Request $request)
     {
-        $data = Design::with('owner','type')->where('name', 'like', '%' . $request->keyword . '%')->get();
+        $data = Design::with('owner', 'type')->where('name', 'like', '%' . $request->keyword . '%')->get();
         return $data;
     }
-
-    
 }

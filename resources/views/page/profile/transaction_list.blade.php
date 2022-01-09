@@ -1,12 +1,14 @@
-<?php 
+<?php
 
-    Use App\Models\Design;
+use App\Models\Design;
 
-    function getName ($name) {
-
-        $data = Design::with('owner')->where('name', $name)->first();
-        return $data->owner->username;
-    }
+function getName($name)
+{
+    $data = Design::with('owner')
+        ->where('name', $name)
+        ->first();
+    return $data->owner->username;
+}
 
 ?>
 
@@ -46,9 +48,15 @@
                                         <td data-th="Product">
                                             <div class="row">
                                                 <div class="col-md-3 text-left">
-                                                    <img src="{{asset('designs/'.getName($item->product_name).'/'. $item->product_name.'/'.$item->product_photo[0])}}" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
-                                                        
+                                                    @if (empty($item->product_photo))
+                                                        <img src="{{ asset('images/kategori4.png') }}" alt=""
+                                                            class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                                    @else
+                                                        <img src="{{ asset('designs/' . getName($item->product_name) . '/' . $item->product_name . '/' . $item->product_photo[0]) }}"
+                                                            alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                                    @endif
                                                 </div>
+
                                                 <div class="col-md-9 text-left mt-sm-2">
                                                     <h5 class="font-weight-bold" style="color: #002678;">
                                                         {{ $item->product_name }}

@@ -66,8 +66,13 @@
                                 @foreach ($designs as $design)
                                     <div class="col-sm-3 m-3">
                                         <div class="shadow bg-body rounded">
-                                            <img src="{{ asset('/designs/'.$design['owner'].'/'.$design['name'].'/'.$design['image'][0]) }}" class="card-img-top"
-                                                alt="...">
+                                            @if (empty($design['image']))
+                                                <img src="{{ asset('images/kategori.png') }}" class="card-img-top"
+                                                    alt="...">
+                                            @else
+                                                <img src="{{ asset('/designs/' . $design['owner'] . '/' . $design['name'] . '/' . $design['image'][0]) }}"
+                                                    class="card-img-top" alt="...">
+                                            @endif
                                             <div class="card-body">
                                                 <h9 class="card-title font-weight-bold">{{ $design['name'] }}</h9>
                                                 <p class="tipe">Tipe {{ $design['type'] }}</p>
