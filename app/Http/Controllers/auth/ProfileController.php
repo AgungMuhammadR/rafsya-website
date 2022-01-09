@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Design;
 use App\Models\Location;
 use App\Models\Transaction;
 use App\Models\User;
@@ -83,6 +84,19 @@ class ProfileController extends Controller
 
     public function dashboard()
     {
-        return view('page.profile.dashboard');
+        $transactions = Transaction::whereJsonContains('detail', [['seller_id' => auth()->user()->id]])->orderBy('date', 'DESC')->get();
+        $transactions->transform(fn ($item) => [
+            'date' => Carbon::createFromFormat('Y-m-d', $item->date)->format('M d, Y'),
+            'detail' => array_filter(json_decode($item->detail), fn ($item) => $item->seller_id === auth()->user()->id),
+        ]);
+
+        $design = Design::where('user_id', auth()->user()->id)->get();
+        $product_sold = $design->sum(fn ($item) => $item->sold);
+
+        return view('page.profile.dashboard', [
+            'transactions' => $transactions,
+            'product_sold' => $product_sold,
+            'all_product' => $design->count()
+        ]);
     }
 }

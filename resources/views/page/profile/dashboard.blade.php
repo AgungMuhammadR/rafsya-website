@@ -26,7 +26,7 @@
                                 <div class="card-body">
                                     <h5 class="font-weight-bold mb-3 text-center">Produk Terjual</h5>
                                     </br> </br>
-                                    <h1 class="font-weight-bold mb-3 text-center"> </b> 120 </h1>
+                                    <h1 class="font-weight-bold mb-3 text-center"> </b> {{ $product_sold }} </h1>
                                     </br> </br>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                 <div class="card-body">
                                     <h5 class="font-weight-bold mb-3 text-center">Semua Produk</h5>
                                     </br> </br>
-                                    <h1 class="font-weight-bold mb-3 text-center"> </b> 220 </h1>
+                                    <h1 class="font-weight-bold mb-3 text-center"> </b> {{ $all_product }} </h1>
                                     </br> </br>
                                 </div>
                             </div>
@@ -70,45 +70,30 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <h5> List Produk Terjual </h5>
-                                    <td data-th="Product">
-                                        <div class="row">
-                                            <div class="col-md-3 text-left">
-                                                <img src="images/kategori4.png" alt=""
-                                                    class="img-fluid d-none d-md-block rounded mb-2 shadow ">
-                                            </div>
-                                            <div class="col-md-9 text-left mt-sm-2">
-                                                <h6>Rumah minimalis modern</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td data-th="Date">22 januari 2021</td>
-                                    <td class="actions" data-th="">
-                                        <div class="text-right">
-                                            <p>Rp.1.299.000</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td data-th="Product">
-                                        <div class="row">
-                                            <div class="col-md-3 text-left">
-                                                <img src="images/kategori4.png" alt=""
-                                                    class="img-fluid d-none d-md-block rounded mb-2 shadow ">
-                                            </div>
-                                            <div class="col-md-9 text-left mt-sm-2">
-                                                <h6>Rumah minimalis classic</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td data-th="Date">27 februari 2021</td>
-                                    <td class="actions" data-th="">
-                                        <div class="text-right">
-                                            <p>Rp.9.299.000</p>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <h5> List Produk Terjual </h5>
+                                @foreach ($transactions as $transaction)
+                                    @foreach ($transaction['detail'] as $item)
+                                        <tr>
+                                            <td data-th="Product">
+                                                <div class="row">
+                                                    <div class="col-md-3 text-left">
+                                                        <img src="{{ asset('images/kategori4.png') }}" alt=""
+                                                            class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                                    </div>
+                                                    <div class="col-md-9 text-left mt-sm-2">
+                                                        <h6>{{ $item->product_name }}</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td data-th="Date">{{ $transaction['date'] }}</td>
+                                            <td class="actions" data-th="">
+                                                <div class="text-right">
+                                                    <p>{{ 'Rp.' . number_format($item->product_price, 0, ',', '.') }}</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

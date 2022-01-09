@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
+use App\Models\Design;
 use App\Models\Transaction;
 use App\Models\User;
 use Carbon\Carbon;
@@ -54,6 +55,10 @@ class TransactionController extends Controller
 
         foreach ($items as $item) {
             $sum = $sum + $item->design->price;
+
+            Design::where('name', $item->design->name)->update([
+                'sold' => $item->design->sold + 1
+            ]);
         }
 
         Transaction::create([
