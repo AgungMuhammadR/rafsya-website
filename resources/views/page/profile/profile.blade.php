@@ -27,18 +27,18 @@
 
                 <div class="col-md-10">
                     <div class="kategori">
-                        <div class="row mt-12" style="width: 62rem;">
+                        <div class="row mt-12" style="width: 53rem;">
                             <div class="col-sm-12">
-                                <img src="images/Breadcrumb.png" alt="" width="960px">
+                                <img src="images/Breadcrumb.png" alt="" width="830px">
                                 <div class="rectangle">
-                                    <img src="images/Rectangle 41.png" alt="" width="940px">
+                                    <img src="images/Rectangle 41.png" alt="" width="810px">
                                 </div>
                                 <div class="col-lg-10 profile-panel">
                                     <div class="col-lg">
                                         @if (Auth::user()->picture)
                                             <img src="{{ Auth::user()->picture }}" style="width:9%">
                                         @else
-                                            <img src="{{ asset('images/profileImage.png') }}" alt="">
+                                            <img src="{{ asset('images/profileImage.png') }}" alt="" width="58px">
                                         @endif
                                     </div>
                                 </div>
@@ -107,17 +107,17 @@
                                         <input type="password" class="form-control @error('password') is-invalid @enderror"
                                             name="password" id="inputPassword">
                                     </div>
-                                    <div class="col-md-12 mt-4">
+                                    <div class="col-md-12 mt-4 mb-5">
                                         <label for="address" class="form-label font-weight-bold">Address</label>
                                         <input type="text" name="address"
                                             class="form-control @error('address') is-invalid @enderror" id="inputAdddress"
                                             value="{{ old('address', auth()->user()->address) }}">
                                     </div>
-                                    <div class="col-12 mt-4 mb-5 text-md-right">
-                                        <button id="Checkout" type="submit"
-                                            class="btn btn-primary pl-5 pr-5 rounded">Save</button>
-                                    </div>
                                 </form>
+                                <div class="col-12 mt-4 mb-5 text-md-right">
+                                    <button id="Checkout" type="submit"
+                                        class="btn mb-3 btn-lg pl-4 pr-4 rounded">Save</button>
+                                </div>
                             </div>
                         </div>
                     </div>
