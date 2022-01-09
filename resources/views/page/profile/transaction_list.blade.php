@@ -7,7 +7,7 @@
                 <div class="content" style="padding-left: 20px;">
                     <div class="card-body">
                         <a href="" class="nav-link">
-                            <h4 class="profile" style="color: #828599;">Profil</h4>
+                            <h4 class="profile" style="color: #828599;">Profile</h4>
                         </a>
                         <a href="" class="nav-link">
                             <h4 class="daftar-transaksi" style="color: #1ACBAA;">Daftar Transaksi</h4>

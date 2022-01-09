@@ -7,7 +7,7 @@
                 <div class="bg-transparent">
                     <div class="card-body">
                         <a href="{{ url('profile') }}" class="nav-link">
-                            <h4 class="profil" style="color: #828599;">Profil</h4>
+                            <h4 class="profil" style="color: #828599;">Profile</h4>
                         </a>
                         <a href="{{ url('profile/product') }}" class="nav-link">
                             <h4 class="produk" style="color: #1ACBAA;">Product</h4>
@@ -20,11 +20,11 @@
 
                 <div class="col-md-10">
                     <div class="profile-date">
-                        <div class="row mt-12" style="width: 70rem;">
+                        <div class="row mt-12" style="width: 53rem;">
                             <div class="col-sm-12">
-                                <img src="{{ asset('images/Breadcrumb.png') }}" alt="">
+                                <img src="{{ asset('images/Breadcrumb.png') }}" alt="" width="830px">
                                 <div class="rectangle">
-                                    <img src="{{ asset('images/Rectangle 41.png') }}" alt="">
+                                    <img src="{{ asset('images/Rectangle 41.png') }}" alt="" width="810px">
                                 </div>
                                 <div class="col-lg-10 profile-panel">
                                     <div class="col-lg">
@@ -48,7 +48,7 @@
                                         <div class="col-lg-3">
                                             @can('architect')
                                                 <a id="Checkout" class="btn mb-4 btn-lg"
-                                                    href="{{ url('/profile/insert_product') }}">
+                                                    href="{{ url('/profile/insert_product') }}" style="font-size: 16px">
                                                     Tambah
                                                     Produk
                                                 </a>
