@@ -32,10 +32,12 @@ $sumTotal = 0;
                                             <div class="col-md-3 text-left">
                                                 @if (empty($img))
                                                     <img src="{{ asset('images/kategori4.png') }}" alt=""
-                                                        class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                                        class="img-fluid d-none d-md-block rounded mb-2 shadow" width="auto"
+                                                        height="250">
                                                 @else
                                                     <img src="{{ asset('/designs/' . $cart->design->owner->username . '/' . $cart->design->name . '/' . $img[0]) }}"
-                                                        alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                                        alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow"
+                                                        width="auto" height="250">
                                                 @endif
                                             </div>
                                             <div class="col-md-9 text-left mt-sm-2">

@@ -118,7 +118,9 @@
 
         tagHtml =
             '<div class="col-sm-3"> <div class="product"> <div class="product-header"> <div class="bg-body rounded"> <img id="gambar' +
-            id + '" src="" class="card-img-top" alt="..."> <ul class="icons"> <a id="link-info' + id +
+            id +
+            '" src="" class="card-img-top" alt="..." width="auto" height="250"> <ul class="icons"> <a id="link-info' +
+            id +
             '" href=""> <span><i class="bx bx-info-circle"></i></span> </a> <form method="POST" action="{{ route('add.cart') }}"> @csrf <input type="hidden" id="input' +
             id +
             '" name="design_id" value="" /> <button type="submit" class="add-to-cart"> <span><i class="bx bx-shopping-bag"></i></span> </button> </form> </ul> <div class="card-body"> <h9 class="card-title font-weight-bold"> <div id="nama-produk' +

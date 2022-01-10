@@ -144,35 +144,41 @@
         <div class="kategori mt-3">
             <h2 class="title font-weight-bold" style="color: #002678;">Rekomendasi</h2>
             <div class="row mt-3">
-                @foreach($designs as $design)
-                <?php $img = json_decode($design->image) ?>
-                <div class="col-sm-3">
-                    <div class="product">
-                        <div class="product-header">
-                            <div class="shadow bg-body rounded">
-                                <img src="{{ asset('/designs/' . $design->owner->username . '/' . $design->name . '/' . $img[0]) }}" class="card-img-top" alt="...">
-                                <ul class="icons">
-                                    <a href="{{ url('type/' . $design->type->value . '/' . $design->id) }}">
-                                        <span><i class="bx bx-info-circle"></i></span>
-                                    </a>
-                                    <form method="POST" action="{{ route('add.cart') }}">
-                                        @csrf
-                                        <input type="hidden" name="design_id"
-                                        value="{{ $design['id'] }}" />
-                                        <button type="submit" class="add-to-cart">
-                                            <span><i class="bx bx-shopping-bag"></i></span>
-                                        </button>
-                                    </form>
-                                </ul>
-                                <div class="card-body">
-                                    <h9 class="card-title font-weight-bold"> {{$design->name}} </h9>
-                                    <p class="tipe">Tipe {{$design->type->value}}</p>
-                                    <h4 class="price font-weight-bold"> {{$design->price}} </h4>
+                @foreach ($designs as $design)
+                    <?php $img = json_decode($design->image); ?>
+                    <div class="col-sm-3">
+                        <div class="product">
+                            <div class="product-header">
+                                <div class="shadow bg-body rounded">
+                                    @if (empty($img))
+                                        <img src="{{ asset('images/kategori.png') }}" class="card-img-top" alt="..."
+                                            width="auto" height="250">
+                                    @else
+                                        <img src="{{ asset('/designs/' . $design->owner->username . '/' . $design->name . '/' . $img[0]) }}"
+                                            class="card-img-top" alt="..." width="auto" height="250">
+                                    @endif
+                                    <ul class="icons">
+                                        <a href="{{ url('type/' . $design->type->value . '/' . $design->id) }}">
+                                            <span><i class="bx bx-info-circle"></i></span>
+                                        </a>
+                                        <form method="POST" action="{{ route('add.cart') }}">
+                                            @csrf
+                                            <input type="hidden" name="design_id" value="{{ $design['id'] }}" />
+                                            <button type="submit" class="add-to-cart">
+                                                <span><i class="bx bx-shopping-bag"></i></span>
+                                            </button>
+                                        </form>
+                                    </ul>
+                                    <div class="card-body">
+                                        <h9 class="card-title font-weight-bold"> {{ $design->name }} </h9>
+                                        <p class="tipe">Tipe {{ $design->type->value }}</p>
+                                        <h4 class="price font-weight-bold">
+                                            {{ 'Rp.' . number_format($design->price, 0, ',', '.') }} </h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>

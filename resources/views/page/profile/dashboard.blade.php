@@ -91,11 +91,13 @@ function getName($name)
                                                     <div class="col-md-3 text-left">
                                                         @if (empty($item->product_photo))
                                                             <img src="{{ asset('images/kategori4.png') }}" alt=""
-                                                                class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                                                class="img-fluid d-none d-md-block rounded mb-2 shadow "
+                                                                width="auto" height="250">
                                                         @else
                                                             <img src="{{ asset('designs/' . getName($item->product_name) . '/' . $item->product_name . '/' . $item->product_photo[0]) }}"
                                                                 alt=""
-                                                                class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                                                class="img-fluid d-none d-md-block rounded mb-2 shadow "
+                                                                width="auto" height="250">
                                                         @endif
                                                     </div>
                                                     <div class="col-md-9 text-left mt-sm-2">

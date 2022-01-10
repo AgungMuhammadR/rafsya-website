@@ -68,10 +68,10 @@
                                         <div class="shadow bg-body rounded">
                                             @if (empty($design['image']))
                                                 <img src="{{ asset('images/kategori.png') }}" class="card-img-top"
-                                                    alt="...">
+                                                    alt="..." width="auto" height="250">
                                             @else
                                                 <img src="{{ asset('/designs/' . $design['owner'] . '/' . $design['name'] . '/' . $design['image'][0]) }}"
-                                                    class="card-img-top" alt="...">
+                                                    class="card-img-top" alt="..." width="auto" height="250">
                                             @endif
                                             <div class="card-body">
                                                 <h9 class="card-title font-weight-bold">{{ $design['name'] }}</h9>
