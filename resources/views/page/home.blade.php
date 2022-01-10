@@ -93,36 +93,38 @@
             <div class="row mt-4">
                 <div class="col-sm-4 card w-50">
                     <div class="card-body text-center">
-                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-expanded="false" style="color: #1ACBAA; border-radius:50px">
+                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-expanded="false" style="color: #1ACBAA; border-radius:50px">
                             Kategori
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            @foreach ($categories as $category)
+                                <a class="dropdown-item"
+                                    href="{{ url("/category/{$category->slug}") }}">{{ $category->name }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-4 card w-50">
                     <div class="card-body text-center">
-                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-expanded="false" style="color: #1ACBAA">
+                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-expanded="false" style="color: #1ACBAA">
                             Tipe
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            @foreach ($types as $type)
+                                <a class="dropdown-item"
+                                    href="{{ url("/type/{$type->value}") }}">{{ $type->value }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-4 card w-50">
                     <div class="card-body text-center">
-                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-expanded="false" style="color: #1ACBAA">
+                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-expanded="false" style="color: #1ACBAA">
                             Harga
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -142,81 +144,42 @@
         <div class="kategori mt-3">
             <h2 class="title font-weight-bold" style="color: #002678;">Rekomendasi</h2>
             <div class="row mt-3">
-                <div class="col-sm-3">
-                    <div class="product">
-                        <div class="product-header">
-                            <div class="shadow bg-body rounded">
-                                <img src="images/kategori.png" class="card-img-top" alt="...">
-                                <ul class="icons">
-                                    <span><i class="bx bx-heart"></i></span>
-                                    <span><i class="bx bx-shopping-bag"></i></span>
-                                </ul>
-                                <div class="card-body">
-                                    <h9 class="card-title font-weight-bold">Rumah Minimalis Modern</h9>
-                                    <p class="tipe">Tipe 34</p>
-                                    <h4 class="price font-weight-bold">Rp.7.000.000</h4>
+                @foreach ($designs as $design)
+                    <?php $img = json_decode($design->image); ?>
+                    <div class="col-sm-3">
+                        <div class="product">
+                            <div class="product-header">
+                                <div class="shadow bg-body rounded">
+                                    @if (empty($img))
+                                        <img src="{{ asset('images/kategori.png') }}" class="card-img-top" alt="..."
+                                            width="auto" height="250">
+                                    @else
+                                        <img src="{{ asset('/designs/' . $design->owner->username . '/' . $design->name . '/' . $img[0]) }}"
+                                            class="card-img-top" alt="..." width="auto" height="250">
+                                    @endif
+                                    <ul class="icons">
+                                        <a href="{{ url('type/' . $design->type->value . '/' . $design->id) }}">
+                                            <span><i class="bx bx-info-circle"></i></span>
+                                        </a>
+                                        <form method="POST" action="{{ route('add.cart') }}">
+                                            @csrf
+                                            <input type="hidden" name="design_id" value="{{ $design['id'] }}" />
+                                            <button type="submit" class="add-to-cart">
+                                                <span><i class="bx bx-shopping-bag"></i></span>
+                                            </button>
+                                        </form>
+                                    </ul>
+                                    <div class="card-body">
+                                        <h9 class="card-title font-weight-bold"> {{ $design->name }} </h9>
+                                        <p class="tipe">Tipe {{ $design->type->value }}</p>
+                                        <h4 class="price font-weight-bold">
+                                            {{ 'Rp.' . number_format($design->price, 0, ',', '.') }} </h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="product">
-                        <div class="product-header">
-                            <div class="shadow bg-body rounded">
-                                <img src="images/kategori.png" class="card-img-top" alt="...">
-                                <ul class="icons">
-                                    <span><i class="bx bx-heart"></i></span>
-                                    <span><i class="bx bx-shopping-bag"></i></span>
-                                </ul>
-                                <div class="card-body">
-                                    <h9 class="card-title font-weight-bold">Rumah Minimalis Modern</h9>
-                                    <p class="tipe">Tipe 34</p>
-                                    <h8 class="price font-weight-bold">Rp.7.000.000</h8>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="product">
-                        <div class="product-header">
-                            <div class="shadow bg-body rounded">
-                                <img src="images/kategori.png" class="card-img-top" alt="...">
-                                <ul class="icons">
-                                    <span><i class="bx bx-heart"></i></span>
-                                    <span><i class="bx bx-shopping-bag"></i></span>
-                                </ul>
-                                <div class="card-body">
-                                    <h9 class="card-title font-weight-bold">Rumah Minimalis Modern</h9>
-                                    <p class="tipe">Tipe 34</p>
-                                    <h8 class="price font-weight-bold">Rp.7.000.000</h8>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="product">
-                        <div class="product-header">
-                            <div class="shadow bg-body rounded">
-                                <img src="images/kategori.png" class="card-img-top" alt="...">
-                                <ul class="icons">
-                                    <span><i class="bx bx-heart"></i></span>
-                                    <span><i class="bx bx-shopping-bag"></i></span>
-                                </ul>
-                                <div class="card-body">
-                                    <h9 class="card-title font-weight-bold">Rumah Minimalis Modern</h9>
-                                    <p class="tipe">Tipe 34</p>
-                                    <h8 class="price font-weight-bold">Rp.7.000.000</h8>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <br><br>
@@ -244,7 +207,8 @@
                     <div class="kategori">
                         <div class="card-body">
                             @foreach ($categories as $category)
-                                <a href="category/{{ $category->slug }}" class="nav-link" style="margin-top: -70px; padding:40px; color:#5E6E89">
+                                <a href="category/{{ $category->slug }}" class="nav-link"
+                                    style="margin-top: -70px; padding:40px; color:#5E6E89">
                                     <h3>{{ $category->name }}</h3>
                                 </a>
                             @endforeach

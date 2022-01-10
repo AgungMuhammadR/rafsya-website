@@ -6,15 +6,15 @@
         <div class="profil">
             <div class="row">
                 <div class="bg-transparent">
-                    <div class="card-body" style="width: 18rem;">
+                    <div class="card-body">
                         <a href="{{ url('profile') }}" class="nav-link">
-                            <h4 class="profil" style="color: #828599;">Profil</h4>
+                            <h4 class="profil" style="color: #828599;">Profile</h4>
                         </a>
                         <a href="{{ url('profile/product') }}" class="nav-link">
                             <h4 class="produk" style="color: #1ACBAA;">Product</h4>
                         </a>
-                        <a href="" class="nav-link">
-                            <h4 class="pesanan" style="color: #828599;">Pesanan</h4>
+                        <a href="{{ url('profile/dashboard') }}" class="nav-link">
+                            <h4 class="dashboard" style="color: #828599;">Dashboard</h4>
                         </a>
                     </div>
                 </div>

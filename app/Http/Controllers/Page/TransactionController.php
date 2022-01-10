@@ -61,6 +61,11 @@ class TransactionController extends Controller
             Design::where('name', $item->design->name)->update([
                 'sold' => $item->design->sold + 1
             ]);
+
+            $seller = User::find($item->design->user_id);
+            $seller->update([
+                'income' => $seller->income + $item->design->price
+            ]);
         }
 
         Transaction::create([
@@ -72,7 +77,7 @@ class TransactionController extends Controller
         Cart::where('user_id', auth()->user()->id)->delete();
 
         return view('page.payment.payment_confirmed', [
-            'title' => 'Pembayaran Berhasil',
+            'title' => 'Pembayaran',
             'items' => $items,
             'sum' => 'Rp.' . number_format($sum, 0, ',', '.')
         ]);

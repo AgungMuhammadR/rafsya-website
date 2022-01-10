@@ -72,10 +72,11 @@
                             <div class="row">
                                 <div class="col-md-3 mt-4">
                                     @if (empty($img))
-                                        <img src="{{ asset('images/img1.png') }}" style="width: 100%;">
+                                        <img src="{{ asset('images/img1.png') }}" style="width: 100%;" width="auto"
+                                            height="250">
                                     @else
                                         <img src="{{ asset('/designs/' . $item->design->owner->username . '/' . $item->design->name . '/' . $img[0]) }}"
-                                            style="width: 100%;">
+                                            style="width: 100%;" width="auto" height="250">
                                     @endif
                                 </div>
                                 <div class="col-md-8 pl-5 mt-3 font-weight-bold">

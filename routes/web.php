@@ -56,6 +56,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
         Route::get('insert_product', [ProductController::class, 'insertProductPage']);
         Route::post('insert_product', [ProductController::class, 'insertProductData'])->name('product.post');
         Route::get('dashboard', [ProfileController::class, 'dashboard']);
+        Route::post('withdraw_income', [ProfileController::class, 'withdraw_income'])->name('withdraw.income.post');
     });
 });
 
