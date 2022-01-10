@@ -152,8 +152,17 @@
                             <div class="shadow bg-body rounded">
                                 <img src="{{ asset('/designs/' . $design->owner->username . '/' . $design->name . '/' . $img[0]) }}" class="card-img-top" alt="...">
                                 <ul class="icons">
-                                    <span><i class="bx bx-heart"></i></span>
-                                    <span><i class="bx bx-shopping-bag"></i></span>
+                                    <a href="{{ url('type/' . $design->type->value . '/' . $design->id) }}">
+                                        <span><i class="bx bx-info-circle"></i></span>
+                                    </a>
+                                    <form method="POST" action="{{ route('add.cart') }}">
+                                        @csrf
+                                        <input type="hidden" name="design_id"
+                                        value="{{ $design['id'] }}" />
+                                        <button type="submit" class="add-to-cart">
+                                            <span><i class="bx bx-shopping-bag"></i></span>
+                                        </button>
+                                    </form>
                                 </ul>
                                 <div class="card-body">
                                     <h9 class="card-title font-weight-bold"> {{$design->name}} </h9>
