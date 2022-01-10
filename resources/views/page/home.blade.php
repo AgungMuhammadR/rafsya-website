@@ -144,81 +144,27 @@
         <div class="kategori mt-3">
             <h2 class="title font-weight-bold" style="color: #002678;">Rekomendasi</h2>
             <div class="row mt-3">
+                @foreach($designs as $design)
+                <?php $img = json_decode($design->image) ?>
                 <div class="col-sm-3">
                     <div class="product">
                         <div class="product-header">
                             <div class="shadow bg-body rounded">
-                                <img src="images/kategori.png" class="card-img-top" alt="...">
+                                <img src="{{ asset('/designs/' . $design->owner->username . '/' . $design->name . '/' . $img[0]) }}" class="card-img-top" alt="...">
                                 <ul class="icons">
                                     <span><i class="bx bx-heart"></i></span>
                                     <span><i class="bx bx-shopping-bag"></i></span>
                                 </ul>
                                 <div class="card-body">
-                                    <h9 class="card-title font-weight-bold">Rumah Minimalis Modern</h9>
-                                    <p class="tipe">Tipe 34</p>
-                                    <h4 class="price font-weight-bold">Rp.7.000.000</h4>
+                                    <h9 class="card-title font-weight-bold"> {{$design->name}} </h9>
+                                    <p class="tipe">Tipe {{$design->type->value}}</p>
+                                    <h4 class="price font-weight-bold"> {{$design->price}} </h4>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-sm-3">
-                    <div class="product">
-                        <div class="product-header">
-                            <div class="shadow bg-body rounded">
-                                <img src="images/kategori.png" class="card-img-top" alt="...">
-                                <ul class="icons">
-                                    <span><i class="bx bx-heart"></i></span>
-                                    <span><i class="bx bx-shopping-bag"></i></span>
-                                </ul>
-                                <div class="card-body">
-                                    <h9 class="card-title font-weight-bold">Rumah Minimalis Modern</h9>
-                                    <p class="tipe">Tipe 34</p>
-                                    <h8 class="price font-weight-bold">Rp.7.000.000</h8>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="product">
-                        <div class="product-header">
-                            <div class="shadow bg-body rounded">
-                                <img src="images/kategori.png" class="card-img-top" alt="...">
-                                <ul class="icons">
-                                    <span><i class="bx bx-heart"></i></span>
-                                    <span><i class="bx bx-shopping-bag"></i></span>
-                                </ul>
-                                <div class="card-body">
-                                    <h9 class="card-title font-weight-bold">Rumah Minimalis Modern</h9>
-                                    <p class="tipe">Tipe 34</p>
-                                    <h8 class="price font-weight-bold">Rp.7.000.000</h8>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="product">
-                        <div class="product-header">
-                            <div class="shadow bg-body rounded">
-                                <img src="images/kategori.png" class="card-img-top" alt="...">
-                                <ul class="icons">
-                                    <span><i class="bx bx-heart"></i></span>
-                                    <span><i class="bx bx-shopping-bag"></i></span>
-                                </ul>
-                                <div class="card-body">
-                                    <h9 class="card-title font-weight-bold">Rumah Minimalis Modern</h9>
-                                    <p class="tipe">Tipe 34</p>
-                                    <h8 class="price font-weight-bold">Rp.7.000.000</h8>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <br><br>
