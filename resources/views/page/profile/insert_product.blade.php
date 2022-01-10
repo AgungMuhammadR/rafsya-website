@@ -6,15 +6,15 @@
         <div class="profil">
             <div class="row">
                 <div class="bg-transparent">
-                    <div class="card-body" style="width: 18rem;">
+                    <div class="card-body">
                         <a href="{{ url('profile') }}" class="nav-link">
-                            <h4 class="profil" style="color: #828599;">Profil</h4>
+                            <h4 class="profil" style="color: #828599;">Profile</h4>
                         </a>
                         <a href="{{ url('profile/product') }}" class="nav-link">
                             <h4 class="produk" style="color: #1ACBAA;">Product</h4>
                         </a>
-                        <a href="" class="nav-link">
-                            <h4 class="pesanan" style="color: #828599;">Pesanan</h4>
+                        <a href="{{ url('profile/dashboard') }}" class="nav-link">
+                            <h4 class="dashboard" style="color: #828599;">Dashboard</h4>
                         </a>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                             <div class="row mb-3">
                                 <div class="col-lg-4">
                                     <div class="card" style="border: none; width: 50%;" id="card-upload-image">
-                                        <input type="image" src="{{ asset('/images/icon_add.png') }}"
+                                        <input type="image" src="{{ asset('/images/upload-icon.png') }}"
                                             class="container mt-3">
                                     </div>
                                 </div>
@@ -108,14 +108,31 @@
     </div>
 
     @push('js')
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script type="text/javascript">
             var sumFile = 0;
 
             $("input[type='image']").click(function() {
-                $("input[id='my_file']").click();
+                $("input[id=my_file]").click();
+                $("input[id=my_file]").val(null);
             });
 
-            $('#my_file').change(function() {
+            $('#my_file').on('change', function() {
+
+                $('#list_file').html('');
+                sumFile = 0;
+
+                if (this.files.length > 5) {
+                    Swal.fire({
+                            title: 'Jumlah File Melebihi Batas, Ulangi Upload File',
+                            icon: 'error'
+                        }
+
+                    )
+                    $('#list_file').html('');
+                    sumFile = 0;
+                    $("input[id=my_file]").val(null);
+                }
 
                 for (var i = 0; i < this.files.length; i++) {
                     var fileName = this.files[i].name;
@@ -134,9 +151,9 @@
             $('#blueprintFile').change(function() {
                 var filename = this.files[0].name
 
-                $('#blueprint').text(filename)
+                $('#blueprint').text(filename);
             })
-            $('#blueprintFile').val('')
+            $('#blueprintFile').val('');
         </script>
     @endpush
 @endsection

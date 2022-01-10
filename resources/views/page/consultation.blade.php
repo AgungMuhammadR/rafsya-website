@@ -16,7 +16,7 @@
                                 type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
                                 aria-controls="collapseTwo">
                                 <div class="container">
-                                    <a href="{{ url('https://mail.google.com/mail/?view=cm&fs=1&to=xaverius0001@gmail.com') }}"
+                                    <a href="{{ url("https://mail.google.com/mail/?view=cm&fs=1&to={$email}") }}"
                                         target="_blank">
                                         <div class="d-flex" style="padding-left: 90px;">
                                             <img src="images/icongmail.png" width="53%">
@@ -33,7 +33,7 @@
                                 type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
                                 aria-controls="collapseTwo">
                                 <div class="container">
-                                    <a href="{{ url('http://api.whatsapp.com/send?phone=6281341555959') }}"
+                                    <a href="{{ url("http://api.whatsapp.com/send?phone=${phone_number}") }}"
                                         target="_blank">
                                         <div class="d-flex" style="padding-left: 90px;">
                                             <img src="images/whatsapp.png" width="40%">

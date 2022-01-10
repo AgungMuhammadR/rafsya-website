@@ -33,7 +33,7 @@
                                             type="button" data-toggle="collapse" data-target="#collapseTwo"
                                             aria-expanded="false" aria-controls="collapseTwo">
                                             <div class="d-flex align-items-center">
-                                                <img src="images/mandiri.jpeg" width="20%">
+                                                <img src="{{ asset('images/mandiri.jpeg') }}" width="20%">
                                                 <span class="pl-4">Mandiri Virtual Account</span>
                                             </div>
                                         </button>
@@ -53,9 +53,12 @@
                                 <a href="{{ url('cart') }}" style="color: #1ACBAA;">Back to Cart</a>
                             </div>
                             <div class="col-md-6 text-md-right">
-                                <a id="Checkout" href="{{ url('payment_detail') }}"
-                                    class="btn mb-4 btn-lg pl-5 pr-5 rounded-pill"
-                                    style=" background-color: rgba(26, 203, 170, 1); color: white;">Checkout</a>
+                                <form action="{{ route('checkout.post') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="items" value="{{ $carts }}">
+                                    <button type="submit" id="Checkout" class="btn mb-4 btn-lg pl-5 pr-5 rounded-pill"
+                                        style=" background-color: rgba(26, 203, 170, 1); color: white;">Checkout</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -65,9 +68,16 @@
                 <div class="detail_payment" style="background: #F2F2F2; height: 100%;">
                     <div class="container" style="padding: 60px;">
                         @foreach ($carts as $item)
+                            <?php $img = json_decode($item->design->image); ?>
                             <div class="row">
                                 <div class="col-md-3 mt-4">
-                                    <img src="{{ asset('images/img1.png') }}" style="width: 100%;">
+                                    @if (empty($img))
+                                        <img src="{{ asset('images/img1.png') }}" style="width: 100%;" width="auto"
+                                            height="250">
+                                    @else
+                                        <img src="{{ asset('/designs/' . $item->design->owner->username . '/' . $item->design->name . '/' . $img[0]) }}"
+                                            style="width: 100%;" width="auto" height="250">
+                                    @endif
                                 </div>
                                 <div class="col-md-8 pl-5 mt-3 font-weight-bold">
                                     <div style="font-size: 18px;">{{ $item->design->name }}</div>

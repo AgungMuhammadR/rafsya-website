@@ -21,4 +21,9 @@ class Design extends Model
     {
         return $this->belongsTo(Type::class, 'type_id');
     }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

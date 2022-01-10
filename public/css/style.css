@@ -31,7 +31,7 @@ body {
 }
 
 .jumbotron .display-4 {
-    margin-top: 220px;
+    margin-top: 180px;
     font-size: 64px;
     font-family: "Gilroy";
 }
@@ -56,7 +56,26 @@ body {
     color: #002678;
     padding-right: 60px;
 }
-
+.banner-disc {
+    position: relative;
+    margin: 0 auto;
+}
+.banner-disc .img {
+    width: 100%;
+}
+.heading {
+    color: #fff;
+    position:absolute;
+    top: 60px;
+    width: 100%;
+    padding: 50px;
+}
+.button-heading {
+    position:absolute;
+    top: 200px;
+    width: 100%;
+    padding: 50px;
+}
 
 /* Product */
 .product-center {
@@ -120,6 +139,11 @@ body {
     line-height: 1rem;
     cursor: pointer;
     transition: all 300ms ease-in-out;
+}
+.subkategori .icons span {
+    background-color: #1ACBAA;
+    border-radius: 50%;
+    padding: 15px;
 }
 
 .product-header .icons span i {
@@ -270,10 +294,11 @@ body {
 .rectangle {
     margin-top: -50px;
     padding-left: 10px;
+    width: 50px;
 }
 
 .profile-panel {
-    margin-top: -110px;
+    margin-top: -86px;
 }
 
 .icon-manage {
@@ -282,7 +307,7 @@ body {
 }
 
 .profile-info {
-    margin-top: -75px;
+    margin-top: -66px;
     padding-left: 120px;
 }
 
@@ -294,8 +319,10 @@ body {
 
 .badge {
     padding: 4px 7px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 10px;
+    background-color: red;
+    
 }
 
 /* Detail-Product Style */

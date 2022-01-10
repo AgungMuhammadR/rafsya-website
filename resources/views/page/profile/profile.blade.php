@@ -7,33 +7,38 @@
                 <div class="bg-transparent">
                     <div class="card-body">
                         <a href="{{ url('profile') }}" class="nav-link">
-                            <h4 class="profil" style="color: #1ACBAA;">Profil</h4>
+                            <h4 class="profil" style="color: #1ACBAA;">Profile</h4>
                         </a>
-                        @if (auth()->user()->role_id === 1)
+                        @can('customer')
+                            <a href="{{ url('profile/transaction_list') }}" class="nav-link">
+                                <h4 class="daftar-transaksi text-wrap" style="color: #828599;">Daftar<br>Transaksi</h4>
+                            </a>
+                        @endcan
+                        @can('architect')
                             <a href="{{ url('profile/product') }}" class="nav-link">
                                 <h4 class="produk" style="color: #828599;">Product</h4>
                             </a>
                             <a href="{{ url('profile/dashboard') }}" class="nav-link">
                                 <h4 class="dashboard" style="color: #828599;">Dashboard</h4>
                             </a>
-                        @endif
+                        @endcan
                     </div>
                 </div>
 
                 <div class="col-md-10">
                     <div class="kategori">
-                        <div class="row mt-12" style="width: 70rem;">
+                        <div class="row mt-12" style="width: 53rem;">
                             <div class="col-sm-12">
-                                <img src="images/Breadcrumb.png" alt="">
+                                <img src="images/Breadcrumb.png" alt="" width="830px">
                                 <div class="rectangle">
-                                    <img src="images/Rectangle 41.png" alt="">
+                                    <img src="images/Rectangle 41.png" alt="" width="810px">
                                 </div>
                                 <div class="col-lg-10 profile-panel">
                                     <div class="col-lg">
                                         @if (Auth::user()->picture)
                                             <img src="{{ Auth::user()->picture }}" style="width:9%">
                                         @else
-                                            <img src="images/profileImage.png" alt="">
+                                            <img src="{{ asset('images/profileImage.png') }}" alt="" width="58px">
                                         @endif
                                     </div>
                                 </div>
@@ -48,11 +53,12 @@
                                         </div>
 
                                         <div class="col-lg-3">
-                                            @if (auth()->user()->role_id === 2)
-                                                <a class="btn btn-primary" href="{{ url('profile/open_store') }}"> Buka
+                                            @can('customer')
+                                                <a id="Checkout" class="btn mb-4 btn-lg"
+                                                    href="{{ url('profile/open_store') }}"> Buka
                                                     Toko
                                                 </a>
-                                            @endif
+                                            @endcan
                                         </div>
                                     </div>
                                 </div>
@@ -101,14 +107,15 @@
                                         <input type="password" class="form-control @error('password') is-invalid @enderror"
                                             name="password" id="inputPassword">
                                     </div>
-                                    <div class="col-md-12 mt-4">
+                                    <div class="col-md-12 mt-4 mb-5">
                                         <label for="address" class="form-label font-weight-bold">Address</label>
                                         <input type="text" name="address"
                                             class="form-control @error('address') is-invalid @enderror" id="inputAdddress"
                                             value="{{ old('address', auth()->user()->address) }}">
                                     </div>
                                     <div class="col-12 mt-4 mb-5 text-md-right">
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                        <button id="Checkout" type="submit"
+                                            class="btn mb-3 btn-lg pl-4 pr-4 rounded">Save</button>
                                     </div>
                                 </form>
                             </div>

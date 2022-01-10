@@ -7,73 +7,83 @@ use App\Models\Category;
 use App\Models\Design;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 class ProductController extends Controller
 {
-    public function category($category)
+    public function index()
     {
-        $designs = Design::whereHas('category', fn ($query) => $query->where('slug', $category))->get();
+        $designs = Design::with('owner')->where('user_id', auth()->user()->id)->get();
 
         $designs->transform(fn ($item) => [
-            'id' => $item->id,
             'name' => $item->name,
             'type' => Type::find($item->type_id)->value,
-            'price' => 'Rp.' . number_format($item->price, 0, ',', '.')
+            'price' => 'Rp.' . number_format($item->price, 0, ',', '.'),
+            'owner' => $item->owner->username,
+            'image' => json_decode($item->image)
         ]);
 
-        return view('page.product.product', [
-            'title' => 'Kategori',
-            'items' => Category::orderBy('id', 'ASC')->get(),
-            'designs' => $designs,
-            'current_state' => ucwords($category)
-        ]);
-    }
-
-    public function detail_category($category, $id)
-    {
-        $design = Design::where('id', $id)->whereHas('category', fn ($query) => $query->where('slug', $category))->first();
-
-        return view('page.product.detail_product', [
-            'title' => 'Kategori',
-            'items' => Category::orderBy('id', 'ASC')->get(),
-            'design' => $design,
-            'current_state' => ucwords($category)
+        return view('page.profile.list_product', [
+            'title' => 'Produk',
+            'designs' => $designs
         ]);
     }
 
-    public function type($type)
+    public function insertProductPage()
     {
-        $designs = Design::whereHas('type', fn ($query) => $query->where('value', $type))->get();
-
-        $designs->transform(fn ($item) => [
-            'id' => $item->id,
-            'name' => $item->name,
-            'type' => $item->type->value,
-            'price' => 'Rp.' . number_format($item->price, 0, ',', '.')
-        ]);
-
-        return view('page.product.product', [
-            'title' => 'Tipe',
-            'items' => Type::orderBy('id', 'ASC')->get(),
-            'designs' => $designs,
-            'current_state' => $type
+        return view('page.profile.insert_product', [
+            'title' => 'Tambah Produk',
+            'categories' => Category::orderBy('id', 'ASC')->get(),
+            'types' => Type::orderBy('id', 'ASC')->get()
         ]);
     }
 
-    public function detail_type($type, $id)
+    public function insertProductData(Request $request)
     {
-        $design = Design::where('id', $id)->whereHas('type', fn ($query) => $query->where('value', $type))->first();
+        $messages = [
+            "image.max" => "file can't be more than 5."
+        ];
 
-        return view('page.product.detail_product', [
-            'title' => 'Tipe',
-            'items' => Category::orderBy('id', 'ASC')->get(),
-            'design' => $design,
-            'current_state' => ucwords($type)
+        $this->validate($request, [
+            'image' => 'nullable|max:5',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'blueprint' => 'required|mimes:pdf',
+            'name' => 'required|unique:designs',
+            'description' => 'required',
+            'price' => 'required'
+        ], $messages);
+
+        $image_data = [];
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $image) {
+                $name = $image->getClientOriginalName();
+                $this->upload($name, $image, 'designs/' . auth()->user()->username . '/' . $request->name);
+                $image_data[] = $name;
+            }
+        }
+
+        if ($request->hasFile('blueprint')) {
+            $blueprint = $request->blueprint->getClientOriginalName();
+            $this->upload($blueprint, $request->blueprint, 'designs/' . auth()->user()->username . '/' . $request->name);
+        }
+
+        $design = Design::create([
+            'name' => $request->name,
+            'user_id' => auth()->user()->id,
+            'category_id' => $request->category_id,
+            'image' => json_encode($image_data),
+            'blueprint' => $blueprint,
+            'type_id' => $request->type_id,
+            'description' => $request->description,
+            'price' => $request->price
         ]);
+
+        return redirect('/profile/product')->with('success', 'Product has been added!');
     }
 
-    public function detail()
+    private function upload($name, UploadedFile $photo, $folder)
     {
-        return view('page.product.detail_product');
+        $destination_path = $folder;
+        $photo->move($destination_path, $name);
     }
 }

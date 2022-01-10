@@ -17,45 +17,62 @@
                 <div class="product-imgs container" style="padding: 50px; margin-top: -30px; padding-left: 5px;">
                     <div class="img-display">
                         <div class="img-showcase">
-                            <img src="{{ asset('images/detail/gmr1.png') }}" alt="..." id="img-detail">
-                            <img src="{{ asset('images/detail/gmr2.png') }}" alt="..." id="img-detail">
-                            <img src="{{ asset('images/detail/gmr3.png') }}" alt="..." id="img-detail">
-                            <img src="{{ asset('images/detail/gmr4.png') }}" alt="..." id="img-detail">
-                            <img src="{{ asset('images/detail/gmr5.png') }}" alt="..." id="img-detail">
-                            <img src="{{ asset('images/detail/gmr6.png') }}" alt="..." id="img-detail">
+                            @if (empty(json_decode($design->image)))
+                                <img src="{{ asset('images/detail/gmr1.png') }}" alt="..." id="img-detail">
+                                <img src="{{ asset('images/detail/gmr2.png') }}" alt="..." id="img-detail">
+                                <img src="{{ asset('images/detail/gmr3.png') }}" alt="..." id="img-detail">
+                                <img src="{{ asset('images/detail/gmr4.png') }}" alt="..." id="img-detail">
+                                <img src="{{ asset('images/detail/gmr5.png') }}" alt="..." id="img-detail">
+                                <img src="{{ asset('images/detail/gmr6.png') }}" alt="..." id="img-detail">
+                            @else
+                                @foreach (json_decode($design->image) as $img)
+                                    <img src="{{ asset('/designs/' . $design->owner->username . '/' . $design->name . '/' . $img) }}"
+                                        alt="..." id="img-detail">
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="img-select">
-                        <div class="img-item">
-                            <a href="#" data-id="1">
-                                <img src="{{ asset('images/detail/gmr1.png') }}" alt="..." style="width: 76px">
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="2">
-                                <img src="{{ asset('images/detail/gmr2.png') }}" alt="..." style="width: 76px">
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="3">
-                                <img src="{{ asset('images/detail/gmr3.png') }}" alt="..." style="width: 76px">
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="4">
-                                <img src="{{ asset('images/detail/gmr4.png') }}" alt="..." style="width: 76px">
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="5">
-                                <img src="{{ asset('images/detail/gmr5.png') }}" alt="..." style="width: 76px">
-                            </a>
-                        </div>
-                        <div class="img-item">
-                            <a href="#" data-id="6">
-                                <img src="{{ asset('images/detail/gmr6.png') }}" alt="..." style="width: 76px">
-                            </a>
-                        </div>
+                        @if (empty(json_decode($design->image)))
+                            <div class="img-item">
+                                <a href="#" data-id="1">
+                                    <img src="{{ asset('images/detail/gmr1.png') }}" alt="..." style="width: 76px">
+                                </a>
+                            </div>
+                            <div class="img-item">
+                                <a href="#" data-id="2">
+                                    <img src="{{ asset('images/detail/gmr2.png') }}" alt="..." style="width: 76px">
+                                </a>
+                            </div>
+                            <div class="img-item">
+                                <a href="#" data-id="3">
+                                    <img src="{{ asset('images/detail/gmr3.png') }}" alt="..." style="width: 76px">
+                                </a>
+                            </div>
+                            <div class="img-item">
+                                <a href="#" data-id="4">
+                                    <img src="{{ asset('images/detail/gmr4.png') }}" alt="..." style="width: 76px">
+                                </a>
+                            </div>
+                            <div class="img-item">
+                                <a href="#" data-id="5">
+                                    <img src="{{ asset('images/detail/gmr5.png') }}" alt="..." style="width: 76px">
+                                </a>
+                            </div>
+                            <div class="img-item">
+                                <a href="#" data-id="6">
+                                    <img src="{{ asset('images/detail/gmr6.png') }}" alt="..." style="width: 76px"></a>
+                            </div>
+                        @else
+                            @foreach (json_decode($design->image) as $key => $img)
+                                <div class="img-item">
+                                    <a href="#" data-id="{{ $key + 1 }}">
+                                        <img src="{{ asset('/designs/' . $design->owner->username . '/' . $design->name . '/' . $img) }}"
+                                            alt="..." style="width: 76px">
+                                    </a>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
                 <div class="card" style="width: 490px">
@@ -64,8 +81,12 @@
                             <img src="{{ url('images/testi1.png') }}" alt="" width="100px">
                         </div>
                         <div class="purchase-info col-6">
-                            <a href="{{ url('/consultation') }}" type="button"
-                                class="btn mb-4 btn-lg pl-4 pr-4">Consultation</a>
+                            <form action="{{ route('consultation') }}" method="GET">
+                                <input type="hidden" name="data[]" value="{{ Crypt::encrypt($design->owner->email) }}">
+                                <input type="hidden" name="data[]"
+                                    value="{{ Crypt::encrypt($design->owner->phone_number) }}">
+                                <button type="submit" class="btn mb-4 btn-lg pl-4 pr-4">Consultation</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -144,7 +165,11 @@
                                     Masukkan Keranjang <i class="fas fa-shopping-cart"></i>
                                 </button>
                             </form>
-                            <button type="button" class="btn mb-4 btn-lg pl-4 pr-4">Belanja Sekarang</button>
+                            <form method="POST" action="{{ route('shop.now') }}" class="d-inline-block">
+                                @csrf
+                                <input type="hidden" name="design_id" value="{{ $design['id'] }}" />
+                                <button type="submit" class="btn mb-4 btn-lg pl-4 pr-4">Belanja Sekarang</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -153,21 +178,12 @@
 
         <div class="product-detail">
             <div class="nav-link">
-                <h4 class="nav-kategory text-center">
-                    <a href="#" class="deskripsi" style="color:#1ACBAA; padding-right: 18px;">Deskripsi</a>
-                    <a href="" class="spesifikasi" style="color: #616161; padding-right: 18px;">Spesifikasi</a>
-                    <a href="" class="info" style="color: #616161;">Info Penting</a>
+                <h4 class="nav-kategory text-center deskripsi" style="color:#3A3A3A; padding-right: 18px;">
+                    Deskripsi
                 </h4>
             </div>
             <div class="container">
-                <p>Desain rumah minimalis pertama dengan tiga kamar yang berada pada sisi kiri. Konsep rumah ini menyamping.
-                    Bagian ruang tamu dari desain rumah ini berada di bagian tengah dan bagian dapur berada di sisi kanan.
-                    Konsep desain rumah minimalis ini sangat menarik dan patut untuk kamu coba.</p>
-                <ul>
-                    <li>Tipe 36</li>
-                    <li>Ukuran 6x6</li>
-                </ul>
-                <a href="" class="text-info font-weight-bold"> Lihat Selengkapnya</a>
+                <p>{{ $design->description }}</p>
             </div>
         </div>
     </div>
