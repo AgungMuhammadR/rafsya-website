@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/ic-baseline-home-work.ico') }}">
 
-    <title>{{ $title }}</title>
+    <title>RAFSYA | {{ $title }}</title>
 </head>
 
 <body>

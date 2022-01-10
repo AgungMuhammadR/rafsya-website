@@ -46,7 +46,8 @@
                     <div class="input-group w-100">
                         <input type="text" class="form-control" placeholder="Cari Produk" name="keyword">
                         <div class="input-group-append">
-                            <button class="btn" style="background-color: #1ACBAA;" id="btnSearch"data-toggle="modal" data-target="#exampleModalLong">
+                            <button class="btn" style="background-color: #1ACBAA;" id="btnSearch"
+                                data-toggle="modal" data-target="#exampleModalLong">
                                 <i class="fa fa-search" style="color: #fff;"></i>
                             </button>
                         </div>
@@ -58,10 +59,10 @@
                 <h5>
                     @auth
                         @can('customer')
-                          <a href="{{ url('cart') }}" style="text-decoration: none"><img
-                                  src="{{ asset('images/cart.png') }}" class="icon-cart mx-2" alt="">
-                              <div class="badge text-white ml-n4">{{ $total_item }}</div>
-                          </a>
+                            <a href="{{ url('cart') }}" style="text-decoration: none"><img
+                                    src="{{ asset('images/cart.png') }}" class="icon-cart mx-2" alt="">
+                                <div class="badge text-white ml-n4">{{ $total_item }}</div>
+                            </a>
                         @endcan
 
                         <div class="d-inline-block">
@@ -110,20 +111,27 @@
 @include('layout.result_search')
 
 <script type="text/javascript">
-
     $('.pencarian').hide();
     var tagHtml = '';
 
-    function addId (id) {
+    function addId(id) {
 
-        tagHtml = '<div class="col-sm-3"> <div class="product"> <div class="product-header"> <div class="bg-body rounded"> <img id="gambar'+id+'" src="" class="card-img-top" alt="..."> <ul class="icons"> <a id="link-info'+id+'" href=""> <span><i class="bx bx-info-circle"></i></span> </a> <form method="POST" action="{{ route("add.cart") }}"> @csrf <input type="hidden" id="input'+id+'" name="design_id" value="" /> <button type="submit" class="add-to-cart"> <span><i class="bx bx-shopping-bag"></i></span> </button> </form> </ul> <div class="card-body"> <h9 class="card-title font-weight-bold"> <div id="nama-produk'+id+'"></div> </h9> <p class="tipe"><div id="tipe-produk'+id+'"></div></p><h8 class="price font-weight-bold"><div id="harga-produk'+id+'"></div></h8> </div> </div> </div> </div></div>';
+        tagHtml =
+            '<div class="col-sm-3"> <div class="product"> <div class="product-header"> <div class="bg-body rounded"> <img id="gambar' +
+            id + '" src="" class="card-img-top" alt="..."> <ul class="icons"> <a id="link-info' + id +
+            '" href=""> <span><i class="bx bx-info-circle"></i></span> </a> <form method="POST" action="{{ route('add.cart') }}"> @csrf <input type="hidden" id="input' +
+            id +
+            '" name="design_id" value="" /> <button type="submit" class="add-to-cart"> <span><i class="bx bx-shopping-bag"></i></span> </button> </form> </ul> <div class="card-body"> <h9 class="card-title font-weight-bold"> <div id="nama-produk' +
+            id + '"></div> </h9> <p class="tipe"><div id="tipe-produk' + id +
+            '"></div></p><h8 class="price font-weight-bold"><div id="harga-produk' + id +
+            '"></div></h8> </div> </div> </div> </div></div>';
     }
 
     function formatNomor(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
-    
-    $('#btnSearch').on('click', function () {
+
+    $('#btnSearch').on('click', function() {
 
         $('#konten').html('');
         $('.pencarian').hide();
@@ -133,38 +141,46 @@
         var productUrl = '';
 
         $.ajax({
-            url: '{{url('search-product')}}',
+            url: '{{ url('search-product') }}',
             type: 'get',
-            data: {keyword: key},
-            success: function(data){
+            data: {
+                keyword: key
+            },
+            success: function(data) {
 
                 $('.wrapper').hide();
                 $('.pencarian').show();
 
-                for (var i=0; i<data.length; i++) {
+                for (var i = 0; i < data.length; i++) {
                     $('#no-result').hide();
                     addId(i);
                     $('#konten').append(tagHtml);
-                    $('#nama-produk'+i).append(data[i].name);
-                    $('#tipe-produk'+i).append('Tipe ' + data[i].type.value);
-                    $('#harga-produk'+i).append('Rp. ' + formatNomor(data[i].price));
+                    $('#nama-produk' + i).append(data[i].name);
+                    $('#tipe-produk' + i).append('Tipe ' + data[i].type.value);
+                    $('#harga-produk' + i).append('Rp. ' + formatNomor(data[i].price));
 
 
                     nameImage = JSON.parse(data[i].image);
-                    productUrl = 'http://localhost:8000/type/' + data[i].type.value + '/' + data[i].id;
-                    imageUrl = 'http://localhost:8000/designs/' + data[i].owner.username + '/' + data[i].name + '/' + nameImage[0];
-                    $('#link-info'+i).prop('href', productUrl);
-                    $('#gambar'+i).prop('src', imageUrl);
-                    $('#input'+i).prop('value', data[i].id);
+                    productUrl = 'http://localhost:8000/type/' + data[i].type.value + '/' + data[i]
+                        .id;
+                    if (nameImage.length === 0) {
+                        imageUrl = "{{ asset('images/kategori.png') }}"
+                    } else {
+                        imageUrl = 'http://localhost:8000/designs/' + data[i].owner.username + '/' +
+                            data[i].name + '/' + nameImage[0];
+                    }
+                    $('#link-info' + i).prop('href', productUrl);
+                    $('#gambar' + i).prop('src', imageUrl);
+                    $('#input' + i).prop('value', data[i].id);
 
                 }
-                
+
             }
         });
 
     })
 
-    $('#closeSearch').on('click', function () {
+    $('#closeSearch').on('click', function() {
 
         $('#konten').html('');
         $('.pencarian').hide();
@@ -173,5 +189,4 @@
 
 
     });
-
 </script>

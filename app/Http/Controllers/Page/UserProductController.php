@@ -24,6 +24,7 @@ class UserProductController extends Controller
         ]);
 
         return view('page.profile.list_product', [
+            'title' => 'Produk',
             'designs' => $designs
         ]);
     }
@@ -31,6 +32,7 @@ class UserProductController extends Controller
     public function insertProductPage()
     {
         return view('page.profile.insert_product', [
+            'title' => 'Tambah Produk',
             'categories' => Category::orderBy('id', 'ASC')->get(),
             'types' => Type::orderBy('id', 'ASC')->get()
         ]);

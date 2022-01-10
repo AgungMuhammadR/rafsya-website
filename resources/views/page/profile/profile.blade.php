@@ -113,11 +113,11 @@
                                             class="form-control @error('address') is-invalid @enderror" id="inputAdddress"
                                             value="{{ old('address', auth()->user()->address) }}">
                                     </div>
+                                    <div class="col-12 mt-4 mb-5 text-md-right">
+                                        <button id="Checkout" type="submit"
+                                            class="btn mb-3 btn-lg pl-4 pr-4 rounded">Save</button>
+                                    </div>
                                 </form>
-                                <div class="col-12 mt-4 mb-5 text-md-right">
-                                    <button id="Checkout" type="submit"
-                                        class="btn mb-3 btn-lg pl-4 pr-4 rounded">Save</button>
-                                </div>
                             </div>
                         </div>
                     </div>

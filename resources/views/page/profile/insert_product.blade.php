@@ -108,6 +108,7 @@
     </div>
 
     @push('js')
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script type="text/javascript">
             var sumFile = 0;
 
@@ -116,13 +117,18 @@
                 $("input[id=my_file]").val(null);
             });
 
-            $('#my_file').on ('change', function() {
+            $('#my_file').on('change', function() {
 
                 $('#list_file').html('');
                 sumFile = 0;
 
                 if (this.files.length > 5) {
-                    alert('Jumlah File Melebihi Batas, Ulangi Upload File');
+                    Swal.fire({
+                            title: 'Jumlah File Melebihi Batas, Ulangi Upload File',
+                            icon: 'error'
+                        }
+
+                    )
                     $('#list_file').html('');
                     sumFile = 0;
                     $("input[id=my_file]").val(null);

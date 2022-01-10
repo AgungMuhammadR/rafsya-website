@@ -1,12 +1,14 @@
-<?php 
+<?php
 
-    Use App\Models\Design;
+use App\Models\Design;
 
-    function getName ($name) {
-
-        $data = Design::with('owner')->where('name', $name)->first();
-        return $data->owner->username;
-    }
+function getName($name)
+{
+    $data = Design::with('owner')
+        ->where('name', $name)
+        ->first();
+    return $data->owner->username;
+}
 
 ?>
 
@@ -29,7 +31,7 @@
                 </div>
 
                 <div class="col-md-10">
-                    <h2 style="color: #002678;"> Hallo, Frans </h2>
+                    <h2 style="color: #002678;"> Hallo, {{ auth()->user()->username }} </h2>
                     <p> Selamat datang di dashboard Anda ! </p>
                     <div class="row">
                         <div class="col-sm-3">
@@ -51,7 +53,7 @@
                                     <h2 class="font-weight-bold mb-3 text-center"> </b> {{ $all_product }} </h2>
                                 </div>
                             </div>
-               
+
                         </div>
                         <div class="col-sm-6">
                             <div class="card text-center">
@@ -59,7 +61,8 @@
                                     <h5 class="font-weight-bold mb-3 text-center">Your Earning this month </h5>
                                 </div>
                                 <div class="card-body">
-                                    <h2 class="font-weight-bold mb-3 text-center">{{ 'Rp.' . number_format($sum, 0, ',', '.') }}</h2>
+                                    <h2 class="font-weight-bold mb-3 text-center">
+                                        {{ 'Rp.' . number_format($sum, 0, ',', '.') }}</h2>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +87,14 @@
                                             <td data-th="Product">
                                                 <div class="row">
                                                     <div class="col-md-3 text-left">
-                                                        <img src="{{asset('designs/'.getName($item->product_name).'/'. $item->product_name.'/'.$item->product_photo[0])}}" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                                        @if (empty($item->product_photo))
+                                                            <img src="{{ asset('images/kategori4.png') }}" alt=""
+                                                                class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                                        @else
+                                                            <img src="{{ asset('designs/' . getName($item->product_name) . '/' . $item->product_name . '/' . $item->product_photo[0]) }}"
+                                                                alt=""
+                                                                class="img-fluid d-none d-md-block rounded mb-2 shadow ">
+                                                        @endif
                                                     </div>
                                                     <div class="col-md-9 text-left mt-sm-2">
                                                         <h6>{{ $item->product_name }}</h6>

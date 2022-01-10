@@ -12,7 +12,6 @@ use App\Http\Controllers\Page\OpenStoreController;
 use App\Http\Controllers\Page\ProductController;
 use App\Http\Controllers\Page\TransactionController;
 use App\Http\Controllers\Page\UserProductController;
-use App\Models\Transaction;
 
 /*
 |--------------------------------------------------------------------------

@@ -24,7 +24,7 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <link rel="shortcut icon" href="{{ asset('images/ic-baseline-home-work.ico') }}">
-    <title>RAFSYA</title>
+    <title>RAFSYA | {{ $title }}</title>
 
     @if (Request::is('faq'))
         <style>

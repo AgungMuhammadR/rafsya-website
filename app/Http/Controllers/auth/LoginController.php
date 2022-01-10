@@ -11,7 +11,7 @@ class LoginController extends Controller
     public function index()
     {
         return view('page.auth.login', [
-            'title' => 'Login'
+            'title' => 'Masuk'
         ]);
     }
 
@@ -37,7 +37,7 @@ class LoginController extends Controller
     {
         Auth::logout();
 
-        
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
