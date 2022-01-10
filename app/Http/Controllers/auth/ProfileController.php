@@ -102,7 +102,7 @@ class ProfileController extends Controller
             $time2 = date('m');
 
             if ($time1 == $time2) {
-                foreach($transaction['detail'] as $item) {
+                foreach ($transaction['detail'] as $item) {
                     $sum = $sum + $item->product_price;
                 }
             }
@@ -114,8 +114,5 @@ class ProfileController extends Controller
             'all_product' => $design->count(),
             'sum' => $sum
         ]);
-
-       
-
     }
 }

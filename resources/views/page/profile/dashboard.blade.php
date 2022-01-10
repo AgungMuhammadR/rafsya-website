@@ -31,7 +31,7 @@ function getName($name)
                 </div>
 
                 <div class="col-md-10">
-                    <h2 style="color: #002678;"> Hallo, Frans </h2>
+                    <h2 style="color: #002678;"> Hallo, {{ auth()->user()->username }} </h2>
                     <p> Selamat datang di dashboard Anda ! </p>
                     <div class="row">
                         <div class="col-sm-3">
