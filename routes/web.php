@@ -7,11 +7,11 @@ use App\Http\Controllers\Auth\FacebookController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Page\DashboardController;
+use App\Http\Controllers\Page\DesignController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Page\OpenStoreController;
 use App\Http\Controllers\Page\ProductController;
 use App\Http\Controllers\Page\TransactionController;
-use App\Http\Controllers\Page\UserProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,17 +26,17 @@ use App\Http\Controllers\Page\UserProductController;
 
 Route::get('/', [DashboardController::class, 'home']);
 Route::get('faq', [DashboardController::class, 'faq']);
-Route::get('consultation', [ProductController::class, 'consultation'])->name('consultation');
-Route::get('search-product', [ProductController::class, 'search_product']);
+Route::get('consultation', [DesignController::class, 'consultation'])->name('consultation');
+Route::get('search-product', [DesignController::class, 'search_product']);
 
 Route::group(['prefix' => 'category'], function () {
-    Route::get('{category}', [ProductController::class, 'category']);
-    Route::get('{category}/{id}', [ProductController::class, 'detail_category']);
+    Route::get('{category}', [DesignController::class, 'category']);
+    Route::get('{category}/{id}', [DesignController::class, 'detail_category']);
 });
 
 Route::group(['prefix' => 'type'], function () {
-    Route::get('{type}', [ProductController::class, 'type']);
-    Route::get('{type}/{id}', [ProductController::class, 'detail_type']);
+    Route::get('{type}', [DesignController::class, 'type']);
+    Route::get('{type}/{id}', [DesignController::class, 'detail_type']);
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
@@ -52,9 +52,9 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     });
 
     Route::group(['middleware' => 'architect'], function () {
-        Route::get('product', [UserProductController::class, 'index']);
-        Route::get('insert_product', [UserProductController::class, 'insertProductPage']);
-        Route::post('insert_product', [UserProductController::class, 'insertProductData'])->name('product.post');
+        Route::get('product', [ProductController::class, 'index']);
+        Route::get('insert_product', [ProductController::class, 'insertProductPage']);
+        Route::post('insert_product', [ProductController::class, 'insertProductData'])->name('product.post');
         Route::get('dashboard', [ProfileController::class, 'dashboard']);
     });
 });
