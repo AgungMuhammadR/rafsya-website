@@ -93,36 +93,38 @@
             <div class="row mt-4">
                 <div class="col-sm-4 card w-50">
                     <div class="card-body text-center">
-                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-expanded="false" style="color: #1ACBAA; border-radius:50px">
+                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-expanded="false" style="color: #1ACBAA; border-radius:50px">
                             Kategori
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            @foreach ($categories as $category)
+                                <a class="dropdown-item"
+                                    href="{{ url("/category/{$category->slug}") }}">{{ $category->name }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-4 card w-50">
                     <div class="card-body text-center">
-                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-expanded="false" style="color: #1ACBAA">
+                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-expanded="false" style="color: #1ACBAA">
                             Tipe
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            @foreach ($types as $type)
+                                <a class="dropdown-item"
+                                    href="{{ url("/type/{$type->value}") }}">{{ $type->value }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-4 card w-50">
                     <div class="card-body text-center">
-                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                            aria-expanded="false" style="color: #1ACBAA">
+                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-expanded="false" style="color: #1ACBAA">
                             Harga
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -244,7 +246,8 @@
                     <div class="kategori">
                         <div class="card-body">
                             @foreach ($categories as $category)
-                                <a href="category/{{ $category->slug }}" class="nav-link" style="margin-top: -70px; padding:40px; color:#5E6E89">
+                                <a href="category/{{ $category->slug }}" class="nav-link"
+                                    style="margin-top: -70px; padding:40px; color:#5E6E89">
                                     <h3>{{ $category->name }}</h3>
                                 </a>
                             @endforeach
