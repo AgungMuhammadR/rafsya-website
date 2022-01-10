@@ -18,6 +18,7 @@ class TransactionController extends Controller
         $myCart = Cart::with('design.owner')->where('user_id', Auth::id())->get();
 
         return view('page.cart', [
+            'title' => 'Keranjang',
             'carts' => $myCart
         ]);
     }
@@ -32,6 +33,7 @@ class TransactionController extends Controller
         }
 
         return view('page.payment.payment_method', [
+            'title' => 'Pembayaran',
             'carts' => $myCart,
             'sum' => 'Rp.' . number_format($sum, 0, ',', '.')
         ]);
@@ -70,6 +72,7 @@ class TransactionController extends Controller
         Cart::where('user_id', auth()->user()->id)->delete();
 
         return view('page.payment.payment_confirmed', [
+            'title' => 'Pembayaran Berhasil',
             'items' => $items,
             'sum' => 'Rp.' . number_format($sum, 0, ',', '.')
         ]);

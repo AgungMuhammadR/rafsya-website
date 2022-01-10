@@ -11,7 +11,7 @@ class OpenStoreController extends Controller
 {
     public function index()
     {
-        return view('page.profile.open_store');
+        return view('page.profile.open_store', ['title' => 'Buka Toko']);
     }
 
     public function openStore(Request $request)

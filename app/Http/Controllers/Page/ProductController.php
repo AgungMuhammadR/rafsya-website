@@ -85,6 +85,7 @@ class ProductController extends Controller
         $phone_number = substr($phone_number, 0, 1) === '0' ? substr_replace($phone_number, '62', 0, 1) : $phone_number;
 
         return view('page.consultation', [
+            'title' => 'Konsultasi',
             'email' => $email,
             'phone_number' => $phone_number
         ]);

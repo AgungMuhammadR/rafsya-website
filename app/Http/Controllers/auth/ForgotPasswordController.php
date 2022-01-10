@@ -17,7 +17,7 @@ class ForgotPasswordController extends Controller
     public function showForgetPasswordForm()
     {
         return view('page.auth.forget_password', [
-            'title' => 'Forget Password'
+            'title' => 'Lupa Password'
         ]);
     }
 

@@ -11,12 +11,13 @@ class DashboardController extends Controller
     public function home()
     {
         return view('page.home', [
+            'title' => 'Beranda',
             'categories' => Category::orderBy('id', 'ASC')->get()
         ]);
     }
 
     public function faq()
     {
-        return view('page.faq');
+        return view('page.faq', ['title' => 'FAQ']);
     }
 }

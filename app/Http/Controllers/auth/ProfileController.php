@@ -18,6 +18,7 @@ class ProfileController extends Controller
         $provinces = Location::where('parent_id', 0)->get();
 
         return view('page.profile.profile', [
+            'title' => 'Profil',
             'provinces' => $provinces
         ]);
     }
@@ -68,6 +69,7 @@ class ProfileController extends Controller
 
 
         return view('page.profile.transaction_list', [
+            'title' => 'Daftar Transaksi',
             'transactions' => $transactions
         ]);
     }
@@ -109,6 +111,7 @@ class ProfileController extends Controller
         }
 
         return view('page.profile.dashboard', [
+            'title' => 'Dashboard',
             'transactions' => $transactions,
             'product_sold' => $product_sold,
             'all_product' => $design->count(),

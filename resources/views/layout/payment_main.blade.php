@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/javascript"
         href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <link rel="shortcut icon" href="{{ asset('images/ic-baseline-home-work.ico') }}">
-    <title> Payment </title>
+    <title> RAFSYA | {{ $title }} </title>
 </head>
 
 <body>
