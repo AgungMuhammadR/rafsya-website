@@ -61,6 +61,11 @@ class TransactionController extends Controller
             Design::where('name', $item->design->name)->update([
                 'sold' => $item->design->sold + 1
             ]);
+
+            $seller = User::find($item->design->user_id);
+            $seller->update([
+                'income' => $seller->income + $item->design->price
+            ]);
         }
 
         Transaction::create([

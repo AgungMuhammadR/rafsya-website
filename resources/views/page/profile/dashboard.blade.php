@@ -62,7 +62,9 @@ function getName($name)
                                 </div>
                                 <div class="card-body">
                                     <h2 class="font-weight-bold mb-3 text-center">
-                                        {{ 'Rp.' . number_format($sum, 0, ',', '.') }}</h2>
+                                        {{ 'Rp.' . number_format($income, 0, ',', '.') }}</h2>
+                                    <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                                        data-target="#withdrawIncome">Tarik Penghasilan Anda</button>
                                 </div>
                             </div>
                         </div>
@@ -118,4 +120,54 @@ function getName($name)
             </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="withdrawIncome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form method="POST" action="{{ route('withdraw.income.post') }}">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tarik Pendapatan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @csrf
+                        <div class="form-group">
+                            <label for="totalWithdraw" class="col-form-label">Jumlah Penarikan</label>
+                            <input type="text" class="form-control @error('total') is-invalid @enderror" id="totalWithdraw"
+                                name="total" autocomplete="off">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="withdrawAll" value="{{ $income }}"
+                                autocomplete="off">
+                            <label class="form-check-label" for="withdrawAll">Tarik Semua</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Tarik</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
+
+@push('js')
+    @if (count($errors) > 0)
+        <script type="text/javascript">
+            $('#withdrawIncome').modal('show');
+        </script>
+    @endif
+
+    <script>
+        $('#withdrawAll').click(function() {
+            const isChecked = $(this).is(':checked')
+            if (isChecked) {
+                var totalIncome = $('#withdrawAll').val()
+                $('#totalWithdraw').val(totalIncome)
+            }
+        })
+    </script>
+@endpush

@@ -96,26 +96,33 @@ class ProfileController extends Controller
 
         $design = Design::where('user_id', auth()->user()->id)->get();
         $product_sold = $design->sum(fn ($item) => $item->sold);
-        $sum = 0;
 
-        foreach ($transactions as $transaction) {
-            $time1 = strtotime($transaction['date']);
-            $time1 = date('m', $time1);
-            $time2 = date('m');
-
-            if ($time1 == $time2) {
-                foreach ($transaction['detail'] as $item) {
-                    $sum = $sum + $item->product_price;
-                }
-            }
-        }
+        $income = User::find(auth()->user()->id)->income;
 
         return view('page.profile.dashboard', [
             'title' => 'Dashboard',
             'transactions' => $transactions,
             'product_sold' => $product_sold,
             'all_product' => $design->count(),
-            'sum' => $sum
+            'income' => $income
         ]);
+    }
+
+    public function withdraw_income(Request $request)
+    {
+        $this->validate($request, ['total' => 'required|numeric']);
+
+        $user = User::find(auth()->user()->id);
+
+        if (intval($request->total) > $user->income) {
+            return back()->with('error', 'Penarikan gagal!');
+        }
+
+        $user->update([
+            'income' => $user->income - intval($request->total),
+            'withdrawal' => $user->withdrawal + intval($request->total)
+        ]);
+
+        return back()->with('success', 'Penarikan sukses!');
     }
 }
